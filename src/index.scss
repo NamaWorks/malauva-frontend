@@ -1,8 +1,22 @@
 // Fonts
 @font-face {
-  font-family: 'Inter';
-  src: url(/malauva-frontend/public/fonts/Inter/Inter_18pt-Black.ttf);
-}
+  font-family: 'inter';
+  src: url('/fonts/Inter/Inter_18pt-Medium.ttf');
+};
+
+@font-face {
+  font-family: 'kapakana';
+  src: url('/fonts/Kapakana[wght].ttf');
+};
+
+@font-face {
+  font-family: 'anton';
+  src: url('/fonts/Anton/Anton-Regular.ttf');
+};
+
+$MU-primary-font: inter;
+$MU-secondary-font:anton;
+$MU-accent-font: kapakana;
 
 // Colors
 $MU-beige-100: #FEFDFC; 
@@ -14,8 +28,40 @@ $MU-dark-200: #2C3538;
 $MU-green-100: #8d7f19;
 $MU-pink-100: #ff0048;
 
-// 
+// Sizes
+$h1-primary-font-size: 88;
+$h1-accent-font-size: 160;
+$h2-primary-font-size: 64;
+$h2-accent-font-size: 164;
+$h3-primary-font-size: 48;
+$h3-accent-font-size: 128;
+$h4-primary-font-size: 36;
+$h4-accent-font-size: 80;
+$h5-primary-font-size: 24;
+$h5-accent-font-size: 67;
+$h6-primary-font-size: 16;
+$h6-accent-font-size: 44;
 
-*{
-  font-family: 'Inter';
-}
+$d-font-wine-title: 96;
+$d-font-price: 32;
+$d-font-wine-char: 20;
+$d-font-cart: 24;
+$d-font-body:16;
+$d-font-info: 13;
+$d-font-field: 16;
+$d-font-highlight-primary: 24;
+$d-font-highlight-accent: 67;
+$d-font-info-bold: 16;
+$d-font-nav-page: 32;
+$d-font-menu-links: 32;
+$d-font-sublinks: 16;
+$d-font-cursor: 12;
+$d-font-nav-sublinks: 20;
+$d-font-btn-primary: 16;
+$d-font-btn-secondary: 32;
+
+// Spacings
+
+// Animation
+
+//! Remember to add the general styles in the App.scss file and not here
