@@ -1,4 +1,21 @@
-// STYLE VARIABLES
+// Fonts
+@font-face {
+  font-family: 'Inter';
+  src: url(/malauva-frontend/public/fonts/Inter/Inter_18pt-Black.ttf);
+}
 
-$alt-color: red;
+// Colors
+$MU-beige-100: #FEFDFC; 
+$MU-beige-200: #F2EFE8; 
+$MU-beige-300: #EDE8DE; 
+$MU-beige-400: #DBD1BD;
+$MU-dark-100: #2c353880;
+$MU-dark-200: #2C3538;
+$MU-green-100: #8d7f19;
+$MU-pink-100: #ff0048;
 
+// 
+
+*{
+  font-family: 'Inter';
+}
