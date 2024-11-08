@@ -1,5 +1,7 @@
 import React from "react";
 import "./Navbar.scss";
+import NavbarLink from "./NavbarLink/NavbarLink";
+import Sublink from "./Sublink/Sublink";
 
 const Navbar = () => {
   return (
@@ -16,21 +18,17 @@ const Navbar = () => {
 
         <div className="navbar-content" id="navbar-toggle-container">
           <div className="navbar-toggle-content" id="navbar-links">
-            <div className="navbar-link-container">
-              <a href="#" className="h4-primary navbar-link">Shop</a>
-            </div>
-            <div className="navbar-link-container">
-              <a href="#" className="h4-primary navbar-link">About MalaUva</a>
-            </div>
+            <NavbarLink link='#' text= 'Shop'/>
+            <NavbarLink link='#' text= 'About MalaUva'/>
           </div>
 
           <div className="navbar-toggle-content" id="navbar-utilities-container">
             <div className="navbar-utilities-content">
-              <a href="#" className="navbar-utility sublink">My Account</a>
-              <a href="#" className="navbar-utility sublink">Logout</a>
+              <Sublink link='#' text='My Account' />
+              <Sublink link='#' text='Logout' />
             </div>
             <div className="navbar-utilities-content">
-                <a href="#" className="navbar-utility sublink">My Cart</a>
+              <Sublink link='#' text='Cart' />
             </div>
           </div>
 
