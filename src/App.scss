@@ -1,7 +1,15 @@
-@use 'index';
+@use '/src/index.scss';
 
 // Prepare general styles in this page
+
+*{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
 
 body {
   background-color: index.$MU-beige-100;
 }
+

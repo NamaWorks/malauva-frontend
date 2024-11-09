@@ -2,6 +2,9 @@ import React from "react";
 import "./Navbar.scss";
 import NavbarLink from "./NavbarLink/NavbarLink";
 import Sublink from "./Sublink/Sublink";
+import NavigationButton from "../buttons/NavigationButton/NavigationButton";
+
+const testFnc = (content: string): void | undefined => {console.log(content)}
 
 const Navbar = () => {
   return (
@@ -12,7 +15,7 @@ const Navbar = () => {
             <img src="" alt="" />
           </div>
           <div>
-            <button className="btn-secondary" id="navbar-btn-menu">Menu</button>
+            <NavigationButton kind='fnc' id='navbar-btn-menu' text='menu' color='dark' fnc={()=>{testFnc('btn clicked')}}/>
           </div>
         </div>
 

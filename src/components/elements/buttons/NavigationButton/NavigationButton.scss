@@ -1,0 +1,8 @@
+@use '/src/index.scss';
+
+.btn-secondary {
+  text-transform: uppercase;
+  font-family: index.$MU-secondary-font;
+  font-size: index.$d-font-size-btn-secondary;
+  background: transparent;
+}
