@@ -1,1 +1,8 @@
-@use '../../../../index.scss'
+@use '/src/index.scss';
+
+.sublink{
+  color: index.$MU-beige-100;
+  font-family: index.$MU-primary-font;
+  font-weight: lighter;
+  text-decoration: none;
+}

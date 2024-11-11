@@ -1,7 +1,16 @@
 // Fonts
 @font-face {
   font-family: 'inter';
-  src: url('/fonts/Inter/Inter_18pt-Medium.ttf');
+  src: url('/fonts/Inter/Inter_18pt-Medium.ttf') format("truetype");
+  font-weight: normal;
+  font-style: normal;
+};
+
+@font-face {
+  font-family: 'inter';
+  src: url('/fonts/Inter/Inter_18pt-Light.ttf') format("truetype");
+  font-weight: lighter;
+  font-style: normal;
 };
 
 @font-face {
@@ -11,7 +20,7 @@
 
 @font-face {
   font-family: 'anton';
-  src: url('/fonts/Anton/Anton-Regular.ttf');
+  src: url('/fonts/Anton/Anton-light.ttf');
 };
 
 $MU-primary-font: inter;
@@ -61,7 +70,19 @@ $d-font-size-btn-primary: 16px;
 $d-font-size-btn-secondary: 32px;
 
 // Spacings
+$d-padding-underline-100: 0.25rem;
+$d-padding-nav-000: 1rem;
+$d-padding-nav-100: 2rem;
+$d-padding-nav-200: 4rem;
+$d-margin-top-nav-links: 4rem;
+$d-gap-links-nav: 2rem;
 
-// Animation
+// Details
+$navbar-border-radius: 4rem;
+$navbar-links-underline: 2px solid; 
+
+
+// Animation - transitions
+$general-transition: 0.5s ease-in-out;
 
 //! Remember to add the general styles in the App.scss file and not here

@@ -4,7 +4,7 @@ import './NavbarLink.scss'
 const NavbarLink = ({text, link}: { text: string, link: string }) => {
   return (
     <div className="navbar-link-container">
-      <a href={link} className="h4-primary navbar-link">{text}</a>
+      <a href={link} className="navbar-link">{text}</a>
     </div>
   )
 }

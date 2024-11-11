@@ -4,5 +4,10 @@
   text-transform: uppercase;
   font-family: index.$MU-secondary-font;
   font-size: index.$d-font-size-btn-secondary;
-  background: transparent;
+   background: transparent;
+   cursor: pointer;
+}
+
+.dark {
+  color: index.$MU-dark-200;
 }

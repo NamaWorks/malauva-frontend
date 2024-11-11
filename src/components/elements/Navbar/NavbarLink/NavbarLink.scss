@@ -1,1 +1,15 @@
 @use '/src/index.scss';
+
+.navbar-link-container {
+  padding: index.$d-padding-underline-100 0;
+  border-bottom: index.$navbar-links-underline index.$MU-beige-100;
+
+  .navbar-link {
+    text-transform: uppercase;
+    font-family: index.$MU-secondary-font;
+    font-size: index.$d-font-size-btn-secondary;
+    background: transparent;
+    color: index.$MU-beige-100;
+    text-decoration: none;
+  }
+}

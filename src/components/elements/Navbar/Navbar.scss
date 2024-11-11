@@ -1,1 +1,65 @@
 @use '/src/index.scss';
+
+nav{
+  display: flex;
+  flex-direction: column;
+  z-index: 99;
+}
+
+#navbar-top-bar{
+  display: flex;
+  justify-content: space-between;
+  background-color: index.$MU-beige-200;
+  align-items: center;
+  padding: index.$d-padding-nav-000 index.$d-padding-nav-100;
+  z-index: 99;
+}
+
+#navbar-toggle-container {
+  display: flex;
+  flex-direction: column; 
+  background-color: index.$MU-green-100;
+  padding: index.$d-padding-nav-100;
+  padding-bottom: index.$d-padding-nav-200;
+  border-radius: 0 0 index.$navbar-border-radius index.$navbar-border-radius;
+  // overflow: hidden;
+  transition: index.$general-transition;
+
+  #navbar-links{
+    gap: index.$d-gap-links-nav;
+  }
+}
+
+#navbar-illustration-container{
+  position: relative;
+  bottom: -80px;
+  right: -20px;
+  align-self: self-end;
+  overflow: hidden;
+  width: 300px;
+  cursor: none;
+  pointer-events: none;
+  img{
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.navbar-toggle-content {
+  display: flex;
+  flex-direction: column;
+  margin-top: index.$d-margin-top-nav-links;
+}
+
+#navbar-utilities-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  
+  .navbar-utilities-content {
+    gap: index.$d-gap-links-nav;
+    display: flex;
+  }
+}
+
+
