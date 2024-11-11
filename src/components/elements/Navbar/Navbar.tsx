@@ -10,7 +10,7 @@ const testFnc = (content: string): void | undefined => {
 };
 
 const Navbar = () => {
-  const [navbarHeight, setNavbarHeight] = useState();
+  const [navbarHeight, setNavbarHeight] = useState(800);
   const [toggleNav, setToggleNav] = useState(true);
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const Navbar = () => {
               id="navbar-btn-menu"
               text="menu"
               color="dark"
-              fnc={() => {
+              fnc={(): undefined => {
                 setToggleNav(!toggleNav);
               }}
             />
@@ -45,7 +45,7 @@ const Navbar = () => {
           style={{
             height: toggleNav ? `${navbarHeight}px` : `200px`,
             position: "relative",
-            top: toggleNav ? `0` : `-100px`,
+            top: toggleNav ? `0` : `-200px`,
           }}
         >
           <div className="navbar-toggle-content" id="navbar-links">
