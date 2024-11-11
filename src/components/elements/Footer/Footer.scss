@@ -1,0 +1,56 @@
+@use '/src/index.scss';
+
+footer{
+  position: absolute;
+  bottom: 0;
+  background-color: index.$MU-pink-100;
+  padding: index.$d-padding-general-100;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: index.$d-gap-general-100;
+  
+  #footer-container-logo{
+    img{
+      width: 100%;
+    }
+  }
+  
+  #footer-container-under-logo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    p{
+      font-family: index.$MU-primary-font;
+      color: index.$MU-dark-200;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+    
+    .sublink{
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    div{
+      display: flex;
+      gap: index.$d-gap-general-100;
+    }
+  }
+
+  #footer-navigation-links{
+    border-top: index.$navbar-links-underline;
+    padding-top: index.$d-padding-general-100;
+    margin-top: index.$d-margin-general-200;
+    display: flex;
+    justify-content: space-between;
+
+    a{
+      text-decoration: none;
+    }
+  }
+  
+  
+}

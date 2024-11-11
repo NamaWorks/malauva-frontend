@@ -14,6 +14,13 @@
 };
 
 @font-face {
+  font-family: 'inter';
+  src: url('/fonts/Inter/Inter_18pt-Bold.ttf') format("truetype");
+  font-weight: bold;
+  font-style: normal;
+};
+
+@font-face {
   font-family: 'kapakana';
   src: url('/fonts/Kapakana[wght].ttf');
 };
@@ -70,6 +77,11 @@ $d-font-size-btn-primary: 16px;
 $d-font-size-btn-secondary: 32px;
 
 // Spacings
+$d-padding-general-100: 2rem;
+$d-gap-general-100: 2rem;
+$d-gap-general-200: 4rem;
+$d-margin-general-100: 2rem;
+$d-margin-general-200: 6rem;
 $d-padding-underline-100: 0.25rem;
 $d-padding-nav-000: 1rem;
 $d-padding-nav-100: 2rem;
@@ -83,6 +95,6 @@ $navbar-links-underline: 2px solid;
 
 
 // Animation - transitions
-$general-transition: 0.5s ease-in-out;
+$general-transition: 0.3s ease-in-out;
 
 //! Remember to add the general styles in the App.scss file and not here

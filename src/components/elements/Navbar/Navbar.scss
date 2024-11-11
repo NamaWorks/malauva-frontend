@@ -1,6 +1,8 @@
 @use '/src/index.scss';
 
 nav{
+  position: fixed;
+  width: 100%;
   display: flex;
   flex-direction: column;
   z-index: 99;
@@ -22,7 +24,7 @@ nav{
   padding: index.$d-padding-nav-100;
   padding-bottom: index.$d-padding-nav-200;
   border-radius: 0 0 index.$navbar-border-radius index.$navbar-border-radius;
-  // overflow: hidden;
+  overflow: hidden;
   transition: index.$general-transition;
 
   #navbar-links{
@@ -40,10 +42,10 @@ nav{
   height: 300px;
   cursor: none;
   pointer-events: none;
-  img{
+  // img{
     // width: 100%;
     // height: 100%;
-  }
+  // }
 }
 
 .navbar-toggle-content {
