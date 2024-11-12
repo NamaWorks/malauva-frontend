@@ -52,7 +52,7 @@ const Footer = () => {
             text="menu"
             color="dark"
             fnc={(): undefined => {
-              setToggleNav(!toggleNav);
+              setToggleNav(!toggleNav)
             }}
           />
         </div>
