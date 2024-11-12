@@ -11,7 +11,7 @@ const testFnc = (content: string): void | undefined => {
 
 const Navbar = () => {
   const [navbarHeight, setNavbarHeight] = useState(800);
-  const [toggleNav, setToggleNav] = useState(true);
+  const [toggleNav, setToggleNav] = useState(false);
 
   useEffect(() => {
     // we should add here the call to the API in order to show the number of items in the shopping cart
@@ -24,7 +24,7 @@ const Navbar = () => {
       <nav>
         <div className="navbar-content" id="navbar-top-bar">
           <div id="navbar-logo-container">
-            <img src="#" alt="MalaUva Logo" />
+            <img src="/public/assets/img//brand/malauva-logo-up-down-dark.svg" alt="MalaUva Logo" />
           </div>
           <div>
             <NavigationButton
@@ -58,7 +58,7 @@ const Navbar = () => {
             id="navbar-illustration-container"
           >
             <img
-              src="/public/assets/img/pouring wine.svg"
+              src="/public/assets/img/illustrations/pouring-wine.svg"
               alt="illustration of wine being poured in two glasses"
             />
           </div>
