@@ -1,6 +1,36 @@
+import { useEffect } from 'react'
 import './Home.scss'
+import { fetchData } from '../../../utils/functions/fetchData';
 
 const Home = () => {
+
+  type Wine = {
+    _id: string;
+    idNumber: string;
+    name: string;
+    brand: string;
+    picture: string;
+    taste: string;
+    idealTemperature:number;
+    origin: string;
+    scores: string[];
+    price: number;
+    __v: number;
+    createdAt: string;
+    updatedAt: string;
+  }
+
+  useEffect(()=>{
+    let wines: []
+
+    ()=>{
+      // let wineData: Promise<Wine[] | void | undefined> = await fetchData("/wines/") 
+      // wines = wineData
+      // console.log(wineData)
+    }
+
+  },[])
+
   return (
     <>
     <main id='home'>
@@ -36,6 +66,10 @@ const Home = () => {
 
       <section className='home-section' id='home-top-sellers'>
         <h4>top sellers</h4>
+      </section>
+
+      <section className='home-secttion' id='home-faq'>
+
       </section>
 
 
