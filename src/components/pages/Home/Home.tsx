@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import './Home.scss'
 import { fetchData } from '../../../utils/functions/fetchData';
 
@@ -20,15 +20,10 @@ const Home = () => {
     updatedAt: string;
   }
 
-  useEffect(()=>{
-    let wines: []
+  const [wines, setWines] = useState([])
 
-    ()=>{
-      // let wineData: Promise<Wine[] | void | undefined> = await fetchData("/wines/") 
-      // wines = wineData
-      // console.log(wineData)
-    }
-
+  useEffect(() =>{
+   fetchData('/wines').then(res=> res.json()).then(res => setWines(res))
   },[])
 
   return (
@@ -43,7 +38,7 @@ const Home = () => {
           <img src="/public/assets/img/brand/malauva-logo-up-down.svg" alt="MalaUva logo over Giussepe's picture" />
         </div>
       </section>
-
+      
       <section className='home-section' id='home-highlight-text'>
         <div className='home-hl-text-container'>
           <h1>Lorem ipsum dolor sit amet consectetur. Et diam tempus ultrices in ultricies amet felis. Vitae et nisi tellu.</h1>
