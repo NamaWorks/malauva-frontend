@@ -1,6 +1,12 @@
 import { useEffect, useState } from 'react'
 import './Home.scss'
 import { fetchData } from '../../../utils/functions/fetchData';
+import HomeHero from './HomeHero/HomeHero';
+import HomeHlText from './HomeHlText/HomeHlText';
+import HomeDragAndDrop from './HomeDragAndDrop/HomeDragAndDrop';
+import HomeAboutUs from './HomeAboutUs/HomeAboutUs';
+import HomeTopSellers from './HomeTopSellers/HomeTopSellers';
+import HomeFaq from './HomeFaq/HomeFaq';
 
 const Home = () => {
 
@@ -23,51 +29,18 @@ const Home = () => {
   const [wines, setWines] = useState([])
 
   useEffect(() =>{
-   fetchData('/wines').then(res=> res.json()).then(res => setWines(res))
+   fetchData('/wines').then(res=> res.json()).catch(err=>console.warn(err)).then(res => setWines(res)).catch(err => console.warn(err))
   },[])
 
   return (
     <>
     <main id='home'>
-
-      <section className='home-section' id='home-hero'>
-        <div id='home-hero-container-img'>
-          <img src="/public/assets/img/pictures/Hero-img.png" alt="image of Giussepe, founder of MalaUva" />
-        </div>
-        <div id='home-hero-container-logo'>
-          <img src="/public/assets/img/brand/malauva-logo-up-down.svg" alt="MalaUva logo over Giussepe's picture" />
-        </div>
-      </section>
-      
-      <section className='home-section' id='home-highlight-text'>
-        <div className='home-hl-text-container'>
-          <h1>Lorem ipsum dolor sit amet consectetur. Et diam tempus ultrices in ultricies amet felis. Vitae et nisi tellu.</h1>
-        </div>
-      </section>
-
-      <section className='home-section' id='home-drag-menu'></section>
-
-      <section className='home-section' id='home-about-us'>
-        <div className='home-about-us-container'>
-          <p>Lorem ipsum dolor sit amet consectetur. Amet maecenas consectetur vulputate nibh dignissim sed dolor aliquet tristique. Eu viverra tortor ut dui iaculis quis urna amet. Et a ultrices et laoreet placerat enim massa nunc. Dignissim aliquam mus aliquam aenean faucibus velit.</p>
-          <div>
-            <img src="/public/assets/img/illustrations/another-one.svg" alt="illustration of pouring wine" />
-          </div>
-        </div>
-        <div className='home-about-us-container'>
-          <img src="/public/assets/img/pictures/gondola-ride.png" alt="image of a gondola ride" />
-        </div>
-      </section>
-
-      <section className='home-section' id='home-top-sellers'>
-        <h4>top sellers</h4>
-      </section>
-
-      <section className='home-secttion' id='home-faq'>
-
-      </section>
-
-
+      <HomeHero/>
+      <HomeHlText/>
+      <HomeDragAndDrop/>
+      <HomeAboutUs/>
+      <HomeTopSellers/>
+      <HomeFaq/>
     </main>
     </>
   )
