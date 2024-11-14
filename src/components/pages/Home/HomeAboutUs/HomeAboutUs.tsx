@@ -7,7 +7,7 @@ const HomeAboutUs = () => {
     <section className='home-section' id='home-about-us'>
     <div className='home-about-us-container'>
       <p>Lorem ipsum dolor sit amet consectetur. Amet maecenas consectetur vulputate nibh dignissim sed dolor aliquet tristique. Eu viverra tortor ut dui iaculis quis urna amet. Et a ultrices et laoreet placerat enim massa nunc. Dignissim aliquam mus aliquam aenean faucibus velit.</p>
-      <div>
+      <div id='home-about-us-illustration'>
         <img src="/public/assets/img/illustrations/another-one.svg" alt="illustration of pouring wine" />
       </div>
     </div>

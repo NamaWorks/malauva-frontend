@@ -1,1 +1,36 @@
-@use '/src/index.scss'
+@use '/src/index.scss';
+
+#home-about-us{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 95svh;
+  .home-about-us-container{
+    background-color: index.$MU-beige-200;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    p{
+      max-width: 60%;
+      text-align: center;
+    }
+  }
+  #home-about-us-illustration{
+    position: absolute;
+    bottom: 50%;
+    left: 0;
+  }
+}
+
+#home-about-us :nth-child(1){
+  border-top-right-radius: index.$d-home-about-border-radius;
+}
+#home-about-us :nth-child(2){
+  border-bottom-left-radius: index.$d-home-about-border-radius;
+  img{
+    width: 110%;
+  }
+}

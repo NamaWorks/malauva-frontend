@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import './Home.scss'
 import { fetchData } from '../../../utils/functions/fetchData';
 import HomeHero from './HomeHero/HomeHero';
@@ -7,6 +7,7 @@ import HomeDragAndDrop from './HomeDragAndDrop/HomeDragAndDrop';
 import HomeAboutUs from './HomeAboutUs/HomeAboutUs';
 import HomeTopSellers from './HomeTopSellers/HomeTopSellers';
 import HomeFaq from './HomeFaq/HomeFaq';
+import { WinesContext } from '../../../App';
 
 const Home = () => {
 
@@ -26,12 +27,15 @@ const Home = () => {
     updatedAt: string;
   }
 
-  const [wines, setWines] = useState([])
+const {fetchWines, setFetchWines} = useContext(WinesContext)
 
   useEffect(() =>{
-   fetchData('/wines').then(res=> res.json()).catch(err=>console.warn(err)).then(res => setWines(res)).catch(err => console.warn(err))
-  },[])
 
+   fetchData('/wines').then(res => setFetchWines(res)).catch(err => console.warn(err))
+   
+
+  },[])
+  
   return (
     <>
     <main id='home'>

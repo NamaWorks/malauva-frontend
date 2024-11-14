@@ -6,10 +6,10 @@ const HomeHlText = () => {
     <>
       <section className="home-section" id="home-highlight-text">
         <div className="home-hl-text-container">
-          <h1>
-            Lorem ipsum dolor sit amet consectetur. Et diam tempus ultrices in
+          <h2>
+            Lorem ipsum dolor<span> <img src="/public/assets/img/illustrations/old-man-drinking.svg" alt="old man drinking a glass of wine" /></span> sit amet consectetur. Et diam <span><img src="/public/assets/img/illustrations/flowers.svg" alt="flowers illustration" /></span> tempus ultrices in
             ultricies amet felis. Vitae et nisi tellu.
-          </h1>
+          </h2>
         </div>
       </section>
     </>
