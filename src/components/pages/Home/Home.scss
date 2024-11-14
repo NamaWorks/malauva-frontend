@@ -1,1 +1,7 @@
 @use '/src/index.scss';
+
+#home {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}

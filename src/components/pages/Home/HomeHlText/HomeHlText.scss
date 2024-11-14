@@ -1,1 +1,23 @@
 @use '/src/index.scss';
+
+#home-highlight-text {
+  background-color: index.$MU-green-100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90svh;
+  h2{
+    color: index.$MU-beige-100;
+    text-align: center;
+    max-width: 80svw;
+  }
+  .home-hl-illustrations {
+    // position: relative;
+    filter: invert(100%) brightness(100);
+    img{
+      height: 80px;
+      position: relative;
+      scale: 1.1;
+    }
+  }
+}

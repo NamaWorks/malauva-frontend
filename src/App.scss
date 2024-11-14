@@ -12,3 +12,18 @@
 body {
   background-color: index.$MU-beige-100;
 }
+
+h2{
+  font-family: index.$MU-primary-font;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: index.$h2-primary-font-size;
+  line-height: index.$h2-primary-line-height;
+}
+
+.copy-hl{
+  font-family: index.$MU-primary-font;
+  font-size: index.$copy-hl-font-size;
+  font-weight: 400;
+  text-transform: uppercase;
+}
