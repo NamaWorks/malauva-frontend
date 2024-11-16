@@ -7,7 +7,8 @@ import HomeDragAndDrop from './HomeDragAndDrop/HomeDragAndDrop';
 import HomeAboutUs from './HomeAboutUs/HomeAboutUs';
 import HomeTopSellers from './HomeTopSellers/HomeTopSellers';
 import HomeFaq from './HomeFaq/HomeFaq';
-import { WinesContext } from '../../../App';
+import { WinesContext } from '../../../utils/contexts/contexts';
+
 
 const Home = () => {
 
