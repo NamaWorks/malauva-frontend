@@ -13,3 +13,8 @@ export type Wine = {
   createdAt: string;
   updatedAt: string;
 }
+
+export type Icon = {
+  url: string;
+  name: string;
+}

@@ -96,11 +96,12 @@ $d-font-size-btn-primary: 16px;
 $d-font-size-btn-secondary: 32px;
 
 // Spacings
-$d-padding-general-100: 2rem;
 $d-gap-general-100: 2rem;
 $d-gap-general-200: 4rem;
 $d-margin-general-100: 2rem;
 $d-margin-general-200: 6rem;
+$d-padding-general-100: 2rem;
+$d-padding-btn-100: 0.5rem;
 $d-padding-underline-100: 0.25rem;
 $d-padding-nav-000: 1rem;
 $d-padding-nav-100: 2rem;
@@ -111,6 +112,7 @@ $d-gap-links-nav: 2rem;
 // Details
 $navbar-border-radius: 4rem;
 $navbar-links-underline: 2px solid; 
+$btn-border-radius: 0.25rem;
 $d-home-about-border-radius: 25svw;
 
 // Animation - transitions

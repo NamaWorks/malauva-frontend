@@ -1,1 +1,12 @@
 @use '/src/index.scss';
+
+.ui-button {
+  display: flex;
+  flex-direction: row;
+  padding: index.$d-padding-btn-100;
+  border-radius: index.$btn-border-radius;
+  background-color: index.$MU-dark-200;
+  color: index.$MU-beige-100;
+  align-items: center;
+  justify-content: center;
+};

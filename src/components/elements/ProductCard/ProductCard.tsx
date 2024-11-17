@@ -1,4 +1,5 @@
 import { Wine } from '../../../utils/types/types'
+import UserInterfaceButton from '../buttons/UserInterfaceButton/UserInterfaceButton'
 import './ProductCard.scss'
 import React from 'react'
 
@@ -15,7 +16,12 @@ const ProductCard = ({ wineData, vertical= true, horizontal=false, page }: { win
           <p>{wineData.name}</p>
           <div>${wineData.price}</div>
           <p>{wineData.description}</p>
-                    
+          <UserInterfaceButton 
+            kind='regular' 
+            text='see wine'
+            // icons={[{name: 'test', url:"#"}]}
+            color='dark'
+          />          
         </div>
 
       </div>
