@@ -1,0 +1,16 @@
+@use '/src/index.scss';
+
+.body-copy{
+  color: index.$MU-dark-200;
+  font-size: index.$copy-body-font-size;
+  font-family: index.$MU-primary-font;
+  font-weight: 400;
+}
+
+.body-copy-highlight{
+  color: index.$MU-dark-200;
+  font-size: index.$copy-hl-font-size;
+  font-family: index.$MU-primary-font;
+  text-transform: uppercase;
+  font-weight: 400;
+}

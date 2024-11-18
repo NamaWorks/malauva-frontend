@@ -1,0 +1,9 @@
+@use '/src/index.scss';
+
+.cursor-text{
+  .cursor-text-p{
+    font-size: index.$d-font-size-cursor;
+    font-family: index.$MU-secondary-font;
+    color: index.$MU-dark-200;
+  }
+}

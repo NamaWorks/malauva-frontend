@@ -1,0 +1,23 @@
+@use '/src/index.scss';
+
+.price-text {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .price-amount{
+    display: flex;
+    font-family: index.$MU-secondary-font;
+    font-size: index.$d-font-size-price;
+    color: index.$MU-dark-200;
+  }
+}
+
+.price-text-background{
+  .price-amount{
+    padding: index.$d-padding-general-050;
+    background-color: index.$MU-beige-100;
+    border-radius: index.$btn-border-radius;
+  }
+}
+
