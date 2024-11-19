@@ -2,7 +2,7 @@ import { objectFromAccentAdding } from "../types/types"
 
 export const addAccentFont = (text: string): objectFromAccentAdding  => {
   const restOfTheText = text.split('').slice(1, text.length ).join('')
-  const letterToAccent = text.split('').slice(-1).join('')
+  const letterToAccent = text.split('').slice(0,1).join('')
 
   const objectToReturn = {
     letterToAccent: {

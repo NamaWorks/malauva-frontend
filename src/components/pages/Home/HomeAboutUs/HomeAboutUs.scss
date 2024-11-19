@@ -2,11 +2,14 @@
 
 #home-about-us{
   position: relative;
+  top: -40svh;
   display: flex;
   flex-direction: column;
-  height: 95svh;
+  height: 55svh;
+  overflow: show;
   .home-about-us-container{
     background-color: index.$MU-beige-200;
+    min-height: 45svh;
     height: 50%;
     display: flex;
     flex-direction: column;
@@ -21,7 +24,7 @@
   }
   #home-about-us-illustration{
     position: absolute;
-    bottom: 50%;
+    bottom: 20%;
     left: 0;
     img{
       border-radius: 0;

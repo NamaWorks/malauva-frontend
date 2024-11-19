@@ -1,1 +1,18 @@
-@use '/src/index.scss'
+@use '/src/index.scss';
+
+#home-top-sellers{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: index.$d-margin-general-200;
+  margin-bottom: index.$d-margin-general-200;
+  #top-sellers-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: index.$d-padding-general-050;
+  }
+}

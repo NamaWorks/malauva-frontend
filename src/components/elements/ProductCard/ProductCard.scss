@@ -3,4 +3,35 @@
 .wine-card{
   display: flex;
   flex-direction: column;
+  max-width:20svw;
+  
+  .wine-card-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: index.$d-gap-general-050;
+    width: 100%;
+    text-align: center;
+
+    img{
+      max-height: 400px;
+    }
+  }
+}
+
+.wine-card-horizontal {
+  flex-direction: row;
+  min-width: 35svw;
+
+  .wine-card-container{
+    align-items: flex-start;
+    justify-content: end;
+    width: auto;
+    text-align: left;
+  }
+
+  img{
+    scale: 1.2;
+  }
 }
