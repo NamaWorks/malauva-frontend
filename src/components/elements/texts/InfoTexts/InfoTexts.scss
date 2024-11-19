@@ -1,0 +1,23 @@
+@use '/src/index.scss';
+
+.info-text {
+  font-family: index.$MU-primary-font;
+  font-size: index.$d-font-size-info;
+  color: index.$MU-dark-200;
+  font-weight: 400
+}
+
+.info-text-bold {
+  font-size: index.$d-font-size-info-bold;
+  font-weight: 600;
+}
+
+.info-text-bold-dimmed {
+  font-size: index.$d-font-size-info-bold;
+  font-weight: 600;
+  color: index.$MU-dark-100;
+}
+
+.info-text-dimmed {
+  color: index.$MU-dark-100;
+}

@@ -8,6 +8,7 @@ import HomeAboutUs from './HomeAboutUs/HomeAboutUs';
 import HomeTopSellers from './HomeTopSellers/HomeTopSellers';
 import HomeFaq from './HomeFaq/HomeFaq';
 import { WinesContext } from '../../../utils/contexts/contexts';
+import BodyTitles from '../../elements/texts/BodyTitles/BodyTitles';
 
 
 const Home = () => {
@@ -44,6 +45,7 @@ const {fetchWines, setFetchWines} = useContext(WinesContext)
       <HomeHlText/>
       <HomeDragAndDrop/>
       <HomeAboutUs/>
+      <BodyTitles text='test text' hierarchy={4} color='dark'/>
       <HomeTopSellers/>
       <HomeFaq/>
     </main>
