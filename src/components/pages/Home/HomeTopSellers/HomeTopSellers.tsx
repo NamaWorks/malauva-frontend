@@ -6,7 +6,7 @@ import React, { useContext } from 'react'
 
 const HomeTopSellers = () => {
 
-  const { fetchWines} = useContext(WinesContext)
+  const { fetchWines } = useContext(WinesContext)
 
   return (
     <>
@@ -16,7 +16,7 @@ const HomeTopSellers = () => {
           if(i < 4) {
             return(
               <>
-                <ProductCard wineData={wineObj}/>
+                <ProductCard wineData={wineObj} key={i}/>
               </>)
           }
         }

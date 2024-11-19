@@ -45,7 +45,6 @@ const {fetchWines, setFetchWines} = useContext(WinesContext)
       <HomeHlText/>
       <HomeDragAndDrop/>
       <HomeAboutUs/>
-      <BodyTitles text='test text' hierarchy={4} color='dark'/>
       <HomeTopSellers/>
       <HomeFaq/>
     </main>

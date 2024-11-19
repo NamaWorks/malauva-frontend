@@ -7,18 +7,21 @@ const BodyTitles = ({
   hierarchy,
   color = "dark",
 }: {
-  text: string;
+  text?: string;
   hierarchy: number;
-  color: string;
+  color?: string;
 }) => {
 
-  const [textToPrint, setTextToPrint] = useState(text)
+  const [textToPrint, setTextToPrint] = useState<string>(text)
+
+  const [initialLetter, setInitialLetter] = useState<string>()
+  const [postInitialLetter, setPostInitialLetter] = useState<string>()
+
 
   useEffect(()=>{
-
-    setTextToPrint(addAccentFont(text))
-
-  },[])
+    setInitialLetter(addAccentFont(textToPrint).letterToAccent.value)
+    setPostInitialLetter(addAccentFont(textToPrint).restOfTheText.value)
+  },[textToPrint])
 
   switch (hierarchy) {
     case 1:
@@ -26,9 +29,9 @@ const BodyTitles = ({
         <>
           <h1 className={`body-title body-title-h1 body-title-${color}`}>
             <span className="accent-font">
-              {textToPrint.letterToAccent.value}
+              {initialLetter}
             </span>
-            {textToPrint.restOfTheText.value}
+            {postInitialLetter}
           </h1>
         </>
       );
@@ -38,9 +41,9 @@ const BodyTitles = ({
         <>
           <h2 className={`body-title body-title-h2 body-title-${color}`}>
             <span className="accent-font">
-              {textToPrint.letterToAccent.value}
+              {initialLetter}
             </span>
-            {textToPrint.restOfTheText.value}
+            {postInitialLetter}
           </h2>
         </>
       );
@@ -50,9 +53,9 @@ const BodyTitles = ({
         <>
           <h3 className={`body-title body-title-h3 body-title-${color}`}>
             <span className="accent-font">
-              {textToPrint.letterToAccent.value}
+              {initialLetter}
             </span>
-            {textToPrint.restOfTheText.value}
+            {postInitialLetter}
           </h3>
         </>
       );
@@ -62,9 +65,9 @@ const BodyTitles = ({
         <>
           <h4 className={`body-title body-title-h4 body-title-${color}`}>
             <span className="accent-font">
-              {textToPrint.letterToAccent.value}
+              {initialLetter}
             </span>
-            {textToPrint.restOfTheText.value}
+            {postInitialLetter}
           </h4>
         </>
       );
@@ -74,9 +77,9 @@ const BodyTitles = ({
         <>
           <h5 className={`body-title body-title-h5 body-title-${color}`}>
             <span className="accent-font">
-              {textToPrint.letterToAccent.value}
+              {initialLetter}
             </span>
-            {textToPrint.restOfTheText.value}
+            {postInitialLetter}
           </h5>
         </>
       );
@@ -86,9 +89,9 @@ const BodyTitles = ({
         <>
           <h6 className={`body-title body-title-h6 body-title-${color}`}>
             <span className="accent-font">
-              {textToPrint.letterToAccent.value}
+              {initialLetter}
             </span>
-            {textToPrint.restOfTheText.value}
+            {postInitialLetter}
           </h6>
         </>
       );
@@ -96,12 +99,12 @@ const BodyTitles = ({
     case 7:
       return (
         <>
-          <h7 className={`body-title body-title-h7 body-title-${color}`}>
+          <h6 className={`body-title body-title-h7 body-title-${color}`}>
             <span className="accent-font">
-              {textToPrint.letterToAccent.value}
+              {initialLetter}
             </span>
-            {textToPrint.restOfTheText.value}
-          </h7>
+            {postInitialLetter}
+          </h6>
         </>
       );
       break;

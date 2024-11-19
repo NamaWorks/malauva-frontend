@@ -1,8 +1,8 @@
 import { Icon } from '../../../../utils/types/types'
 import './UserInterfaceButton.scss'
-import React from 'react'
+import React, { ReactNode } from 'react'
 
-const UserInterfaceButton = ({ kind='regular', icons, text='text pending', fnc, color='dark' }: { kind:string, icons: Array<Icon | undefined>, text: string, fn: undefined | void, color: string }) => {
+const UserInterfaceButton = ({ kind='regular', icons, text='text pending', fnc, color='dark' }: { kind?:string, icons?: Array<Icon | undefined>, text?: string, fnc?: undefined | void, color?: string }) => {
   return (
     <>
       <button 

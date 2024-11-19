@@ -1,20 +1,31 @@
 export type Wine = {
-  _id: string;
-  idNumber: string;
-  name: string;
-  brand: string;
-  picture: string;
-  taste: string;
-  idealTemperature:number;
-  origin: string;
-  scores: string[];
-  price: number;
-  __v: number;
-  createdAt: string;
-  updatedAt: string;
+  _id?: string;
+  idNumber?: string;
+  name?: string;
+  description?: string;
+  picture?: string;
+  taste?: string;
+  idealTemperature?:number;
+  origin?: string;
+  scores?: string[];
+  price?: number;
+  __v?: number;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export type Icon = {
   url: string;
   name: string;
+}
+
+export type objectFromAccentAdding = {
+  letterToAccent: {
+    position: number;
+    value: string;
+  },
+  restOfTheText: {
+    position: number;
+    value: string;
+  }
 }
