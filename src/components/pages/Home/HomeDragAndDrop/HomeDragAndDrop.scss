@@ -1,16 +1,25 @@
 @use '/src/index.scss';
 
-#home-drag-section{
+#home-drag-section {
+  height: 100svh;
+  // overflow: hidden;
+}
+
+#drag-container{
   
     display: grid;
-    grid-template-columns: repeat(50,20svw);
+    grid-template-columns: repeat(40,15svw);
     grid-template-rows: repeat(auto, 1fr);
+    padding: index.$d-padding-general-100;
     // justify-content: center;
     // align-items: center;
     gap: index.$d-gap-general-100;
+    position: relative;
+    // top: 40svh;
 
     height: 140svh;
-    overflow: scroll;
+    overflow: auto;
+    cursor: grab;
   
 }
 

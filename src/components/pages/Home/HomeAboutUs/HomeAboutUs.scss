@@ -2,14 +2,14 @@
 
 #home-about-us{
   position: relative;
-  top: -40svh;
+  // top: -40svh;
   display: flex;
   flex-direction: column;
-  height: 55svh;
-  overflow: show;
+  height: 95svh;
+  overflow: hidden;
   .home-about-us-container{
     background-color: index.$MU-beige-200;
-    min-height: 45svh;
+    // min-height: 400px;
     height: 50%;
     display: flex;
     flex-direction: column;
@@ -23,11 +23,14 @@
     }
   }
   #home-about-us-illustration{
+    // max-height: 25svh;
     position: absolute;
-    bottom: 20%;
+    bottom: 50%;
+    // top: 10px;
     left: 0;
     img{
       border-radius: 0;
+      // max-height: 20svh ;
     }
   }
 }
