@@ -29,3 +29,8 @@ export type objectFromAccentAdding = {
     value: string;
   }
 }
+
+export type position = {
+  x: number,
+  y: number,
+}

@@ -2,11 +2,10 @@
 
 #home-drag-section {
   height: 100svh;
-  // overflow: hidden;
+  overflow: hidden;
 }
 
 #drag-container{
-  
     display: grid;
     grid-template-columns: repeat(40,15svw);
     grid-template-rows: repeat(auto, 1fr);
@@ -16,11 +15,11 @@
     gap: index.$d-gap-general-100;
     position: relative;
     // top: 40svh;
-
-    height: 140svh;
+    // transition: index.$general-transition;
+    width: 400svw;
+    height: 300svh;
     overflow: auto;
-    cursor: grab;
-  
+    cursor:grab;
 }
 
 #home-drag-section article:nth-child(n+1){

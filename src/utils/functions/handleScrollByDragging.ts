@@ -1,47 +1,77 @@
-export const handleScrollByDragging = (item) => {
+import { position } from "../types/types"
 
-  const itemSel = getItem(item)
-    if (itemSel) {
-      itemSel.scrollTop = 100;
-      itemSel.scrollLeft = 150;
-    }
+let dragPos: position ;
+let dropPos: position ;
+let distance: position ;
 
-  let pos = {
-    left: 0,
-    top: 0,
-    x: 0,
-    y: 0,
-  };
 
-  // document.addEventListener('mousemove', (e)=>handleMouseMove(e, itemSel, pos))
-  // document.addEventListener('mouseup', (e)=>handleMouseUp(e, itemSel, pos))
+const getItem = (item: string)=>{
+  return document.querySelector(`#${item}`)
+} 
+
+const getMousePosition = (event: MouseEvent)=>{
+  const position: position = {
+    x: event.clientX,
+    y: event.clientY
+  }
+  return position
 }
 
-  function getItem (string: string) {
-    return document.querySelector('#'+string)
+const calculateDistance= ()=>{
+  distance = {
+    x: dropPos.x - dragPos.x,
+    y: dropPos.y - dragPos.y,
   }
+}
 
-  function handleMouseDown (e, item, pos) {
-    pos = {
-      left: item.scrollLeft,
-      top: item.scrollTop,
-      x: e.clientX,
-      y: e.clientY,
-    }
-  }
+const getItemToHandlePos=(item: string)=>{
+  const itemToHandle = document.querySelector(`#${item}`)
+  const itemToHandleRect = itemToHandle?.getBoundingClientRect()
 
-  function handleMouseMove (e, item, pos) {
-    const dx = e.clientX - pos.x;
-    const dy = e.clientY - pos.y;
+  console.log(itemToHandleRect)
 
-    item.scrollTop = pos.top - dy;
-    item.scrollLeft = pos.left - dx;
-  }
+  let itemToHandlePos:position = {
+    x: itemToHandleRect?.x,
+    y: itemToHandleRect?.y,
+  } 
 
-  function handleMouseUp (e, item, pos) {
-    document.removeEventListener('mousemove', (e)=>handleMouseMove(e, item, pos));
-    document.removeEventListener('mouseup', (e)=>handleMouseUp(e, item, pos));
+  return itemToHandlePos
+}
 
-    item.style.cursor = 'grab';
-    item.style.removeProperty('user-select')
-  }
+const  moveItem=(item: string, distance: position)=>{
+  const itemToHandle = document.querySelector(`#${item}`)
+  const itemToHandlePos = getItemToHandlePos(item)
+
+  console.log(distance)
+  console.log(itemToHandlePos)
+
+  itemToHandle.style.top = itemToHandlePos.y + distance.y + 'px';
+  itemToHandle.style.left = itemToHandlePos.x + distance.x + 'px';
+}
+
+const onMouseMove=(item: string, distance: position)=>{
+  console.log('eventlistener not exited')
+  calculateDistance()
+  moveItem(item, distance)
+}
+
+// /////////////////////////////////////////////
+
+export const handleScrollByDragging = (item: string) => {
+
+  const itemToHandle = getItem(item)
+
+  itemToHandle?.addEventListener('mousedown', (e: Event)=>{
+    dragPos = getMousePosition(e)
+    // itemToHandle.addEventListener('mousemove', onMouseMove(item, distance))
+    itemToHandle.style.cursor = "grabbing"
+  })
+  
+  itemToHandle?.addEventListener('mouseup', (e: Event)=>{
+    dropPos = getMousePosition(e);
+    calculateDistance()
+    // itemToHandle.removeEventListener('mousemove', onMouseMove(item, distance))
+    itemToHandle.style.cursor = "grab"
+    moveItem(item, distance)
+  })
+}

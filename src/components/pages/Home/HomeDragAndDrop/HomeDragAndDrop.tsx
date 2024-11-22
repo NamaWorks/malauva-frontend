@@ -14,9 +14,7 @@ const HomeDragAndDrop = () => {
   return (
     <>
     <section className='home-section' id='home-drag-section'>
-      <div id='drag-container'>
-
-
+      <div id='drag-container' style={{top: -400, left: -400}}>
       {
         fetchWines.map((wineObj: Wine, i: number) => {
           
