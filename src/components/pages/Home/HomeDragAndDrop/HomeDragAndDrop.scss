@@ -3,6 +3,7 @@
 #home-drag-section {
   height: 100svh;
   overflow: hidden;
+  scroll-behavior: none;
 }
 
 #drag-container{
@@ -18,8 +19,12 @@
     // transition: index.$general-transition;
     width: 400svw;
     height: 300svh;
-    overflow: auto;
+    overflow: hidden;
     cursor:grab;
+    scroll-behavior: none;
+    article .wine-card wine-card-horizontal{
+      pointer-events: none;
+    }
 }
 
 #home-drag-section article:nth-child(n+1){
