@@ -93,28 +93,28 @@ export const handleScrollByDraggingTest = (item: string) => {
 
   window.onload = ()=>{
     console.log('page charged')
-    const ball = document.querySelector("#" + item);
+    const element = document.querySelector("#" + item);
 
     let mouseX = 0;
     let mouseY = 0;
     
-    let ballX = 0;
-    let ballY = 0;
+    let elementX = 0;
+    let elementY = 0;
     
     const speed = 0.05;
     
     
     function animate(){
       
-      const distX = mouseX - ballX;
-      const distY = mouseY - ballY - (window.innerHeight*2);
+      const distX = mouseX - elementX;
+      const distY = mouseY - elementY - (window.innerHeight*2);
       
       
-      ballX = ballX + (distX * speed);
-      ballY = ballY + (distY * speed);
+      elementX = elementX + (distX * speed);
+      elementY = elementY + (distY * speed);
       
-      ball.style.left = ballX + "px";
-      ball.style.top = ballY + "px";
+      element.style.left = elementX + "px";
+      element.style.top = elementY + "px";
       
       requestAnimationFrame(animate);
     }
@@ -126,3 +126,48 @@ export const handleScrollByDraggingTest = (item: string) => {
     })
   }
 };
+
+
+export const handleScrollByDraggingEvents = (item: string)=>{
+
+  window.onload=()=>{
+
+    const element = document.querySelector("#" + item);
+  
+    let mouseX = 0;
+    let mouseY = 0;
+    
+    let elementX = 0;
+    let elementY = 0;
+    
+    const speed = 0.05;
+    
+    
+    function animate(){
+      
+      const distX = mouseX - elementX;
+      const distY = mouseY - elementY - (window.innerHeight*2);
+      
+      
+      elementX = elementX + (distX * speed);
+      elementY = elementY + (distY * speed);
+      
+      element.style.left = elementX + "px";
+      element.style.top = elementY + "px";
+      
+      requestAnimationFrame(animate);
+    }
+    animate();
+  
+    element?.addEventListener('mousedown', function(e){
+      mouseX = e.pageX;
+      mouseY = e.pageY;
+    })
+  
+    element?.removeEventListener('mouseup', function(e){
+      mouseX = e.pageX;
+      mouseY = e.pageY;
+    })
+
+  }
+}

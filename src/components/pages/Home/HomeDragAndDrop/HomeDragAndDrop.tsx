@@ -3,17 +3,23 @@ import { handleScrollByDragging, handleScrollByDraggingTest } from '../../../../
 import useScrollByDragging from '../../../../utils/hooks/useScrollByDragging'
 import ProductCard from '../../../elements/ProductCard/ProductCard'
 import './HomeDragAndDrop.scss'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 const HomeDragAndDrop = () => {
 
   const { fetchWines } = useContext(WinesContext)
+
   // handleScrollByDragging('drag-container')
-  handleScrollByDraggingTest('drag-container')
+  // handleScrollByDraggingTest('drag-container')
   // useScrollByDragging('drag-container')
+
+  useEffect(()=>{
+
+  },[])
 
   return (
     <>
+    {/* {window.onload=()=>{}} */}
     <section className='home-section' id='home-drag-section'>
       <div id='drag-container' style={{top: -400, left: -400}}>
       {
@@ -33,6 +39,8 @@ const HomeDragAndDrop = () => {
     </section>
     </>
   )
+
+
 }
 
 export default HomeDragAndDrop
