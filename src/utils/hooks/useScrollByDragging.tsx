@@ -1,62 +1,84 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from "react";
+import { useFetcher } from "react-router-dom";
 
-const useScrollByDragging = (item) => {
+const useScrollByDragging = (item: string) => {
 
-  const element = document.querySelector(`#${item}`)
-  const parentElement = element?.parentElement
-
-  const [held, setHeld] = useState(false)
-  const [elementPosX, setElementPosX] = useState()
-  const [elementPosY, setElementPosY] = useState()
-
-useEffect(()=>{
-  console.log(held)
-},[held])
-  
-  let mouseX = 0;
-  let mouseY = 0;
-  
-  let elementX = elementPosX || 0;
-  let elementY = elementPosY || 0;
-  
   const speed = 0.05;
-  
-  
-  function animate(){
-    
-    const distX = mouseX - elementX;
-    const distY = mouseY - elementY - (window.innerHeight*2);
-    
-    
-    elementX = elementX + (distX * speed);
-    elementY = elementY + (distY * speed);
 
-    // setElementPosX(elementX)
-    // setElementPosY(elementY)
-    
-    element.style.left = elementX + "px";
-    element.style.top = elementY + "px";
-    
-    requestAnimationFrame(animate);
-  }
-  animate();
+  const element = document.querySelector(`#${item}`);
+  const parent = element?.parentElement;
   
-  parentElement.addEventListener("mousemove", function(event){
-    if(!held){
-      // mouseX = mouseX;
-      // mouseY = mouseY;
-      // console.log('choripanes')
-      return
-    } else{
-      mouseX = event.pageX;
-      mouseY = event.pageY;
+  const [held, setHeld] = useState(false);
+  const [startMouseX, setStartMouseX] = useState<number>(0);
+  const [startMouseY, setStartMouseY] = useState<number>(0);
+  const [endMouseX, setEndMouseX] = useState<number>(0);
+  const [endMouseY, setEndMouseY] = useState<number>(0);
+  const [elementX, setElementX] = useState<number>(0);
+  const [elementY, setElementY] = useState<number>(0);
+  const [cleanListeners, setCleanListeners] = useState<boolean>(false);
+
+  useEffect(()=>{
+    // console.log(`endMouseY: ${endMouseY}` + ` ||| startMouseY: ${startMouseY}`)
+  },[held])
+
+
+    
+    const animate = () => {
+      const element = document.querySelector(`#${item}`);
+  
+      const distX = startMouseX - Math.abs(endMouseX);
+      const distY = startMouseY - Math.abs(endMouseY);
+      
+      setElementX(elementX - distX * speed);
+      setElementY(elementY - distY * speed);
+      
+      // element.style.left = elementX + "px";
+      // element.style.top = elementY + "px";
+
+      element.style.left = endMouseX + "px";
+      element.style.top = endMouseY - window.innerHeight * 2 + "px";
+
+      requestAnimationFrame(animate);
+    };
+    
+    const handleMouseDown = (e: Event) => {
+      // animate()
+      setHeld(true);
+      setStartMouseX(e.pageX);
+      setStartMouseY(e.pageY);
+      element.style.cursor = 'grabbing';
+    };
+    const handleMouseUp = (e: Event) => {
+      // console.warn(`startMouseX: ${startMouseX} -------- vs -------- endMouseX: ${endMouseX}` )
+      setCleanListeners(true)
+      setHeld(false);
+      element.style.cursor = 'grab';
+    };
+    const handleMouseMove = (e: Event) => {
+      if(held === true){
+        console.log(held)
+        console.log('button being hold')
+        setEndMouseX(e.pageX);
+        setEndMouseY(e.pageY);
+      } else if (held === false){
+        console.log(held)
+      }
     }
-  })
+    const removeListeners = () =>{
+      parent?.removeEventListener("mousedown", handleMouseDown);
+      parent?.removeEventListener("mouseup", handleMouseUp);
+      document.removeEventListener('mousemove', handleMouseMove)
+      // setCleanListeners(false)
+    };
+  window.onload=()=>{
+    animate()
+  }
+    
+    parent?.addEventListener("mousedown", handleMouseDown);
+    parent?.addEventListener("mouseup", handleMouseUp);
+    if(held === true){document.addEventListener('mousemove', handleMouseMove)}
+    if(cleanListeners){removeListeners()}
   
-  parentElement?.addEventListener('mousedown', ()=>{setHeld(true)})
-  parentElement?.addEventListener('mouseup', ()=>{setHeld(false)})
-  
-}
+};
 
-
-export default useScrollByDragging
+export default useScrollByDragging;

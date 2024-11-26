@@ -1,113 +1,32 @@
 import { position } from "../types/types"
 
-let dragPos: position ;
-let dropPos: position ;
-let distance: position ;
+export const handleScrollByDragging = (item:string)=>{
 
-
-const getItem = (item: string)=>{
-  return document.querySelector(`#${item}`)
-} 
-
-
-const getMousePosition = (event: MouseEvent)=>{
-  const position: position = {
-    x: event.clientX,
-    y: event.clientY
-  }
-  return position
 }
 
-const getParentItemTop = (item:string) => {
-  const parentItemScrollY = getItem(item)?.parentElement.getBoundingClientRect()
-  console.log(parentItemScrollY)
-  console.warn(parentItemScrollY.top)
-  return parentItemScrollY.top
-}
-
-const calculateDistance= (item)=>{
-  distance = {
-    x: dropPos.x - dragPos.x,
-    y: dropPos.y - dragPos.y - getParentItemTop(item),
-  }
-
-  return distance
-}
-
-const getItemToHandlePos=(item: string)=>{
-  const itemToHandle = document.querySelector(`#${item}`)
-  const itemToHandleRect = itemToHandle?.getBoundingClientRect()
-
-  // console.log(itemToHandleRect)
-
-  let itemToHandlePos:position = {
-    x: itemToHandleRect?.x,
-    y: itemToHandleRect?.y,
-  } 
-
-  return itemToHandlePos
-}
-
-
-const  moveItem=(item: string, distance: position)=>{
-  const itemToHandle = document.querySelector(`#${item}`)
-  const itemToHandlePos = getItemToHandlePos(item)
-
-  console.log(itemToHandlePos)
-
-  itemToHandle.style.top = itemToHandlePos.y + distance.y + 'px';
-  itemToHandle.style.left = itemToHandlePos.x + distance.x + 'px';
-}
-
-const onMouseMove=(item: string, distance: position)=>{
-  console.log('eventlistener not exited')
-  calculateDistance(item)
-  moveItem(item, distance)
-}
-
-// /////////////////////////////////////////////
-
-export const handleScrollByDragging = (item: string) => {
-
-  const itemToHandle = getItem(item)
-  
-  itemToHandle?.addEventListener('mousedown', (e: Event)=>{
-    dragPos = getMousePosition(e)
-    // itemToHandle?.addEventListener("mousemove", onMouseMove(item, distance))
-    itemToHandle.style.cursor = "grabbing"
-  })
-  
-  
-  itemToHandle?.addEventListener('mouseup', (e: Event)=>{
-    dropPos = getMousePosition(e);
-    calculateDistance(item)
-    // itemToHandle.removeEventListener('mousemove', onMouseMove(item, distance))
-    itemToHandle.style.cursor = "grab"
-    moveItem(item, distance)
-  })
-}
-
-// /////////////////////////////////////////////
-
-export const handleScrollByDraggingTest = (item: string) => {
-
+ export const handleMouseMove_ = (item: string) => {
   window.onload = ()=>{
-    console.log('page charged')
-    const element = document.querySelector("#" + item);
-
-    let mouseX = 0;
-    let mouseY = 0;
+    let held = false;
     
-    let elementX = 0;
-    let elementY = 0;
+    const element = document.querySelector("#" + item);
+    const elementRect = element?.getBoundingClientRect();
+    const parent = element?.parentElement;
+    
+    let startMouseX = 0;
+    let startMouseY = 0;
+    let endMouseX = 0;
+    let endMouseY = 0;
+    
+    let elementX = elementRect?.left;
+    let elementY = elementRect?.top;
     
     const speed = 0.05;
     
     
     function animate(){
       
-      const distX = mouseX - elementX;
-      const distY = mouseY - elementY - (window.innerHeight*2);
+      const distX = endMouseX - (Math.abs(startMouseX));
+      const distY = endMouseY - (Math.abs(startMouseY));
       
       
       elementX = elementX + (distX * speed);
@@ -117,57 +36,31 @@ export const handleScrollByDraggingTest = (item: string) => {
       element.style.top = elementY + "px";
       
       requestAnimationFrame(animate);
+      
+      return [elementX, elementY]
     }
     animate();
     
     document.addEventListener("mousemove", function(event){
-      mouseX = event.pageX;
-      mouseY = event.pageY;
+      if(held){
+        endMouseX = event.pageX;
+        endMouseY = event.pageY;
+      } else {
+        // console.log('choripanes')
+      }
     })
+    
+    parent?.addEventListener('mousedown', (e)=>{
+      // console.log('mousedown')
+      startMouseX = e.pageX;
+      startMouseY = e.pageY;
+      held = true
+    })
+    parent?.addEventListener('mouseup', (e)=>{
+      held = false
+      endMouseX = e.pageX;
+      endMouseY = e.pageY;
+    })
+    
   }
-};
-
-
-export const handleScrollByDraggingEvents = (item: string)=>{
-
-  window.onload=()=>{
-
-    const element = document.querySelector("#" + item);
-  
-    let mouseX = 0;
-    let mouseY = 0;
-    
-    let elementX = 0;
-    let elementY = 0;
-    
-    const speed = 0.05;
-    
-    
-    function animate(){
-      
-      const distX = mouseX - elementX;
-      const distY = mouseY - elementY - (window.innerHeight*2);
-      
-      
-      elementX = elementX + (distX * speed);
-      elementY = elementY + (distY * speed);
-      
-      element.style.left = elementX + "px";
-      element.style.top = elementY + "px";
-      
-      requestAnimationFrame(animate);
-    }
-    animate();
-  
-    element?.addEventListener('mousedown', function(e){
-      mouseX = e.pageX;
-      mouseY = e.pageY;
-    })
-  
-    element?.removeEventListener('mouseup', function(e){
-      mouseX = e.pageX;
-      mouseY = e.pageY;
-    })
-
-  }
-}
+  };

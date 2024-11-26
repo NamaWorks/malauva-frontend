@@ -6,7 +6,7 @@ import NavigationButton from "../buttons/NavigationButton/NavigationButton";
 import { getNavbarHeight } from "../../../utils/functions/getNavbarHeight";
 
 const testFnc = (content: string): void | undefined => {
-  console.log(content);
+  // console.log(content);
 };
 
 const Navbar = () => {
@@ -15,8 +15,8 @@ const Navbar = () => {
 
   useEffect(() => {
     // we should add here the call to the API in order to show the number of items in the shopping cart
-    console.log(navbarHeight);
-    console.log("toggled " + toggleNav);
+    // console.log(navbarHeight);
+    // console.log("toggled " + toggleNav);
   }, [toggleNav]);
   
   return (

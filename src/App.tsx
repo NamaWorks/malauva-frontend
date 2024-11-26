@@ -1,9 +1,9 @@
-import { createContext, useState } from 'react'
+import { useState } from 'react'
 import './App.scss'
 import Home from './components/pages/Home/Home'
 import Navbar from './components/elements/Navbar/Navbar'
 import Footer from './components/elements/Footer/Footer'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import { WinesContext } from './utils/contexts/contexts'
 
 function App() {

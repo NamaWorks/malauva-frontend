@@ -4,7 +4,7 @@ import BodyCopy from "../texts/BodyCopy/BodyCopy";
 import BodyTitles from "../texts/BodyTitles/BodyTitles";
 import PriceText from "../texts/PriceText/PriceText";
 import "./ProductCard.scss";
-import React from "react";
+import React, { memo } from "react";
 
 const ProductCard = ({
   wineData,

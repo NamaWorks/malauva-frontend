@@ -1,27 +1,24 @@
 import { WinesContext } from '../../../../utils/contexts/contexts'
-import { handleScrollByDragging, handleScrollByDraggingTest } from '../../../../utils/functions/handleScrollByDragging'
+import { handleMouseMove_, handleScrollByDragging } from '../../../../utils/functions/handleScrollByDragging'
 import useScrollByDragging from '../../../../utils/hooks/useScrollByDragging'
 import ProductCard from '../../../elements/ProductCard/ProductCard'
 import './HomeDragAndDrop.scss'
 import React, { useContext, useEffect, useState } from 'react'
 
-const HomeDragAndDrop = () => {
-
+const HomeDragAndDrop = React.memo(() => {
+  
   const { fetchWines } = useContext(WinesContext)
-
+  
   // handleScrollByDragging('drag-container')
-  // handleScrollByDraggingTest('drag-container')
   // useScrollByDragging('drag-container')
+  handleMouseMove_('drag-container')
 
-  useEffect(()=>{
-
-  },[])
-
+  
   return (
     <>
     {/* {window.onload=()=>{}} */}
     <section className='home-section' id='home-drag-section'>
-      <div id='drag-container' style={{top: -400, left: -400}}>
+      <div id='drag-container' style={{top: -400, left: -800}}>
       {
         fetchWines.map((wineObj: Wine, i: number) => {
           
@@ -41,6 +38,6 @@ const HomeDragAndDrop = () => {
   )
 
 
-}
+})
 
 export default HomeDragAndDrop
