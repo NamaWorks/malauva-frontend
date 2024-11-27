@@ -30,10 +30,11 @@ const ProductCard = ({
 
         <div className="wine-card-container wine-card-info">
           <BodyTitles text={wineData.name} hierarchy={6} />
+
+          <BodyCopy text={wineData.description} />
           {wineData.price && (
             <PriceText value={wineData.price} currency="$" background={false} />
           )}
-          <BodyCopy text={wineData.description} />
           <UserInterfaceButton
             kind="regular"
             text="see wine"

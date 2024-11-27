@@ -9,6 +9,15 @@
   box-sizing: border-box;
 }
 
+#root {
+  position: relative;
+  top: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: calc(100svh - 80px);
+}
+
 body {
   background-color: index.$MU-beige-100;
   overflow-x: hidden;

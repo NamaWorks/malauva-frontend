@@ -11,7 +11,7 @@ const HomeDragAndDrop = React.memo(() => {
   
   // handleScrollByDragging('drag-container')
   // useScrollByDragging('drag-container')
-  handleMouseMove_('drag-container')
+  // handleMouseMove_('drag-container')
 
   
   return (

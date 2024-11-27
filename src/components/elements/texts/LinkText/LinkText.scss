@@ -1,0 +1,11 @@
+@use '/src/index.scss';
+
+.link{
+  color: index.$MU-dark-200;
+  font-size: index.$copy-body-font-size;
+  font-family: index.$MU-primary-font;
+  font-weight: 300;
+  text-decoration: none;
+  text-transform: capitalize;
+  cursor: pointer;
+}
