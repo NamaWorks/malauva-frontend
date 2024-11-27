@@ -3,7 +3,7 @@
 nav{
   position: fixed;
   top: 0;
-  width: 100%;
+  width: 100svw;
   display: flex;
   flex-direction: column;
   z-index: 99;
@@ -19,6 +19,7 @@ nav{
 }
 
 #navbar-toggle-container {
+  width: 100svw;
   display: flex;
   flex-direction: column; 
   background-color: index.$MU-green-100;
@@ -65,5 +66,3 @@ nav{
     display: flex;
   }
 }
-
-

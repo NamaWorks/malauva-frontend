@@ -12,3 +12,13 @@
   text-transform: uppercase;
   cursor: pointer;
 };
+
+.btn-pink{
+  background-color: index.$MU-pink-100;
+  color: index.$MU-beige-100;
+}
+
+.btn-beige{
+  background-color: index.$MU-beige-100;
+  color: index.$MU-dark-200;
+}

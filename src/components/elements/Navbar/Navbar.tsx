@@ -40,11 +40,11 @@ const Navbar = () => {
         </div>
 
         <div
-          className="navbar-content"
-          id="navbar-toggle-container"
+          className={`navbar-content`}
+          id={`navbar-toggle-container`}
           style={{
-            height: toggleNav ? `${navbarHeight}px` : `200px`,
-            position: "relative",
+            height: toggleNav ? `${navbarHeight}px` : `00px`,
+            position: "absolute",
             top: toggleNav ? `0` : `-200px`,
           }}
         >

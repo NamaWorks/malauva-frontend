@@ -7,12 +7,12 @@ const UserInterfaceButton = ({ kind='regular', icons, text='text pending', fnc, 
     <>
       <button 
         className={`ui-button btn-${color} btn-${kind}`}
-        onClick={()=>{fnc}}
+        onClick={fnc}
         >
         {icons && icons.map((icon): undefined | void =>{
           return (
           <div className='ui-button-icon'>
-              <img src={icon.url} alt={`${icon.name} icon`} />
+              <img src={icon.url} alt={`${icon.name || text} icon`} />
           </div>
           )
         })}
