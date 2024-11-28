@@ -1,2 +1,35 @@
 @use '/src/index.scss';
 
+#login-page {
+  display: flex;
+  flex-direction: column;
+  height: calc(100svh - 80px);
+  align-items: center;
+  background-color: index.$MU-beige-200;
+
+  .login-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .login-social-buttons{
+      display: flex;
+      flex-direction: row;
+    };
+  };  
+  >div:last-child{
+    overflow: hidden;
+    display: flex;
+    width: 100%;
+    border-bottom-left-radius: index.$d-home-about-border-radius;
+    
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+};
+
+}

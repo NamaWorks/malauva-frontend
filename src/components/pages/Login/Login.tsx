@@ -4,30 +4,17 @@ import LinkText from '../../elements/texts/LinkText/LinkText'
 import NavPageText from '../../elements/texts/NavPageText/NavPageText'
 import BodyCopy from '../../elements/texts/BodyCopy/BodyCopy'
 import UserInterfaceButton from '../../elements/buttons/UserInterfaceButton/UserInterfaceButton'
+import LoginForm from './LoginForm/LoginForm'
 
 const Login = () => {
   return (
     <>
-      <main>
+      <main id='login-page'>
         <div className="login-container">
-          <LinkText text='test' link='#'/>
-          <NavPageText text='test'/>
+          <LinkText text='Sign Up' link='#'/>
+          <NavPageText text='Login'/>
           <BodyCopy text='Sign up or login to see our top picks for you'/>
-
-          <form action="">
-
-              <label htmlFor="login-form-email">login email input</label>
-              <input id='login-form-email' className='login-input' type="text" placeholder='Email' />
-
-              <label htmlFor="login-form-password">login password input</label>
-              <input id='login-form-password' className='login-input' type="password" placeholder='Password' />
-
-              <a href="#">Forgot password?</a>
-
-              <UserInterfaceButton text='Login' kind='regular' color='pink' fnc={()=>{console.log('choripanes')}}/>
-            
-          </form>
-
+          <LoginForm/>
           <div className='login-social'>
             <BodyCopy text='Or sign up with a social account'/>
 

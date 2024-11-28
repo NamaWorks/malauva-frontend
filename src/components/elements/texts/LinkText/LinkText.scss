@@ -9,3 +9,8 @@
   text-transform: capitalize;
   cursor: pointer;
 }
+
+.link-dimmed{
+  opacity: index.$MU-dark-200;
+  opacity: index.$MU-dimmed-opacity;
+}
