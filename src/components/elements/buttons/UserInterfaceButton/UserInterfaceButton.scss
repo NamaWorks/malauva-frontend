@@ -3,7 +3,7 @@
 .ui-button {
   display: flex;
   flex-direction: row;
-  padding: index.$d-padding-btn-100;
+  padding: index.$d-padding-btn-100 index.$d-padding-btn-200;
   border-radius: index.$btn-border-radius;
   background-color: index.$MU-dark-200;
   color: index.$MU-beige-100;
@@ -11,6 +11,14 @@
   justify-content: center;
   text-transform: uppercase;
   cursor: pointer;
+  gap: index.$d-gap-general-100;
+
+  .ui-button-icon{
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    justify-content: baseline;
+  }
 };
 
 .btn-pink{

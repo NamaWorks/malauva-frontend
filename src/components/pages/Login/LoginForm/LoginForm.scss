@@ -4,6 +4,23 @@
   display: flex;
   flex-direction: column;
   width: 35svw;
-  
+  gap: index.$d-gap-general-050;
+ 
+  label{
+    display: none;
+  }
+
+  .form-input{
+    background-color: index.$MU-beige-100;
+    padding: index.$d-padding-btn-100;
+    border-radius: index.$btn-border-radius;
+    font-family: index.$MU-primary-font;
+    font-weight: 100;
+    opacity: index.$MU-dimmed-opacity;
+  }
+
+  .login-form-button{
+    align-self: flex-end;
+  }
 }
 

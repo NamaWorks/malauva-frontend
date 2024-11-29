@@ -2,11 +2,11 @@ import { Icon } from '../../../../utils/types/types'
 import './UserInterfaceButton.scss'
 import React, { ReactNode } from 'react'
 
-const UserInterfaceButton = ({ kind='regular', icons, text='text pending', fnc, color='dark' }: { kind?:string, icons?: Array<Icon | undefined>, text?: string, fnc?: undefined | void, color?: string }) => {
+const UserInterfaceButton = ({ kind='regular', icons, text='text pending', fnc, color='dark', extraClass="" }: { kind?:string, icons?: Array<Icon | undefined>, text?: string, fnc?: undefined | void, color?: string, extraClass?:string }) => {
   return (
     <>
       <button 
-        className={`ui-button btn-${color} btn-${kind}`}
+        className={`ui-button btn-${color} btn-${kind} ${extraClass}`}
         onClick={fnc}
         >
         {icons && icons.map((icon): undefined | void =>{

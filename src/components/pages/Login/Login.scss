@@ -12,12 +12,32 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
-    .login-social-buttons{
+    gap: index.$d-gap-general-050;
+    
+    .login-social{
       display: flex;
-      flex-direction: row;
-    };
+      flex-direction: column;
+      align-items: center;
+      gap: index.$d-gap-general-050;
+
+      .login-social-buttons{
+        display: flex;
+        flex-direction: row;
+        gap: index.$d-gap-general-100;
+      };
+    }
+
   };  
+
+  >div:first-child{
+    padding: index.$d-padding-general-100;
+    padding-top: index.$d-padding-general-100;
+    width: 100%;
+    >.link:first-child{
+      align-self: flex-end;
+    }
+  }
+
   >div:last-child{
     overflow: hidden;
     display: flex;
