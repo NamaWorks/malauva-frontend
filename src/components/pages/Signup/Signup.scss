@@ -1,0 +1,55 @@
+@use '/src/index.scss';
+
+#signup-page {
+  display: flex;
+  flex-direction: column;
+  height: calc(100svh - 80px);
+  align-items: center;
+  background-color: index.$MU-beige-200;
+
+  .signup-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: index.$d-gap-general-050;
+    
+    .signup-social{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: index.$d-gap-general-050;
+
+      .signup-social-buttons{
+        display: flex;
+        flex-direction: row;
+        gap: index.$d-gap-general-100;
+      };
+    }
+
+  };  
+
+  >div:first-child{
+    padding: index.$d-padding-general-100;
+    padding-top: index.$d-padding-general-100;
+    width: 100%;
+    >.link:first-child{
+      align-self: flex-end;
+    }
+  }
+
+  >div:last-child{
+    overflow: hidden;
+    display: flex;
+    width: 100%;
+    border-bottom-left-radius: index.$d-home-about-border-radius;
+    
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+};
+
+}

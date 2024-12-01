@@ -6,6 +6,7 @@ import Footer from './components/elements/Footer/Footer'
 import { Route, Routes, UNSAFE_NavigationContext } from 'react-router-dom'
 import { NavigationContext, WinesContext } from './utils/contexts/contexts'
 import Login from './components/pages/Login/Login'
+import Signup from './components/pages/Signup/Signup'
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
           <Route index element={ <Home/> }/>
           <Route path='/' element={ <Home/> }/>
           <Route path='/login' element={ <Login/> }/>
+          <Route path='/signup' element={ <Signup/> }/>
         </Routes>
       <Footer/>
       </NavigationContext.Provider>

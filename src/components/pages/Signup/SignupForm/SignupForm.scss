@@ -1,6 +1,6 @@
 @use '/src/index.scss';
 
-#login-form{
+#signup-form{
   display: flex;
   flex-direction: column;
   width: 35svw;
@@ -19,8 +19,7 @@
     opacity: index.$MU-dimmed-opacity;
   };
 
-  .login-form-button{
+  .signup-form-button{
     align-self: flex-end;
   };
 }
-
