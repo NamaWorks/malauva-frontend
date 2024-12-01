@@ -7,6 +7,7 @@ import { Route, Routes, UNSAFE_NavigationContext } from 'react-router-dom'
 import { NavigationContext, WinesContext } from './utils/contexts/contexts'
 import Login from './components/pages/Login/Login'
 import Signup from './components/pages/Signup/Signup'
+import OverAge from './components/pages/OverAge/OverAge'
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
           <Route path='/' element={ <Home/> }/>
           <Route path='/login' element={ <Login/> }/>
           <Route path='/signup' element={ <Signup/> }/>
+          <Route path='/overage' element={ <OverAge/> }/>
         </Routes>
       <Footer/>
       </NavigationContext.Provider>
