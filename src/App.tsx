@@ -8,6 +8,7 @@ import { NavigationContext, WinesContext } from './utils/contexts/contexts'
 import Login from './components/pages/Login/Login'
 import Signup from './components/pages/Signup/Signup'
 import OverAge from './components/pages/OverAge/OverAge'
+import About from './components/pages/About/About'
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
           <Route path='/login' element={ <Login/> }/>
           <Route path='/signup' element={ <Signup/> }/>
           <Route path='/overage' element={ <OverAge/> }/>
+          <Route path='/about' element={ <About/> }/>
         </Routes>
       <Footer/>
       </NavigationContext.Provider>

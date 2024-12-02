@@ -1,0 +1,38 @@
+@use '/src/index.scss';
+
+#about-page{
+  height: calc(100svh - 80px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .about-container:first-child{
+    border-top-left-radius: index.$d-home-about-border-radius;
+  }
+  
+  .about-container:last-child{
+    width: 55svw;
+    .body-copy{
+      text-align: center;
+    }
+  }
+
+  .about-container{
+    width: 100%;
+    height: 50%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    img{
+      object-fit: cover;
+      object-position: center;
+      width: 100%;
+      height: 100%;
+    }
+
+  }
+}
