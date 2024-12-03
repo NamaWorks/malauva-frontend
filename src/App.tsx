@@ -9,6 +9,7 @@ import Login from './components/pages/Login/Login'
 import Signup from './components/pages/Signup/Signup'
 import OverAge from './components/pages/OverAge/OverAge'
 import About from './components/pages/About/About'
+import Profile from './components/pages/Profile/Profile'
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
           <Route path='/signup' element={ <Signup/> }/>
           <Route path='/overage' element={ <OverAge/> }/>
           <Route path='/about' element={ <About/> }/>
+          <Route path='/profile' element={ <Profile/> }/>
         </Routes>
       <Footer/>
       </NavigationContext.Provider>

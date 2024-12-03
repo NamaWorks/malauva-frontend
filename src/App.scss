@@ -2,6 +2,10 @@
 
 // Prepare general styles in this page
 
+html {
+  background-color: index.$MU-beige-200;
+}
+
 *{
   margin: 0;
   padding: 0;
@@ -19,7 +23,7 @@
 }
 
 body {
-  background-color: index.$MU-beige-100;
+  background-color: index.$MU-beige-200;
   overflow-x: hidden;
 }
 

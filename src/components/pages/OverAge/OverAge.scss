@@ -7,6 +7,12 @@
     background-color: index.$MU-pink-100;
     border-top-right-radius: index.$d-home-about-border-radius;
     overflow: hidden;
+    height: calc(100svh - 80px);
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+    justify-content: space-around;
+    
 
     .overage-content-div{
       display: flex;
