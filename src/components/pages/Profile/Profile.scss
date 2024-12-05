@@ -5,28 +5,30 @@
   flex-direction: row;
   width: 100svw;
   height: calc(100svh - 80px);
+  background-color: index.$MU-beige-300;
 
   .profile-container{
     width: 50%;
     padding: index.$d-padding-general-100;
   }
-
+  
   .profile-container:first-child{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-
+    
     .profile-buttons{
       display: flex;
       flex-direction: row;
       gap: index.$d-gap-general-050;
     }
-
+    
     .profile-content:last-child{
       width: 100%;
       overflow: hidden;
       display: flex;
+      
       img{
         object-fit: cover;
         object-position: center;
@@ -34,19 +36,23 @@
       }
     }
   }
-
+  
   .profile-container:last-child{
-    background-color: index.$MU-beige-100;
+    background-color: index.$MU-beige-200;
     border-top-left-radius: index.$d-home-about-border-radius;
     display: flex;
     flex-direction: column;
     align-items: end;
     justify-content: space-between;
+    padding: index.$d-padding-general-200;
+    padding-top: index.$d-padding-general-100;
 
     .profile-content{
       display: flex;
       flex-direction: column;
       align-items: end;
+      gap: index.$d-gap-general-050;
+      width: 100%;
     }
   }
 }

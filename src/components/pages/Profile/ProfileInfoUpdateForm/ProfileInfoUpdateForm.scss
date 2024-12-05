@@ -1,0 +1,42 @@
+@use '/src/index.scss'; 
+
+#profile-form{
+  padding-top: index.$d-padding-general-100;
+  border-top: 1px solid index.$MU-dark-100;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: index.$d-gap-general-025;
+ 
+  label{
+    // display: none;
+    font-family: index.$MU-primary-font;
+    font-weight: 100;
+    opacity: index.$MU-dimmed-opacity;
+    text-transform: capitalize;
+  }
+
+  .form-input-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: index.$d-gap-general-050;
+
+    .form-input{
+      width: 75%;
+      background-color: index.$MU-beige-100;
+      padding: index.$d-padding-btn-100;
+      border-radius: index.$btn-border-radius;
+      font-family: index.$MU-primary-font;
+      font-weight: 100;
+      opacity: index.$MU-dimmed-opacity;
+    };
+  }
+
+  .profile-form-button{
+    margin-top: index.$d-gap-general-100;
+    width: fit-content;
+    align-self: flex-end;
+  };
+}
