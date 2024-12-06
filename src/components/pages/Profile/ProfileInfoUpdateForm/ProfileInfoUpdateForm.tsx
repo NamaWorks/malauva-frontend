@@ -46,7 +46,7 @@ const ProfileInfoUpdateForm = () => {
       {/* tenemos que haceer un loop por los métodos de pago del usuario y añadir uno para crear un nuevo método */}
       <div className='form-input-container'>
         <label htmlFor="signup-form-payment">Payment methods</label>
-        <input id="profile-form-email" className="signup-input input-email form-input" type="number" placeholder={'payment method pending'}/>
+        <input id="profile-form-payment" className="signup-input input-email form-input" type="number" placeholder={'payment method pending'}/>
       </div>
 
       <UserInterfaceButton text='save' color='pink' kind='regular' fnc={console.log('button clicked')} extraClass='profile-form-button'/>

@@ -12,9 +12,18 @@ nav{
 #navbar-top-bar{
   display: flex;
   justify-content: space-between;
-  background-color: index.$MU-beige-200;
   align-items: center;
   padding: index.$d-padding-nav-000 index.$d-padding-nav-100;
+  transition: .25s ease-in-out;
+}
+
+.nav-hidden{
+  background-color: index.$MU-dark-200;
+  z-index: 99;
+}
+
+.nav-shown{
+  background-color: index.$MU-beige-200;
   z-index: 99;
 }
 

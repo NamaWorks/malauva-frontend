@@ -22,17 +22,21 @@ const Navbar = () => {
   return (
     <>
       <nav>
-        <div className="navbar-content" id="navbar-top-bar">
+        <div className={`navbar-content ${toggleNav ? 'nav-shown' : 'nav-hidden'}`} id="navbar-top-bar">
           <div id="navbar-logo-container">
-            <img src="/public/assets/img//brand/malauva-logo-up-down-dark.svg" alt="MalaUva Logo" />
+            {
+              toggleNav ?
+              <img src="/public/assets/img/brand/malauva-logo-up-down-dark.svg" alt="MalaUva Logo" />
+              : <img src="/public/assets/img/brand/malauva-logo-up-down.svg" alt="Malauva logo" />
+            }
           </div>
           <div>
             <NavigationButton
               kind="fnc"
               id="navbar-btn-menu"
               text="menu"
-              color="dark"
-              fnc={(): undefined => {
+              color={toggleNav ? 'dark' : 'beige'}
+              fnc={(): undefined | void => {
                 setToggleNav(!toggleNav);
               }}
             />
