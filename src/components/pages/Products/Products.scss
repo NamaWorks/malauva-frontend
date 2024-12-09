@@ -1,0 +1,13 @@
+@use "/src/index.scss"; 
+
+#products-page{
+  #products-container{
+    display: grid;
+    grid-template-columns: repeat(5,15svw);
+    grid-template-rows: repeat(auto, 1fr);
+    padding: index.$d-padding-general-100;
+    justify-content: center;
+    align-items: center;
+    gap: index.$d-gap-general-100;
+}
+}

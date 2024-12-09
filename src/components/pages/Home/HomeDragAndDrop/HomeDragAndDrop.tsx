@@ -21,16 +21,19 @@ const HomeDragAndDrop = React.memo(() => {
       <div id='drag-container' style={{top: -400, left: -800}}>
       {
         fetchWines.map((wineObj: Wine, i: number) => {
-          
-          return (
-            <>
+          if(i<100){
+
+            return (
+              <>
 
               <ProductCard wineData={wineObj} key={i} vertical={false} horizontal={true}/>
 
             </>
           )
           
-        })
+        }
+      }
+    )
       }
       </div>
     </section>

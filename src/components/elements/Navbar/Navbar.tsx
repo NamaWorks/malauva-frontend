@@ -53,8 +53,8 @@ const Navbar = () => {
           }}
         >
           <div className="navbar-toggle-content" id="navbar-links">
-            <NavbarLink link="#" text="Shop" />
-            <NavbarLink link="#" text="About MalaUva" />
+            <NavbarLink link="products" text="Shop" />
+            <NavbarLink link="about" text="About MalaUva" />
           </div>
 
           <div
