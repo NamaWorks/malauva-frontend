@@ -1,6 +1,14 @@
 @use "/src/index.scss"; 
 
 #products-page{
+  #products-filter{
+    background-color: index.$MU-green-100;
+    height: 6svh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
   #products-container{
     display: grid;
     grid-template-columns: repeat(5,15svw);
