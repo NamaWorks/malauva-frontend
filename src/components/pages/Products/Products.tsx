@@ -1,5 +1,5 @@
 import './Products.scss'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useMemo, useState } from 'react'
 import { NavigationContext, WinesContext } from '../../../utils/contexts/contexts'
 import { Wine } from '../../../utils/types/types'
 import { fetchData } from '../../../utils/functions/fetchData'
@@ -8,16 +8,21 @@ import UserInterfaceButton from '../../elements/buttons/UserInterfaceButton/User
 import { addAllOrigins } from '../../../utils/functions/productsFilters'
 import ProductsFilterSelect from './ProductsFilterSelect/ProductsFilterSelect'
 
-const Products = React.memo(() => {
+const Products = () => {
   
-  const { fetchWines, setFetchWines }  = useContext(WinesContext)
-  const { currentPage } = useContext(NavigationContext)
-  const [lastPrintItem, setLastPrintItem] = useState<number>(0)
-  const [wineOrigins, setWineOrigins] = useState<string[]>([])
+  const { fetchWines, setFetchWines }  = useContext(WinesContext);
+  const { currentPage } = useContext(NavigationContext);
+  const [lastPrintItem, setLastPrintItem] = useState<number>(0);
+  const [wineOrigins, setWineOrigins] = useState<string[]>([]);
 
   useEffect(()=>{
-    fetchData('/wines').then(res => setFetchWines(res)).catch(err => console.warn(err))
-    setWineOrigins(addAllOrigins(fetchWines))
+    fetchData('/wines').then(res => {
+      setFetchWines(res);
+      setWineOrigins(addAllOrigins(fetchWines));
+
+    }).catch(err => console.warn(err))
+
+    console.log(fetchWines[0])
   },[])
 
   return (
@@ -49,6 +54,6 @@ const Products = React.memo(() => {
 
     </>
   )
-})
+}
 
 export default Products
