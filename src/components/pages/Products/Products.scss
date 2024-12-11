@@ -8,6 +8,20 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    .products-filter-container{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: index.$d-gap-general-100;
+      div{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: index.$d-gap-general-100;
+      }
+    }
   }
   #products-container{
     display: grid;

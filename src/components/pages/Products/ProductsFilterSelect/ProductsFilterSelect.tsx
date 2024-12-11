@@ -1,8 +1,9 @@
 import "./ProductsFilterSelect.scss";
 
-import React from "react";
+import React, { useEffect } from "react";
 
 const ProductsFilterSelect = ({selectName, allText, arr}: {selectName: string, allText: string, arr?: string[] | number[]}) => {
+
   return (
     <>
       <select name="products-origin-select" id="products-origin-select">
@@ -12,7 +13,7 @@ const ProductsFilterSelect = ({selectName, allText, arr}: {selectName: string, a
         {arr && arr.map((value, i) => {
           return (
             <option value={value} key={i}>
-              {value.split('-').join(' ')}
+              {value === String ? value.split('-').join(' ') : value}
             </option>
           );
         })};
