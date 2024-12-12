@@ -1,2 +1,9 @@
 @use '/src/index.scss';
 
+.products-filter-select{
+  background-color: transparent;
+  color: index.$MU-dark-200;
+  text-transform: capitalize;
+  width: 100%;
+  text-align: end;
+}

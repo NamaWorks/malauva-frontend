@@ -5,7 +5,7 @@ import { Wine } from '../../../utils/types/types'
 import { fetchData } from '../../../utils/functions/fetchData'
 import ProductCard from '../../elements/ProductCard/ProductCard'
 import UserInterfaceButton from '../../elements/buttons/UserInterfaceButton/UserInterfaceButton'
-import { addAllNumbers, addAllStrings } from '../../../utils/functions/productsFilters'
+import { addAllStrings, prepareIntervals } from '../../../utils/functions/productsFilters'
 import ProductsFilterSelect from './ProductsFilterSelect/ProductsFilterSelect'
 
 const Products = () => {
@@ -15,8 +15,8 @@ const Products = () => {
   const [lastPrintItem, setLastPrintItem] = useState<number>(0);
   const [wineOrigins, setWineOrigins] = useState<string[]>([]);
   const [wineTastes, setWineTastes] = useState<string[]>([]);
-  const [wineTemps, setWineTemps] = useState<Number[]>([0, 5, 10, 15, 20]);
-  const [winePrices, setWinePrices] = useState<Number[]>([]);
+  const [wineTemps, setWineTemps] = useState<Number[]>([5, 7, 12, 15, 20]);
+  const [winePrices, setWinePrices] = useState<Number[]>([20, 50, 100, 200, 300, 450]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(()=>{
@@ -25,9 +25,7 @@ const Products = () => {
       setFetchWines(res);
       setWineOrigins(addAllStrings(fetchWines, 'origin'));
       setWineTastes(addAllStrings(fetchWines, 'taste'));
-      setWinePrices(addAllNumbers())
     }).catch(err => console.warn(err)).finally(()=>{setLoading(false)})
-    // console.log(fetchWines[0])
   },[loading])
 
   return (
@@ -36,8 +34,11 @@ const Products = () => {
         <section className="products-page-container" id='products-filter'>
           <div className="products-filter-container">
             <div>
-              <ProductsFilterSelect selectName='Origins' allText='All Origins' arr={wineOrigins}/>
-              <ProductsFilterSelect selectName='Taste' allText='All Tastes' arr={wineTastes}/>
+              <ProductsFilterSelect selectName='origins' allText='All Origins' arr={wineOrigins}/>
+              <ProductsFilterSelect selectName='taste' allText='All Tastes' arr={wineTastes}/>
+              <ProductsFilterSelect selectName='price' allText='All Prices' arr={prepareIntervals(winePrices)}/>
+              <ProductsFilterSelect selectName='temperature' allText='All Temperatures' arr={prepareIntervals(wineTemps)}/>
+              <ProductsFilterSelect selectName='sort' allText='relevant' arr={['alphabetically', 'high price', 'low price', 'relevance']}/>
             </div>
             <UserInterfaceButton text='filter' color='pink'/>
           </div>

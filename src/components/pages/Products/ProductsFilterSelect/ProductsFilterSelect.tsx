@@ -6,7 +6,7 @@ const ProductsFilterSelect = ({selectName, allText, arr}: {selectName: string, a
 
   return (
     <>
-      <select name="products-origin-select" id="products-origin-select">
+      <select className="products-filter-select" name={`products-${selectName}-select`} id={`products-${selectName}-select`}>
         <option value={selectName.split(' ').join('-').toLowerCase()} hidden>{selectName}</option>
         <option value={allText.split(' ').join('-').toLowerCase()}>{allText}</option>
 
