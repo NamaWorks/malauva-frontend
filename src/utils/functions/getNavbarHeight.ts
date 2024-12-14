@@ -1,5 +1,5 @@
 
-export const getNavbarHeight = (): number | undefined=>{
+export const getNavbarHeight = (): number =>{
   const navbarHeight: number | undefined = document.querySelector('nav')?.getBoundingClientRect().height
 
   console.log(navbarHeight)

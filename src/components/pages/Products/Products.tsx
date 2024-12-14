@@ -7,27 +7,41 @@ import ProductCard from '../../elements/ProductCard/ProductCard'
 import UserInterfaceButton from '../../elements/buttons/UserInterfaceButton/UserInterfaceButton'
 import { addAllStrings, prepareIntervals } from '../../../utils/functions/productsFilters'
 import ProductsFilterSelect from './ProductsFilterSelect/ProductsFilterSelect'
+import { handleProductsPageScroll } from '../../../utils/functions/handleProductsPageScroll'
+import { getFooterTop } from '../../../utils/functions/getFooterTop'
 
 const Products = () => {
   
   const { fetchWines, setFetchWines }  = useContext(WinesContext);
   const { currentPage, setCurrentPage } = useContext(NavigationContext);
-  const [lastPrintItem, setLastPrintItem] = useState<number>(0);
+  const [lastPrintItem, setLastPrintItem] = useState<number>(10);
   const [wineOrigins, setWineOrigins] = useState<string[]>([]);
   const [wineTastes, setWineTastes] = useState<string[]>([]);
   const [wineTemps, setWineTemps] = useState<Number[]>([5, 7, 12, 15, 20]);
   const [winePrices, setWinePrices] = useState<Number[]>([20, 50, 100, 200, 300, 450]);
   const [loading, setLoading] = useState<boolean>(true);
 
+  
   useEffect(()=>{
+    setCurrentPage('products')
     
-    fetchData('/wines').then(res => {
+    fetchData('/wines')
+    .then(res => {
       setFetchWines(res);
       setWineOrigins(addAllStrings(fetchWines, 'origin'));
       setWineTastes(addAllStrings(fetchWines, 'taste'));
-    }).catch(err => console.warn(err)).finally(()=>{setLoading(false)})
+    })
+    .catch(err => console.warn(err))
+    .finally(()=>{setLoading(false)})
+    
   },[loading])
-
+  
+  window.addEventListener('scroll', ()=>{
+    const footerTop = getFooterTop()
+    if(window.scrollY + footerTop <= window.scrollY + window.innerHeight*1.5){
+    setLastPrintItem(lastPrintItem+10)
+  } })
+  
   return (
     <>
       <main id='products-page'>
@@ -48,8 +62,8 @@ const Products = () => {
             <p>fetching</p>
           )}
           {
-            fetchWines.map((wineObj: Wine, i: number) => {
-              if(i<lastPrintItem+20){
+             fetchWines.map((wineObj: Wine, i: number) => {
+               if(i<lastPrintItem){
                 return(
                   <>
                     <ProductCard wineData={wineObj} key={i}/>

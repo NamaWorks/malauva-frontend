@@ -17,10 +17,6 @@ const ProductsFilterSelect = ({selectName, allText, arr}: {selectName: string, a
             </option>
           );
         })};
-
-        {/* we should add a range of values */}
-
-
       </select>
     </>
   );

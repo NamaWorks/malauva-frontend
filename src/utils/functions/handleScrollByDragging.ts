@@ -1,6 +1,6 @@
 import { position } from "../types/types"
 
-export const handleScrollByDragging = (item:string)=>{
+export const handleScrollByDragging = (item:string):void=>{
 
 }
 
