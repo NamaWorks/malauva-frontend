@@ -11,16 +11,18 @@ const ProductCard = ({
   vertical = true,
   horizontal = false,
   page,
+  extraClass,
 }: {
   wineData: Wine;
   vertical?: boolean;
   horizontal?: boolean;
   page?: string;
+  extraClass?:string,
 }) => {
   return (
     <>
       <article
-        className={`wine-card ${
+        className={`wine-card ${extraClass} ${
           horizontal ? "wine-card-horizontal" : "wine-card-vertical"
         } ${page && `wine-card-${page}`} `}
       >

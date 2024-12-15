@@ -25,11 +25,18 @@
   }
   #products-container{
     display: grid;
-    grid-template-columns: repeat(5,auto);
+    grid-template-columns: repeat(4,auto);
     grid-template-rows: repeat(auto, 1fr);
     padding: index.$d-padding-general-100;
     justify-content: center;
-    align-items: center;
+    align-items: top;
     gap: index.$d-gap-general-100;
+  }
+
+  .skip-one{
+    grid-column: span 2;
+  }
+  .skip-two{
+    grid-column: span 3;
   }
 };
