@@ -21,8 +21,17 @@
   }
 };
 
+btn-bold, p {
+  font-family: index.$MU-secondary-font;
+  font-size: index.$d-font-size-btn-secondary;
+}
+
 .btn-pink{
   background-color: index.$MU-pink-100;
+  color: index.$MU-beige-100;
+}
+.btn-green{
+  background-color: index.$MU-green-100;
   color: index.$MU-beige-100;
 }
 

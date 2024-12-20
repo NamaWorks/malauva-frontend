@@ -65,7 +65,7 @@ const Products = () => {
   const renderWineList = () => {
     return fetchWines.map((wineObj: Wine, i: number) => {
       const randomVal = getRandomIndex();
-      let className = "";
+      let className = "skip-zero";
 
       // Check if the wine item already has a printed class
       if (printedItems.has(i)) {
@@ -78,7 +78,7 @@ const Products = () => {
           } else if (randomVal > 9) {
             className = "skip-two";
           } else {
-            className = "";
+            className = "skip-zero";
           }
 
           // Update the printed items map with the assigned class

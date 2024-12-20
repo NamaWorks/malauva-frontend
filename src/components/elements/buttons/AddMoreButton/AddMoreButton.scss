@@ -1,0 +1,27 @@
+@use '/src/index.scss';
+
+.add-more-btn{
+  display: flex;
+  flex-direction: row;
+  gap: index.$d-gap-general-025;
+  background-color: index.$MU-beige-100;
+  padding: index.$d-padding-btn-100 index.$d-padding-btn-200;
+  border-radius: index.$btn-border-radius;
+  min-width: 175px;
+  align-items: center;
+  justify-content: center;
+
+  button{
+    color: index.$MU-dark-200;
+    font-size: index.$d-font-size-btn-secondary;
+
+  }
+
+  button{
+    color: index.$MU-dark-200;
+    font-size: index.$d-font-size-btn-secondary;
+    background-color: transparent;
+    width: 50px;
+    cursor: pointer;
+  }
+}

@@ -22,9 +22,9 @@ const ProductCard = ({
   return (
     <>
       <article
-        className={`wine-card ${extraClass} ${
+        className={`wine-card ${extraClass && extraClass} ${
           horizontal ? "wine-card-horizontal" : "wine-card-vertical"
-        } ${page && `wine-card-${page}`} `}
+        }`}
       >
         <div className={`wine-card-container wine-card-image`}>
           <img src={wineData.picture} alt={wineData.name} />

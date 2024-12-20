@@ -3,25 +3,22 @@ import "./BodyTitles.scss";
 import React, { useEffect, useState } from "react";
 
 const BodyTitles = ({
-  text = "text pending",
+  text='pending text',
   hierarchy,
   color = "dark",
 }: {
-  text?: string;
+  text: string;
   hierarchy: number;
   color?: string;
 }) => {
 
-  const [textToPrint, setTextToPrint] = useState<string>(text)
-
   const [initialLetter, setInitialLetter] = useState<string>()
   const [postInitialLetter, setPostInitialLetter] = useState<string>()
 
-
   useEffect(()=>{
-    setInitialLetter(addAccentFont(textToPrint).letterToAccent.value)
-    setPostInitialLetter(addAccentFont(textToPrint).restOfTheText.value)
-  },[textToPrint])
+    setInitialLetter(addAccentFont(text).letterToAccent.value)
+    setPostInitialLetter(addAccentFont(text).restOfTheText.value)
+  },[text])
 
   switch (hierarchy) {
     case 1:
@@ -36,9 +33,9 @@ const BodyTitles = ({
         </>
       );
       break;
-    case 2:
-      return (
-        <>
+      case 2:
+        return (
+          <>
           <h2 className={`body-title body-title-h2 body-title-${color}`}>
             <span className="accent-font">
               {initialLetter}
@@ -48,9 +45,9 @@ const BodyTitles = ({
         </>
       );
       break;
-    case 3:
-      return (
-        <>
+      case 3:
+        return (
+          <>
           <h3 className={`body-title body-title-h3 body-title-${color}`}>
             <span className="accent-font">
               {initialLetter}

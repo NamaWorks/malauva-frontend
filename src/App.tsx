@@ -11,6 +11,7 @@ import OverAge from './components/pages/OverAge/OverAge'
 import About from './components/pages/About/About'
 import Profile from './components/pages/Profile/Profile'
 import Products from './components/pages/Products/Products'
+import ProductEntry from './components/pages/ProductEntry/ProductEntry'
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
           <Route path='/about' element={ <About/> }/>
           <Route path='/profile' element={ <Profile/> }/>
           <Route path='/products' element={ <Products/> }/>
+          <Route path='/products/:idNumber' element={ <ProductEntry/> }/>
         </Routes>
       <Footer/>
       </NavigationContext.Provider>
