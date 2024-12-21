@@ -2,9 +2,8 @@ import './AddMoreButton.scss'
 import React, { useState } from 'react'
 
 const AddMoreButton = (
-  
-) => {
 
+) => {
   const [itemsNumber, setItemsNumber] = useState<number>(1)
 
   return (
