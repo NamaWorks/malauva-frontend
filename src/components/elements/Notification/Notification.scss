@@ -1,0 +1,46 @@
+@use '/src/index.scss';
+
+.mu-notification{
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: index.$d-gap-general-050;
+  padding: index.$d-padding-general-050 index.$d-padding-general-100;
+  border-radius: index.$btn-border-radius;
+  top: 20px;
+
+  button{
+    position: relative;
+    top: 2px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.notification-dark{
+  background-color: index.$MU-dark-100;
+
+  h6{
+    color: index.$MU-beige-100;
+  }
+}
+
+.notification-pink{
+  background-color: index.$MU-pink-100;
+
+  h6{
+    color: index.$MU-beige-100;
+  }
+}
+
+.notification-green{
+  background-color: index.$MU-green-100;
+  
+  h6{
+    color: index.$MU-beige-100;
+  }
+}

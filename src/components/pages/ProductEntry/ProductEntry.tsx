@@ -10,6 +10,7 @@ import PriceText from "../../elements/texts/PriceText/PriceText";
 import NavigationButton from "../../elements/buttons/NavigationButton/NavigationButton";
 import UserInterfaceButton from "../../elements/buttons/UserInterfaceButton/UserInterfaceButton";
 import AddMoreButton from "../../elements/buttons/AddMoreButton/AddMoreButton";
+import Notification from "../../elements/Notification/Notification";
 
 const ProductEntry = () => {
   const { fetchWines } = useContext<Wine[] | undefined>(WinesContext);
@@ -32,6 +33,7 @@ const ProductEntry = () => {
 
   return (
     <div>
+      <Notification text={'test notification'} color={'pink'}/>
       <main id="product-entry">
         <div className="product-entry-container" id="product-info-container">
           <div className="image-container">

@@ -26,6 +26,11 @@ btn-bold, p {
   font-size: index.$d-font-size-btn-secondary;
 }
 
+btn-regular, p {
+  font-family: index.$MU-primary-font;
+  font-size: index.$d-font-size-btn-primary;
+}
+
 .btn-pink{
   background-color: index.$MU-pink-100;
   color: index.$MU-beige-100;
