@@ -16,7 +16,7 @@ const Notification = ({color, text}) => {
   <div ref={componentRef} className={`mu-notification notification-${color}`} style={{left:notificationPosX}}>
       <BodyTitles hierarchy={7} text={text}/>
       <button className='notification-icon'>
-        <img src={`/public/assets/img/icons/close-notification-${color === 'pink' || 'dark' ? 'beige' : 'dark'}.svg`} alt="close button" />
+        <img src={`/public/assets/img/icons/close-notification-${color === ('pink' || 'dark') ? 'beige' : 'dark'}.svg`} alt="close button" />
       </button>
     </div>
   )

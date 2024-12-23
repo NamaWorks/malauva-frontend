@@ -22,7 +22,7 @@
 }
 
 .notification-dark{
-  background-color: index.$MU-dark-100;
+  background-color: index.$MU-dark-200;
 
   h6{
     color: index.$MU-beige-100;
@@ -42,5 +42,13 @@
   
   h6{
     color: index.$MU-beige-100;
+  }
+}
+
+.notification-beige{
+  background-color: index.$MU-beige-100;
+  
+  h6{
+    color: index.$MU-dark-200;
   }
 }

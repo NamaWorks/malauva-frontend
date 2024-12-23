@@ -33,7 +33,7 @@ const ProductEntry = () => {
 
   return (
     <div>
-      <Notification text={'test notification'} color={'pink'}/>
+      <Notification text={'test notification'} color={'beige'}/>
       <main id="product-entry">
         <div className="product-entry-container" id="product-info-container">
           <div className="image-container">
