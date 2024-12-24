@@ -1,3 +1,4 @@
+import { redirect } from "react-router-dom";
 import { Wine } from "../../../utils/types/types";
 import UserInterfaceButton from "../buttons/UserInterfaceButton/UserInterfaceButton";
 import BodyCopy from "../texts/BodyCopy/BodyCopy";
@@ -5,6 +6,7 @@ import BodyTitles from "../texts/BodyTitles/BodyTitles";
 import PriceText from "../texts/PriceText/PriceText";
 import "./ProductCard.scss";
 import React, { memo } from "react";
+import { redirectToUrl } from "../../../utils/functions/redirectToUrl";
 
 const ProductCard = ({
   wineData,
@@ -40,7 +42,7 @@ const ProductCard = ({
           <UserInterfaceButton
             kind="regular"
             text="see wine"
-            // icons={[{name: 'test', url:"#"}]}
+            fnc={()=>{redirectToUrl(`/products/${wineData.idNumber}`)}}
             color="dark"
           />
         </div>

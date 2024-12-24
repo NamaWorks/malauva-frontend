@@ -4,6 +4,7 @@ import NavbarLink from "./NavbarLink/NavbarLink";
 import Sublink from "./Sublink/Sublink";
 import NavigationButton from "../buttons/NavigationButton/NavigationButton";
 import { getNavbarHeight } from "../../../utils/functions/getNavbarHeight";
+import { redirectToUrl } from "../../../utils/functions/redirectToUrl";
 
 const testFnc = (content: string): void | undefined => {
   // console.log(content);
@@ -23,7 +24,7 @@ const Navbar = () => {
     <>
       <nav>
         <div className={`navbar-content ${toggleNav ? 'nav-shown' : 'nav-hidden'}`} id="navbar-top-bar">
-          <div id="navbar-logo-container">
+          <div id="navbar-logo-container" onClick={()=>{redirectToUrl('/')}}>
             {
               toggleNav ?
               <img src="/public/assets/img/brand/malauva-logo-up-down-dark.svg" alt="MalaUva Logo" />
@@ -53,8 +54,8 @@ const Navbar = () => {
           }}
         >
           <div className="navbar-toggle-content" id="navbar-links">
-            <NavbarLink link="products" text="Shop" />
-            <NavbarLink link="about" text="About MalaUva" />
+            <NavbarLink link="/products" text="Shop" />
+            <NavbarLink link="/about" text="About MalaUva" />
           </div>
 
           <div
@@ -72,11 +73,11 @@ const Navbar = () => {
             id="navbar-utilities-container"
           >
             <div className="navbar-utilities-content">
-              <Sublink link="#" text="My Account" />
+              <Sublink link="/profile" text="My Account" />
               <Sublink link="#" text="Logout" />
             </div>
             <div className="navbar-utilities-content">
-              <Sublink link="#" text="My Cart" />
+              <Sublink link="/cart" text="My Cart" />
             </div>
           </div>
         </div>

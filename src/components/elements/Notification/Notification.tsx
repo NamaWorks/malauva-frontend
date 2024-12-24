@@ -1,6 +1,7 @@
 import './Notification.scss';
 import React, { useEffect, useRef, useState } from 'react'
 import BodyTitles from '../texts/BodyTitles/BodyTitles'
+import { removeNotification } from '../../../utils/functions/notificationFunctions';
 
 const Notification = ({color, text}) => {
 
@@ -15,7 +16,7 @@ const Notification = ({color, text}) => {
   return (
   <div ref={componentRef} className={`mu-notification notification-${color}`} style={{left:notificationPosX}}>
       <BodyTitles hierarchy={7} text={text}/>
-      <button className='notification-icon'>
+      <button className='notification-icon' onClick={ removeNotification}>
         <img src={`/public/assets/img/icons/close-notification-${color === ('pink' || 'dark') ? 'beige' : 'dark'}.svg`} alt="close button" />
       </button>
     </div>
