@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.scss'
 import Home from './components/pages/Home/Home'
 import Navbar from './components/elements/Navbar/Navbar'
@@ -17,16 +17,16 @@ function App() {
 
   const [fetchWines, setFetchWines] = useState<[]>([]);
   const [currentPage, setCurrentPage] = useState<string>('Home')
-
+  const [overAge, setOverAge] = useState<boolean>(sessionStorage.getItem('overAge') === 'true' ? true : false)
 
   return (
   <>
     <WinesContext.Provider value={{fetchWines, setFetchWines}}>
-    <NavigationContext.Provider value={{currentPage, setCurrentPage}}>
+    <NavigationContext.Provider value={{currentPage, setCurrentPage, overAge, setOverAge}}>
       <Navbar/>
         <Routes>
-          <Route index element={ <Home/> }/>
-          <Route path='/' element={ <Home/> }/>
+          <Route index element={ <OverAge/> }/>
+          <Route path='/home' element={ <Home/> }/>
           <Route path='/login' element={ <Login/> }/>
           <Route path='/signup' element={ <Signup/> }/>
           <Route path='/overage' element={ <OverAge/> }/>

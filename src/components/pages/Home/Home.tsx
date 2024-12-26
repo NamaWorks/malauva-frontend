@@ -7,14 +7,19 @@ import HomeDragAndDrop from './HomeDragAndDrop/HomeDragAndDrop';
 import HomeAboutUs from './HomeAboutUs/HomeAboutUs';
 import HomeTopSellers from './HomeTopSellers/HomeTopSellers';
 import HomeFaq from './HomeFaq/HomeFaq';
-import { WinesContext } from '../../../utils/contexts/contexts';
+import { NavigationContext, WinesContext } from '../../../utils/contexts/contexts';
+import { overAgeChecker } from '../../../utils/functions/overAgeChecker';
+
 
 
 const Home = () => {
 
+  const {overAge} = useContext(NavigationContext)
+
 const {setFetchWines} = useContext(WinesContext)
 
   useEffect(() =>{
+    overAgeChecker(overAge)
     fetchData('/wines').then(res => setFetchWines(res)).catch(err => console.warn(err))
   },[])
   
