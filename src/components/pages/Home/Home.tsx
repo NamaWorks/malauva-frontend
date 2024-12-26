@@ -1,6 +1,6 @@
 import { useContext, useEffect, useMemo} from 'react'
 import './Home.scss'
-import { fetchData } from '../../../utils/functions/fetchData';
+import { fetchData } from '../../../utils/functions/api_fn/fetchData';
 import HomeHero from './HomeHero/HomeHero';
 import HomeHlText from './HomeHlText/HomeHlText';
 import HomeDragAndDrop from './HomeDragAndDrop/HomeDragAndDrop';
@@ -8,7 +8,7 @@ import HomeAboutUs from './HomeAboutUs/HomeAboutUs';
 import HomeTopSellers from './HomeTopSellers/HomeTopSellers';
 import HomeFaq from './HomeFaq/HomeFaq';
 import { NavigationContext, WinesContext } from '../../../utils/contexts/contexts';
-import { overAgeChecker } from '../../../utils/functions/overAgeChecker';
+import { overAgeChecker } from '../../../utils/functions/ui_fn/overAgeChecker';
 
 
 

@@ -1,4 +1,4 @@
-import { apiUrl } from "../../data/globalVariables";
+import { apiUrl } from "../../../data/globalVariables";
 
 export const fetchData = async (
   endpoint: string

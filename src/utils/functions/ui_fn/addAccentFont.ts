@@ -1,4 +1,4 @@
-import { objectFromAccentAdding } from "../types/types"
+import { objectFromAccentAdding } from "../../types/types"
 
 export const addAccentFont = (text: string): objectFromAccentAdding  => {
   const restOfTheText = text.split('').slice(1, text.length ).join('')

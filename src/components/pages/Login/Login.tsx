@@ -1,10 +1,10 @@
 import './Login.scss'
 import React from 'react'
-import LinkText from '../../elements/texts/LinkText/LinkText'
-import NavPageText from '../../elements/texts/NavPageText/NavPageText'
-import BodyCopy from '../../elements/texts/BodyCopy/BodyCopy'
-import UserInterfaceButton from '../../elements/buttons/UserInterfaceButton/UserInterfaceButton'
-import LoginForm from './LoginForm/LoginForm'
+import LinkText from '/src/components/elements/texts/LinkText/LinkText'
+import NavPageText from '/src/components/elements/texts/NavPageText/NavPageText'
+import BodyCopy from '/src/components/elements/texts/BodyCopy/BodyCopy'
+import UserInterfaceButton from '/src/components/elements/buttons/UserInterfaceButton/UserInterfaceButton'
+import LoginForm from '/src/components/pages/Login/LoginForm/LoginForm'
 
 const Login = () => {
   return (

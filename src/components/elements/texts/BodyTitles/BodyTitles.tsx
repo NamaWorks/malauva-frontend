@@ -1,4 +1,4 @@
-import { addAccentFont } from "../../../../utils/functions/addAccentFont";
+import { addAccentFont } from "../../../../utils/functions/ui_fn/addAccentFont";
 import "./BodyTitles.scss";
 import React, { useEffect, useState } from "react";
 

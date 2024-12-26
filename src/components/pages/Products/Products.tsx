@@ -3,18 +3,16 @@ import React, { useContext, useEffect, useMemo, useState } from "react";
 import {
   NavigationContext,
   WinesContext,
-} from "../../../utils/contexts/contexts";
-import { Wine } from "../../../utils/types/types";
-import { fetchData } from "../../../utils/functions/fetchData";
-import ProductCard from "../../elements/ProductCard/ProductCard";
-import UserInterfaceButton from "../../elements/buttons/UserInterfaceButton/UserInterfaceButton";
-import {
-  addAllStrings,
-  prepareIntervals,
-} from "../../../utils/functions/productsFilters";
+} from "/src/utils/contexts/contexts";
+import { Wine } from "/src/utils/types/types";
+import { fetchData } from "/src/utils/functions/api_fn/fetchData";
+import ProductCard from "/src/components/elements/ProductCard/ProductCard";
+import UserInterfaceButton from "/src/components/elements/buttons/UserInterfaceButton/UserInterfaceButton";
+import {addAllStrings, prepareIntervals, } from "/src/utils/functions/ui_fn/productsFilters";
 import ProductsFilterSelect from "./ProductsFilterSelect/ProductsFilterSelect";
-import { getFooterTop } from "../../../utils/functions/getFooterTop";
-import { getRandomIndex } from "../../../utils/functions/getRandomIndex";
+import { getFooterTop } from "/src/utils/functions/ui_fn/getFooterTop";
+import { getRandomIndex } from "/src/utils/functions/math/getRandomIndex";
+import { overAgeChecker } from "/src/utils/functions/ui_fn/overAgeChecker";
 
 const Products = () => {
   const { fetchWines, setFetchWines } = useContext(WinesContext);
@@ -26,9 +24,12 @@ const Products = () => {
   const [winePrices, setWinePrices] = useState<Number[]>([20, 50, 100, 200, 300, 450,]);
   const [printedItems, setPrintedItems] = useState<Map<number, string>>(new Map());
   const [loading, setLoading] = useState<boolean>(true);
+  const {overAge} = useContext(NavigationContext)
 
   useEffect(() => {
     setCurrentPage("products");
+
+    overAgeChecker(overAge);
 
     fetchData("/wines")
       .then((res) => {

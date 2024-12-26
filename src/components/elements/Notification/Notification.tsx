@@ -1,7 +1,7 @@
 import './Notification.scss';
 import React, { useEffect, useRef, useState } from 'react'
 import BodyTitles from '../texts/BodyTitles/BodyTitles'
-import { removeNotification } from '../../../utils/functions/notificationFunctions';
+import { removeNotification } from '../../../utils/functions/ui_fn/notificationFunctions';
 
 const Notification = ({color, text}) => {
 

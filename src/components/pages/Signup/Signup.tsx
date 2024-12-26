@@ -1,21 +1,30 @@
 import './Signup.scss'
 
-import React from 'react'
-import SignupForm from './SignupForm/SignupForm'
-import LinkText from '../../elements/texts/LinkText/LinkText'
-import UserInterfaceButton from '../../elements/buttons/UserInterfaceButton/UserInterfaceButton'
-import BodyCopy from '../../elements/texts/BodyCopy/BodyCopy'
-import NavPageText from '../../elements/texts/NavPageText/NavPageText'
+import React, { useContext, useEffect } from 'react'
+import SignupForm from '/src/components/pages/Signup/SignupForm/SignupForm'
+import LinkText from '/src/components/elements/texts/LinkText/LinkText'
+import UserInterfaceButton from '/src/components/elements/buttons/UserInterfaceButton/UserInterfaceButton'
+import BodyCopy from '/src/components/elements/texts/BodyCopy/BodyCopy'
+import NavPageText from '/src/components/elements/texts/NavPageText/NavPageText'
+import { overAgeChecker } from '/src/utils/functions/ui_fn/overAgeChecker'
+import { NavigationContext } from '/src/utils/contexts/contexts'
 
 
 
 const Signup = () => {
+
+  const { overAge } = useContext(NavigationContext)
+
+  useEffect(()=>{
+    overAgeChecker(overAge)
+  },[])
+
   return (
     <>
 
 <main id='signup-page'>
         <div className="signup-container">
-          <LinkText text='Sign Up' link='#'/>
+          <LinkText text='Log In' link='login'/>
           <NavPageText text='Sign up'/>
           <BodyCopy text='Sign up or login to see our top picks for you'/>
           <SignupForm/>

@@ -1,5 +1,5 @@
-import UserInterfaceButton from '../../../elements/buttons/UserInterfaceButton/UserInterfaceButton'
-import './ProfileInfoUpdateForm.scss'
+import UserInterfaceButton from '/src/components/elements/buttons/UserInterfaceButton/UserInterfaceButton'
+import '/src/components/pages/Profile/ProfileInfoUpdateForm/ProfileInfoUpdateForm.scss'
 import React from 'react'
 
 const ProfileInfoUpdateForm = () => {

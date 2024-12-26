@@ -1,6 +1,6 @@
-import { NavigationContext } from '../../../utils/contexts/contexts'
-import { redirectToUrl } from '../../../utils/functions/redirectToUrl'
-import './OverAge.scss'
+import { NavigationContext } from '/src/utils/contexts/contexts'
+import { redirectToUrl } from '/src/utils/functions/navigation_fn/redirectToUrl'
+import '/src/components/pages/OverAge/OverAge.scss'
 import React, { useContext, useEffect } from 'react'
 
 const OverAge = () => {

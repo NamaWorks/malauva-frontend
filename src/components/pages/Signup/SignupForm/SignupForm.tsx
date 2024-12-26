@@ -1,7 +1,7 @@
-import React from "react";
 import './SignupForm.scss';
-import LinkText from "../../../elements/texts/LinkText/LinkText";
-import UserInterfaceButton from "../../../elements/buttons/UserInterfaceButton/UserInterfaceButton";
+import UserInterfaceButton from "/src/components/elements/buttons/UserInterfaceButton/UserInterfaceButton";
+import { signupSubmit } from "/src/utils/functions/submits/submitSignup";
+import { asignIdNumber } from "/src/utils/functions/api_fn/asignIdNumber";
 
 const SignupForm = () => {
   return (
@@ -15,6 +15,7 @@ const SignupForm = () => {
           placeholder="Email"
         />
 
+
         <label htmlFor="signup-form-password">signup password input</label>
         <input
           id="signup-form-password"
@@ -23,14 +24,25 @@ const SignupForm = () => {
           placeholder="Password"
         />
 
-        <LinkText text="Forgot Password?" kind="dimmed" />
+        <label htmlFor="signup-form-repeat-password">signup repeat password input</label>
+        <input
+          id="signup-form-repeat-password"
+          className="signup-input input-password form-input"
+          type="password"
+          placeholder="Repeat password"
+        />
 
         <UserInterfaceButton
           text="Signup"
           kind="regular"
           color="pink"
-          fnc={() => {
-            console.log("choripanes");
+          fnc={async(e):Event => {
+            e.preventDefault()
+            const newId = await asignIdNumber()
+            
+            // let signupStatus = await signupSubmit()
+            // console.log(signupStatus)
+            // signupStatus = 201 ? loginSubmitFromSignUp() : console.log(`something went wrong`);
           }}
           extraClass="signup-form-button"
         />

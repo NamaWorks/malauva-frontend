@@ -1,22 +1,27 @@
 import "./ProductEntry.scss";
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { WinesContext } from "../../../utils/contexts/contexts";
-import { Wine } from "../../../utils/types/types";
-import { fetchData } from "../../../utils/functions/fetchData";
-import BodyTitles from "../../elements/texts/BodyTitles/BodyTitles";
-import BodyCopy from "../../elements/texts/BodyCopy/BodyCopy";
-import PriceText from "../../elements/texts/PriceText/PriceText";
-import NavigationButton from "../../elements/buttons/NavigationButton/NavigationButton";
-import UserInterfaceButton from "../../elements/buttons/UserInterfaceButton/UserInterfaceButton";
-import AddMoreButton from "../../elements/buttons/AddMoreButton/AddMoreButton";
-import Notification from "../../elements/Notification/Notification";
+import { NavigationContext, WinesContext } from "../../../utils/contexts/contexts";
+import { Wine } from "/src/utils/types/types";
+import { fetchData } from "/src/utils/functions/api_fn/fetchData";
+import BodyTitles from "/src/components/elements/texts/BodyTitles/BodyTitles";
+import BodyCopy from "/src/components/elements/texts/BodyCopy/BodyCopy";
+import PriceText from "/src/components/elements/texts/PriceText/PriceText";
+import NavigationButton from "/src/components/elements/buttons/NavigationButton/NavigationButton";
+import UserInterfaceButton from "/src/components/elements/buttons/UserInterfaceButton/UserInterfaceButton";
+import AddMoreButton from "/src/components/elements/buttons/AddMoreButton/AddMoreButton";
+import Notification from "/src/components/elements/Notification/Notification";
+import { overAgeChecker } from "/src/utils/functions/ui_fn/overAgeChecker";
 
 const ProductEntry = () => {
   const { fetchWines } = useContext<Wine[] | undefined>(WinesContext);
   let idNumber = useParams().idNumber?.toUpperCase();
   const [wineToPrint, setWineToPrint] = useState<Wine>();
-  // let wineToPrint:Wine|void =
+  const { overAge } = useContext<boolean>(NavigationContext)
+
+  useEffect(()=>{
+    overAgeChecker(overAge)
+  },[])
 
   useEffect(() => {
     if (fetchWines.lenght > 0) {

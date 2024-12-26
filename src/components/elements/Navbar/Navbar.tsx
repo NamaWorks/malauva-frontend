@@ -3,8 +3,8 @@ import "./Navbar.scss";
 import NavbarLink from "./NavbarLink/NavbarLink";
 import Sublink from "./Sublink/Sublink";
 import NavigationButton from "../buttons/NavigationButton/NavigationButton";
-import { getNavbarHeight } from "../../../utils/functions/getNavbarHeight";
-import { redirectToUrl } from "../../../utils/functions/redirectToUrl";
+import { getNavbarHeight } from "../../../utils/functions/ui_fn/getNavbarHeight";
+import { redirectToUrl } from "../../../utils/functions/navigation_fn/redirectToUrl";
 
 const testFnc = (content: string): void | undefined => {
   // console.log(content);

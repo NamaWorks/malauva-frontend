@@ -1,4 +1,4 @@
-import "./ProductsFilterSelect.scss";
+import "/src/components/pages/Products/ProductsFilterSelect/ProductsFilterSelect.scss";
 
 import React, { useEffect } from "react";
 

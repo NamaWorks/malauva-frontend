@@ -6,7 +6,7 @@ import BodyTitles from "../texts/BodyTitles/BodyTitles";
 import PriceText from "../texts/PriceText/PriceText";
 import "./ProductCard.scss";
 import React, { memo } from "react";
-import { redirectToUrl } from "../../../utils/functions/redirectToUrl";
+import { redirectToUrl } from "../../../utils/functions/navigation_fn/redirectToUrl";
 
 const ProductCard = ({
   wineData,

@@ -1,8 +1,8 @@
 import './LoginForm.scss'
 import React from 'react'
-import LinkText from '../../../elements/texts/LinkText/LinkText'
-import UserInterfaceButton from '../../../elements/buttons/UserInterfaceButton/UserInterfaceButton'
-import BodyCopy from '../../../elements/texts/BodyCopy/BodyCopy'
+import LinkText from '/src/components/elements/texts/LinkText/LinkText'
+import UserInterfaceButton from '/src/components/elements/buttons/UserInterfaceButton/UserInterfaceButton'
+import BodyCopy from '/src/components/elements/texts/BodyCopy/BodyCopy'
 
 const LoginForm = () => {
   return (

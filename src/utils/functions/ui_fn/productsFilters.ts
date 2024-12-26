@@ -1,4 +1,4 @@
-import { Wine } from "../types/types";
+import { Wine } from "../../types/types";
 
 export const addAllStrings = (fromArr: string[], objKey: string): string[] => {
   let accArr: string[] = [];
