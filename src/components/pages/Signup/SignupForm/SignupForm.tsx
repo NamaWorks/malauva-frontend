@@ -1,19 +1,48 @@
 import './SignupForm.scss';
 import UserInterfaceButton from "/src/components/elements/buttons/UserInterfaceButton/UserInterfaceButton";
 import { signupSubmit } from "/src/utils/functions/submits/submitSignup";
-import { asignIdNumber } from "/src/utils/functions/api_fn/asignIdNumber";
+import { useState } from 'react';
 
 const SignupForm = () => {
+
+  // const [idNumber, setIdNumber] = useState<string>();
+  const [personName, setPersonName] = useState<string>();
+  const [email , setEmail] = useState<string>();
+  const [username, setUsername] = useState<string>();
+  const [password, setPassword] = useState<string>();
+  const [passwordVerification, setPasswordVerification] = useState<boolean>(false)
+
+
   return (
     <>
       <form id="signup-form" className="form" action="">
+
+        <label htmlFor="signup-form-name">signup email input</label>
+        <input
+          id="signup-form-name"
+          className="signup-input input-text form-input"
+          type="email"
+          placeholder="Name"
+          onChange={(e)=>{setPersonName(e.target.value)}}
+        />
+
         <label htmlFor="signup-form-email">signup email input</label>
         <input
           id="signup-form-email"
           className="signup-input input-text form-input"
-          type="text"
+          type="email"
           placeholder="Email"
-        />
+          onChange={(e)=>{setEmail(e.target.value)}}
+          />
+
+        <label htmlFor="signup-form-username">signup email input</label>
+        <input
+          id="signup-form-username"
+          className="signup-input input-text form-input"
+          type="text"
+          placeholder="Username"
+          onChange={(e)=>{setUsername(e.target.value)}}
+          />
 
 
         <label htmlFor="signup-form-password">signup password input</label>
@@ -22,6 +51,7 @@ const SignupForm = () => {
           className="signup-input input-password form-input"
           type="password"
           placeholder="Password"
+          onChange={(e)=>{setPassword(e.target.value)}}
         />
 
         <label htmlFor="signup-form-repeat-password">signup repeat password input</label>
@@ -30,6 +60,13 @@ const SignupForm = () => {
           className="signup-input input-password form-input"
           type="password"
           placeholder="Repeat password"
+          onChange={(e)=>{
+            if(e.target.value == password){
+              setPasswordVerification(true)
+            } else {
+              setPasswordVerification(false)
+            }
+          }}
         />
 
         <UserInterfaceButton
@@ -38,11 +75,9 @@ const SignupForm = () => {
           color="pink"
           fnc={async(e):Event => {
             e.preventDefault()
-            const newId = await asignIdNumber()
-            
-            // let signupStatus = await signupSubmit()
-            // console.log(signupStatus)
-            // signupStatus = 201 ? loginSubmitFromSignUp() : console.log(`something went wrong`);
+            const signupStatus = await signupSubmit({personName, email, username, password})
+            console.log(signupStatus)
+            signupStatus = 201 ? loginSubmitFromSignUp() : console.log(`something went wrong`);
           }}
           extraClass="signup-form-button"
         />
