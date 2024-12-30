@@ -1,10 +1,14 @@
 import './LoginForm.scss'
-import React from 'react'
 import LinkText from '/src/components/elements/texts/LinkText/LinkText'
 import UserInterfaceButton from '/src/components/elements/buttons/UserInterfaceButton/UserInterfaceButton'
-import BodyCopy from '/src/components/elements/texts/BodyCopy/BodyCopy'
+import { useState } from 'react'
+import { submitLogin } from '../../../../utils/functions/submits/submitLogin'
 
 const LoginForm = () => {
+
+  const [ email, setEmail ] = useState<string>();
+  const [ password, setPassword ] = useState<string>();
+
   return (
     <>
       <form id="login-form" className="form" action="">
@@ -14,7 +18,8 @@ const LoginForm = () => {
           className="login-input input-text form-input"
           type="text"
           placeholder="Email"
-        />
+          onChange={(e)=>{setEmail(e.target.value)}}
+          />
 
         <label htmlFor="login-form-password">login password input</label>
         <input
@@ -22,6 +27,7 @@ const LoginForm = () => {
           className="login-input input-password form-input"
           type="password"
           placeholder="Password"
+          onChange={(e)=>{setPassword(e.target.value)}}
         />
 
         <LinkText text="Forgot Password?" kind="dimmed" />
@@ -30,8 +36,11 @@ const LoginForm = () => {
           text="Login"
           kind="regular"
           color="pink"
-          fnc={() => {
-            console.log("choripanes");
+          fnc={async(e:Event) => {
+            e.preventDefault()
+            const loginStatus = await submitLogin({email, password})
+            console.log(loginStatus);
+            loginStatus=200 ? console.log('okaysss') : console.log(`something went wrong`);
           }}
           extraClass="login-form-button"
         />

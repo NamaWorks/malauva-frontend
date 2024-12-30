@@ -1,3 +1,4 @@
+import { submitLogin } from '../../../../utils/functions/submits/submitLogin';
 import './SignupForm.scss';
 import UserInterfaceButton from "/src/components/elements/buttons/UserInterfaceButton/UserInterfaceButton";
 import { signupSubmit } from "/src/utils/functions/submits/submitSignup";
@@ -77,7 +78,8 @@ const SignupForm = () => {
             e.preventDefault()
             const signupStatus = await signupSubmit({personName, email, username, password})
             console.log(signupStatus)
-            signupStatus = 201 ? loginSubmitFromSignUp() : console.log(`something went wrong`);
+            signupStatus = 201 ? submitLogin({email, password}) : console.log(`something went wrong`);
+
           }}
           extraClass="signup-form-button"
         />
