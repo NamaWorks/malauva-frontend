@@ -12,7 +12,7 @@ const Login = () => {
     <>
       <main id="login-page">
         <div className="login-container">
-          <LinkText text="Sign Up" link="#" />
+          <LinkText text="Sign Up" link="/signup" />
           <NavPageText text="Login" />
           <BodyCopy text="Sign up or login to see our top picks for you" />
           <LoginForm />

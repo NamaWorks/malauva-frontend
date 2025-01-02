@@ -8,6 +8,8 @@ import LinkText from '/src/components/elements/texts/LinkText/LinkText'
 import ProfileInfoUpdateForm from '/src/components/pages/Profile/ProfileInfoUpdateForm/ProfileInfoUpdateForm'
 
 const Profile = () => {
+
+  // Para poder pedir los datos del usuario podemos usar un sessionStorage/localStorage o un state dentro de un contexto. Podemos acceder al token del usuario logeado? si es así, podemos usar el state para guardar el idNumber del usuario y este junto con el token, usarlo para verificar el que el usuario es quien dice ser
   return (
     <>
     

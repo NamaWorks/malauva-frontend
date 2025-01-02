@@ -1,16 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Navbar.scss";
 import NavbarLink from "./NavbarLink/NavbarLink";
 import Sublink from "./Sublink/Sublink";
 import NavigationButton from "../buttons/NavigationButton/NavigationButton";
 import { getNavbarHeight } from "../../../utils/functions/ui_fn/getNavbarHeight";
 import { redirectToUrl } from "../../../utils/functions/navigation_fn/redirectToUrl";
+import { NavigationContext } from "../../../utils/contexts/contexts";
 
 const testFnc = (content: string): void | undefined => {
   // console.log(content);
 };
 
 const Navbar = () => {
+
+  const { loggedIn } = useContext(NavigationContext)
+
   const [navbarHeight, setNavbarHeight] = useState(800);
   const [toggleNav, setToggleNav] = useState(false);
 
@@ -73,8 +77,20 @@ const Navbar = () => {
             id="navbar-utilities-container"
           >
             <div className="navbar-utilities-content">
-              <Sublink link="/profile" text="My Account" />
-              <Sublink link="#" text="Logout" />
+              {loggedIn && (
+                <>
+                  <Sublink link="/profile" text="My Account" />
+                  <Sublink link="#" text="Logout" />
+                </>
+              )}
+
+              {!loggedIn && (
+                <>
+                  <Sublink link="/login" text="Login" />
+                  <Sublink link="/signup" text="signup" />
+                </>
+              )
+              }
             </div>
             <div className="navbar-utilities-content">
               <Sublink link="/cart" text="My Cart" />

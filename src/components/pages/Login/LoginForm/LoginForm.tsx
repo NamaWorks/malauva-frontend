@@ -1,10 +1,13 @@
 import './LoginForm.scss'
 import LinkText from '/src/components/elements/texts/LinkText/LinkText'
 import UserInterfaceButton from '/src/components/elements/buttons/UserInterfaceButton/UserInterfaceButton'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { submitLogin } from '../../../../utils/functions/submits/submitLogin'
+import { NavigationContext } from '../../../../utils/contexts/contexts'
 
 const LoginForm = () => {
+
+  const { loggedIn, setLoggedIn } = useContext(NavigationContext) 
 
   const [ email, setEmail ] = useState<string>();
   const [ password, setPassword ] = useState<string>();
@@ -40,7 +43,7 @@ const LoginForm = () => {
             e.preventDefault()
             const loginStatus = await submitLogin({email, password})
             console.log(loginStatus);
-            loginStatus=200 ? console.log('okaysss') : console.log(`something went wrong`);
+            loginStatus == 200 ? setLoggedIn(true) : console.log(`something went wrong`);
           }}
           extraClass="login-form-button"
         />

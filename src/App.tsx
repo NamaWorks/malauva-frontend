@@ -19,11 +19,12 @@ function App() {
   const [fetchWines, setFetchWines] = useState<[]>([]);
   const [currentPage, setCurrentPage] = useState<string>('Home')
   const [overAge, setOverAge] = useState<boolean>(sessionStorage.getItem('overAge') === 'true' ? true : false)
+  const [loggedIn, setLoggedIn] = useState<boolean>(sessionStorage.getItem('token') === 'true' ? true : false)
 
   return (
   <>
     <WinesContext.Provider value={{fetchWines, setFetchWines}}>
-    <NavigationContext.Provider value={{currentPage, setCurrentPage, overAge, setOverAge}}>
+    <NavigationContext.Provider value={{currentPage, setCurrentPage, overAge, setOverAge, loggedIn, setLoggedIn}}>
       <Navbar/>
         <Routes>
           <Route index element={ <OverAge/> }/>
