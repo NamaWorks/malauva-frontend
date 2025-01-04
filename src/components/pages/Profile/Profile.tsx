@@ -1,11 +1,11 @@
-import './Profile.scss'
-import React from 'react'
-import BodyTitles from '/src/components/elements/texts/BodyTitles/BodyTitles'
-import UserInterfaceButton from '/src/components/elements/buttons/UserInterfaceButton/UserInterfaceButton'
-import NavigationButton from '/src/components/elements/buttons/NavigationButton/NavigationButton'
-import BodyCopy from '/src/components/elements/texts/BodyCopy/BodyCopy'
-import LinkText from '/src/components/elements/texts/LinkText/LinkText'
-import ProfileInfoUpdateForm from '/src/components/pages/Profile/ProfileInfoUpdateForm/ProfileInfoUpdateForm'
+import './Profile.scss';
+import React from 'react';
+import BodyTitles from '/src/components/elements/texts/BodyTitles/BodyTitles';
+import UserInterfaceButton from '/src/components/elements/buttons/UserInterfaceButton/UserInterfaceButton';
+import NavigationButton from '/src/components/elements/buttons/NavigationButton/NavigationButton';
+import BodyCopy from '/src/components/elements/texts/BodyCopy/BodyCopy';
+import LinkText from '/src/components/elements/texts/LinkText/LinkText';
+import ProfileInfoUpdateForm from '/src/components/pages/Profile/ProfileInfoUpdateForm/ProfileInfoUpdateForm';
 
 const Profile = () => {
 

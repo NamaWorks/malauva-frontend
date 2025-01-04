@@ -7,6 +7,15 @@
     "module": "ESNext",
     "skipLibCheck": true,
 
+    /* Paths */
+    // "baseUrl": ".",
+    // "paths": {
+    //   "@elements/*": ["/src/components/elements/*"],
+    //   "@pages/*": ["/src/components/pages/*"],
+    //   "@utils/*": ["/src/utils/*"],
+    //   "@functions/*": ["/src/utils/functions/*"]
+    // },
+
     /* Bundler mode */
     "moduleResolution": "Bundler",
     "allowImportingTsExtensions": true,
