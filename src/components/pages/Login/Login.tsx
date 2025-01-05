@@ -4,7 +4,7 @@ import NavPageText from "/src/components/elements/texts/NavPageText/NavPageText"
 import BodyCopy from "/src/components/elements/texts/BodyCopy/BodyCopy";
 import UserInterfaceButton from "/src/components/elements/buttons/UserInterfaceButton/UserInterfaceButton";
 import LoginForm from "/src/components/pages/Login/LoginForm/LoginForm";
-import { submitLogin } from "../../../utils/functions/submits/submitLogin";
+import { submitLogin } from "/src/utils/functions/submits/submitLogin";
 
 const Login = () => {
 
