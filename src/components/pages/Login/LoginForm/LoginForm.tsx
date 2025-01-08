@@ -54,10 +54,11 @@ const LoginForm = () => {
           color="pink"
           fnc={async(e:Event) => {
             e.preventDefault()
-            // const loginStatus = await submitLogin({email, password})
+            const loginStatus = await submitLogin({email, password})
             // console.log(loginStatus)
             // loginStatus == 200 ? setLoggedIn(true) : console.log(`something went wrong`);
-            console.log(notificationOn)
+            loginStatus == 200 ? (setLoggedIn(true), setNotificationColor('green'), setNotificationText('credentials ok')) : ( setLoggedIn(false), setNotificationColor('pink'), setNotificationText('something went wrong'));
+            // 200 == 300 ? (setNotificationColor('green'), setNotificationText('credentials ok')) : (setNotificationColor('pink'), setNotificationText('something went wrong'));
             setNotificationOn(true)
           }}
           extraClass="login-form-button"

@@ -1,6 +1,6 @@
 import { apiUrl } from '/src/data/globalVariables';
 
-export const submitLogin = async({email, password}:{email: string | undefined, password: string | undefined}) => {
+export const submitLogin = async({email, password}:{email: string | undefined, password: string | undefined}):Promise<number> => {
   const payload = {
     email: email,
     password: password
@@ -14,15 +14,11 @@ export const submitLogin = async({email, password}:{email: string | undefined, p
     body: JSON.stringify(payload),
   })
 
-  console.log(await data)
-  
-  const dataResponse = await data.json()
 
-  if (data.status === 200){
-    window.location.href = '/home'
-    sessionStorage.setItem('token', dataResponse.token)
-  } else {console.log('not worked')}
-
-
-  return  data.status
+    if (data.status === 200){
+      window.location.href = '/home'
+      const dataResponse = await data.json()
+      sessionStorage.setItem('token', dataResponse.token)
+    } else {console.log('not worked')}
+    return  data.status
 }

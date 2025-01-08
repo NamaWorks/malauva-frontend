@@ -49,7 +49,7 @@ const ProfileInfoUpdateForm = () => {
         <input id="profile-form-payment" className="signup-input input-email form-input" type="number" placeholder={'payment method pending'}/>
       </div>
 
-      <UserInterfaceButton text='save' color='pink' kind='regular' fnc={console.log('button clicked')} extraClass='profile-form-button'/>
+      <UserInterfaceButton text='save' color='pink' kind='regular' fnc={()=>{console.log('button clicked')}} extraClass='profile-form-button'/>
 
     </form>
     </>
