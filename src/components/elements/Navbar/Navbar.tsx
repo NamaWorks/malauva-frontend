@@ -5,24 +5,20 @@ import Sublink from "./Sublink/Sublink";
 import NavigationButton from "../buttons/NavigationButton/NavigationButton";
 import { getNavbarHeight } from "../../../utils/functions/ui_fn/getNavbarHeight";
 import { redirectToUrl } from "../../../utils/functions/navigation_fn/redirectToUrl";
-import { NavigationContext } from "../../../utils/contexts/contexts";
-
-const testFnc = (content: string): void | undefined => {
-  // console.log(content);
-};
+import { submitLogout } from "../../../utils/functions/submits/submitLogout";
 
 const Navbar = () => {
 
-  const { loggedIn } = useContext(NavigationContext)
 
-  const [navbarHeight, setNavbarHeight] = useState(800);
-  const [toggleNav, setToggleNav] = useState(false);
+  const [ userLogged, setUserLogged ] = useState<boolean>()
+  const [navbarHeight, setNavbarHeight] = useState<number>(800);
+  const [toggleNav, setToggleNav] = useState<boolean>(false);
 
   useEffect(() => {
-    // we should add here the call to the API in order to show the number of items in the shopping cart
-    // console.log(navbarHeight);
-    // console.log("toggled " + toggleNav);
-  }, [toggleNav]);
+    if(sessionStorage.getItem('token')){
+      setUserLogged(true)
+    }
+  }, []);
   
   return (
     <>
@@ -77,14 +73,14 @@ const Navbar = () => {
             id="navbar-utilities-container"
           >
             <div className="navbar-utilities-content">
-              {loggedIn && (
+              {userLogged && (
                 <>
                   <Sublink link="/profile" text="My Account" />
-                  <Sublink link="#" text="Logout" />
+                  <Sublink fnc={()=>{submitLogout()}} text="Logout" />
                 </>
               )}
 
-              {!loggedIn && (
+              {!userLogged && (
                 <>
                   <Sublink link="/login" text="Login" />
                   <Sublink link="/signup" text="signup" />
