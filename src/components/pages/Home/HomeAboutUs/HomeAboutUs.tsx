@@ -8,7 +8,7 @@ const HomeAboutUs = () => {
     <section className='home-section' id='home-about-us'>
     <div className='home-about-us-container'>
       <BodyCopy 
-        text={'Lorem ipsum dolor sit amet consectetur. Amet maecenas consectetur vulputate nibh dignissim sed dolor aliquet tristique. Eu viverra tortor ut dui iaculis quis urna amet. Et a ultrices et laoreet placerat enim massa nunc. Dignissim aliquam mus aliquam aenean faucibus velit.'}
+        text={"At Malauva, we offer more than just wine—we invite you to uncover stories in every glass, explore unique flavors, and savor the charm of our curated selection. From timeless classics to delightful discoveries, you'll find the perfect choice for every toast. Because great wine is meant to be shared!"}
         kind='highlight'
         color='dark'
       />

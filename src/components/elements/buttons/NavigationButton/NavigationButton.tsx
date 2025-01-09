@@ -1,3 +1,4 @@
+import { apiUrl } from '../../../../data/globalVariables';
 import './NavigationButton.scss'
 import React from 'react'
 

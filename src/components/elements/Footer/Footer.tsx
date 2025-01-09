@@ -24,36 +24,30 @@ const Footer = () => {
           <NavigationButton
             kind="link"
             id="navbar-btn-menu"
-            text="menu"
+            text="home"
             color="dark"
-            link={'#'}
+            link="home"
           />
           <NavigationButton
-            kind="fnc"
+            kind="link"
             id="navbar-btn-menu"
-            text="menu"
+            text="faq"
             color="dark"
-            fnc={(): undefined => {
-              setToggleNav(!toggleNav);
-            }}
+            link="faq"
           />
           <NavigationButton
-            kind="fnc"
+            kind="link"
             id="navbar-btn-menu"
-            text="menu"
+            text="shop"
             color="dark"
-            fnc={(): undefined => {
-              setToggleNav(!toggleNav);
-            }}
+            link="products"
           />
           <NavigationButton
-            kind="fnc"
+            kind="link"
             id="navbar-btn-menu"
-            text="menu"
+            text="about"
             color="dark"
-            fnc={(): undefined => {
-              setToggleNav(!toggleNav)
-            }}
+            link="about"
           />
         </div>
       </footer>

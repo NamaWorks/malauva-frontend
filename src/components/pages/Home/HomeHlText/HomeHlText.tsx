@@ -7,7 +7,7 @@ const HomeHlText = () => {
       <section className="home-section" id="home-highlight-text">
         <div className="home-hl-text-container">
           <h2>
-            Lorem ipsum dolor
+          We’re all
             <span className="home-hl-illustrations">
               <img
                 id="home-hl-old-ill"
@@ -15,7 +15,7 @@ const HomeHlText = () => {
                 alt="old man drinking a glass of wine"
               />
             </span>
-            sit amet consectetur. Et diam
+            about vineyards, the sea, and unhurried conversations. Welcome to MalaUva, your
             <span className="home-hl-illustrations">
               <img
                 id="home-hl-flowers-ill"
@@ -23,7 +23,7 @@ const HomeHlText = () => {
                 alt="flowers illustration"
               />
             </span>{" "}
-            tempus ultrices in ultricies amet felis. Vitae et nisi tellu.
+            spot where every glass tells a story.
           </h2>
         </div>
       </section>
