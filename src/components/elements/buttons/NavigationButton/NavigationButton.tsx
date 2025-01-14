@@ -7,7 +7,7 @@ const NavigationButton = ({ kind, id, text, fnc, link, color }: { kind: string, 
     case 'fnc': 
       return (
         <>
-          <button className={`btn-secondary btn-navigation ${color || 'dark'}`} id={ id ? id : ''} onClick={fnc}>{text || 'text pending'}</button>
+          <button className={`btn-secondary btn-navigation btn-navigation-${color || 'dark'}`} id={ id ? id : ''} onClick={fnc}>{text || 'text pending'}</button>
         </>
       )
     break; 

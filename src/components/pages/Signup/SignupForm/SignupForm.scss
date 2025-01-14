@@ -1,3 +1,4 @@
+
 @use '/src/index.scss';
 
 #signup-form{
@@ -8,6 +9,25 @@
  
   label{
     display: none;
+  }
+
+  .signup-form-div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: index.$d-gap-general-050;
+    
+    input{
+      display: flex;
+      width: 100%;
+    }
+
+    .sublink{
+      line-break: none;
+      min-width: 120px;
+      // width: 100%;
+    }
+
   }
 
   .form-input{

@@ -6,9 +6,15 @@
   font-size: index.$d-font-size-btn-secondary;
   background: transparent;
   text-decoration: none;
-   cursor: pointer;
+  cursor: pointer;
 }
 
-.dark {
+.btn-navigation-dark {
   color: index.$MU-dark-200;
+}
+.btn-navigation-beige {
+  color: index.$MU-beige-100;
+}
+.btn-navigation-pink{
+  color: index.$MU-pink-100;
 }

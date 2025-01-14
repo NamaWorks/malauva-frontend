@@ -5,6 +5,7 @@ import { useContext, useEffect, useState } from 'react'
 import { submitLogin } from '/src/utils/functions/submits/submitLogin'
 import { NavigationContext, NotificationContext } from '/src/utils/contexts/contexts'
 import { redirectToUrl } from '/src/utils/functions/navigation_fn/redirectToUrl'
+import Sublink from '../../../elements/Navbar/Sublink/Sublink'
 
 const LoginForm = () => {
 
@@ -13,6 +14,8 @@ const LoginForm = () => {
   
   const [ email, setEmail ] = useState<string | undefined>();
   const [ password, setPassword ] = useState<string | undefined>();
+  const [ passwordVisible, setPasswordVisible ] = useState<boolean>(false);
+
   const {notificationOn, setNotificationOn, hideNotification, setHideNotification, notificationText, setNotificationText, notificationColor, setNotificationColor} = useContext(NotificationContext)
   
   window.addEventListener("keydown", async (e)=>{
@@ -37,14 +40,17 @@ const LoginForm = () => {
           onChange={(e)=>{setEmail(e.target.value)}}
           />
 
-        <label htmlFor="login-form-password">login password input</label>
+      <div className='login-form-div'>
+      <label htmlFor="login-form-password">login password input</label>
         <input
           id="login-form-password"
           className="login-input input-password form-input"
-          type="password"
+          type={passwordVisible ? 'text' : "password"}
           placeholder="Password"
           onChange={(e)=>{setPassword(e.target.value)}}
         />
+        <Sublink fnc={():void=>{setPasswordVisible(!passwordVisible)}} text={passwordVisible ? 'Hide Password' : 'Show Password'} color="dark"/>
+      </div>
 
         <LinkText text="Forgot Password?" kind="dimmed" />
 
