@@ -15,7 +15,7 @@ const NavigationButton = ({ kind, id, text, fnc, link, color }: { kind: string, 
     case 'link': 
       return (
         <>
-          <a href={link} className={`btn-secondary btn-navigation ${color || 'dark'}`} id={ id ? id : ''}>{text}</a>
+          <a href={link} className={`btn-secondary btn-navigation-${color || 'dark'}`} id={ id ? id : ''}>{text}</a>
         </>
       )
     break; 

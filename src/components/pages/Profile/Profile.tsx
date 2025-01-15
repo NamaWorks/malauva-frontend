@@ -20,9 +20,9 @@ const Profile = () => {
 
       <div className="profile-container">
         <div className="profile-content profile-buttons">
-          <UserInterfaceButton text='admin' fnc={()=>{console.log('button clicked')}} kind='regular' color='dark'/>
-          <UserInterfaceButton text='purchases' fnc={()=>{console.log('button clicked')}} kind='regular' color='dark'/>
-          <UserInterfaceButton text='profile' fnc={()=>{console.log('button clicked')}} kind='regular' color='dark'/>
+          {/* <UserInterfaceButton text='admin' fnc={()=>{console.log('button clicked')}} kind='regular' color='dark'/> */}
+          {/* <UserInterfaceButton text='purchases' fnc={()=>{console.log('button clicked')}} kind='regular' color='dark'/> */}
+          {/* <UserInterfaceButton text='profile' fnc={()=>{console.log('button clicked')}} kind='regular' color='dark'/> */}
         </div>
         <div className="profile-content">
           <img src="/public/assets/img/illustrations/skol-glasses.svg" alt="" />

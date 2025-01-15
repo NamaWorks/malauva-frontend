@@ -12,6 +12,7 @@ import UserInterfaceButton from "/src/components/elements/buttons/UserInterfaceB
 import AddMoreButton from "/src/components/elements/buttons/AddMoreButton/AddMoreButton";
 import Notification from "/src/components/elements/Notification/Notification";
 import { overAgeChecker } from "/src/utils/functions/ui_fn/overAgeChecker";
+import { addProductToUserCart } from "../../../utils/functions/api_fn/addProductToUserCart";
 
 const ProductEntry = () => {
   const { fetchWines } = useContext<Wine[] | undefined>(WinesContext);
@@ -51,8 +52,10 @@ const ProductEntry = () => {
                     className="arrow" src="/public/assets/img/arrows/arrow_left_02.svg" alt="arrow illustration"
                   />
                   <div className="arrow-data-text">
-                    <h6 className="arrow-title">Scores:</h6>
-                    <BodyCopy text={wineToPrint?.scores?.length} />
+                    {/* <h6 className="arrow-title">Scores:</h6> */}
+                    <h6 className="arrow-title">Name:</h6>
+                    {/* <BodyCopy text={wineToPrint?.scores?.length} /> */}
+                    <BodyCopy text={wineToPrint?.name} />
                   </div>
                 </div>
                 <div className="arrow-data arrow-left">
@@ -82,7 +85,7 @@ const ProductEntry = () => {
                   />
                   <div className="arrow-data-text">
                     <h6 className="arrow-title">Temperature:</h6>
-                    <BodyCopy text={wineToPrint?.idealTemperature + ' deg'} />
+                    <BodyCopy text={wineToPrint?.idealTemperature + '°C deg'} />
                   </div>
                 </div>
               </div>
@@ -96,7 +99,7 @@ const ProductEntry = () => {
           <BodyCopy text={wineToPrint?.description} />
           <PriceText value={wineToPrint?.price} background />
           <AddMoreButton />
-          <UserInterfaceButton kind="bold" color="green" text="Add to cart" />
+          <UserInterfaceButton kind="bold" color="green" text="Add to cart" fnc={async():Promise<void>=>{await addProductToUserCart(window.location.href.split('/').slice(-1)[0])}}/>
         </div>
       </main>
     </div>

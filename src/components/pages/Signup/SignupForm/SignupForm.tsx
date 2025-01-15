@@ -57,8 +57,8 @@ const SignupForm = () => {
           <input
             id="signup-form-password"
             className="signup-input input-password form-input"
-            type="password"
-            placeholder="Password"
+            type={passwordVisible ? "text" : "password"}
+            placeholder="password"
             onChange={(e) => {
               setPassword(e.target.value);
             }}

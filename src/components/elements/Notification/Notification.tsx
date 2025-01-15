@@ -30,6 +30,8 @@ const Notification = ({color, text}: {color: string, text: string}) => {
       </button>
     </div>
   )
+
+
 }
 
 export default Notification
