@@ -1,10 +1,19 @@
 import './AddMoreButton.scss'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-const AddMoreButton = () => {
+const AddMoreButton = (stateSetter) => {
   const [itemsNumber, setItemsNumber] = useState<number>(1)
 
+  useEffect(()=>{
+    // if(stateSetter){
+      // stateSetter(itemsNumber)
+    // }
+  },[itemsNumber]
+)
+
   return (
+
+
     <>
       <div className='add-more-btn'>
         <button onClick={()=>{if (itemsNumber<=1){console.log('print alert')}else{setItemsNumber(itemsNumber-1)}}}>-</button>

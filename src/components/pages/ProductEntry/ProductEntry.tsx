@@ -19,10 +19,11 @@ const ProductEntry = () => {
   let idNumber = useParams().idNumber?.toUpperCase();
   const [wineToPrint, setWineToPrint] = useState<Wine>();
   const { overAge } = useContext<boolean>(NavigationContext)
+    const [itemsNumber, setItemsNumber] = useState<number>(1)
 
   useEffect(()=>{
     overAgeChecker(overAge)
-  },[])
+  },[itemsNumber])
 
   useEffect(() => {
     if (fetchWines.lenght > 0) {
@@ -98,8 +99,14 @@ const ProductEntry = () => {
           <h5 className="product-entry-origin">{wineToPrint?.origin}</h5>
           <BodyCopy text={wineToPrint?.description} />
           <PriceText value={wineToPrint?.price} background />
-          <AddMoreButton />
-          <UserInterfaceButton kind="bold" color="green" text="Add to cart" fnc={async():Promise<void>=>{await addProductToUserCart(window.location.href.split('/').slice(-1)[0])}}/>
+          {/* <AddMoreButton /> */}
+          {/* The next items are the content of the AddMoreButton component */}
+        <div className='add-more-btn'>
+            <button onClick={()=>{if (itemsNumber<=1){console.log('print alert')}else{setItemsNumber(itemsNumber-1)}}}>-</button>
+              <p>{itemsNumber}</p>
+            <button onClick={()=>setItemsNumber(itemsNumber+1)}>+</button>
+        </div>
+          <UserInterfaceButton kind="bold" color="green" text="Add to cart" fnc={async():Promise<void>=>{await addProductToUserCart(window.location.href.split('/').slice(-1)[0], itemsNumber)}}/>
         </div>
       </main>
     </div>

@@ -7,9 +7,8 @@ export const addProductToUserCart = async (productIdNumber: String, numberToAdd:
   const currentItemsInCart = user.cartItems;
 
   const userId = user._id
-  console.log(userId)
 
-  const payload = {cartItems: addNewProductToCartArr(currentItemsInCart, productIdNumber)};
+  const payload = {cartItems: addNewProductToCartArr(currentItemsInCart, productIdNumber, numberToAdd)};
 
   const data = await fetch(apiUrl+'/users/update/'+userId, {
     headers:{
@@ -37,7 +36,7 @@ function addNewProductToCartArr(originalArr:String[], newProduct:String, numberT
   if(!foundNewItem){
     parsedArr.push({
       itemData: newProduct,
-      numberOfItems: 1,
+      numberOfItems: numberToAdd,
     })
   } else if(foundNewItem){
     const indexOfItem = parsedArr.indexOf(foundNewItem)
