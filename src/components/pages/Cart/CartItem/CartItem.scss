@@ -1,6 +1,10 @@
 @use '/src/index.scss';
 .cart-item{
 
+  display: flex;
+  flex-direction:row;
+  justify-content: space-between;
+
   .cart-item-name {
     font-family: index.$MU-secondary-font;
     font-size: index.$h5-primary-font-size;

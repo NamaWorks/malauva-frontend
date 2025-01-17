@@ -1,10 +1,11 @@
 import './CartItem.scss'
 import React, { useEffect, useState } from 'react'
 import { cartReadyItem } from '../../../../utils/types/types'
-import { redirectToUrl } from '../../../../utils/functions/navigation_fn/redirectToUrl'
-import BodyTitles from '../../../elements/texts/BodyTitles/BodyTitles'
 import BodyCopy from '../../../elements/texts/BodyCopy/BodyCopy'
 import { changeNumberOfItemsInUserCart } from '../../../../utils/functions/api_fn/changeNumberOfItemsInUserCart'
+import PriceText from '../../../elements/texts/PriceText/PriceText'
+import Sublink from '../../../elements/Navbar/Sublink/Sublink'
+import { removeItemAllFromCart } from '../../../../utils/functions/api_fn/removeItemAllFromCart'
 
 const CartItem = ({item}: {item: cartReadyItem}) => {
 
@@ -21,7 +22,7 @@ const CartItem = ({item}: {item: cartReadyItem}) => {
 
   <div className='cart-item-horizontal-container'>
       <div className="cart-item-img">
-        {/* <img src={item.picture} alt={`${item.idNumber}-image`} /> */}
+        <img src={item.picture} alt={`${item.idNumber}-image`} />
       </div>
 
       <div className='cart-item-data'>
@@ -38,8 +39,14 @@ const CartItem = ({item}: {item: cartReadyItem}) => {
     </div>
   </div>
 
+  <div className="cart-item-horizontal-container">
+    <PriceText value={item.price * itemsNumber} background={true}/>
+    <div className="cart-item-remove-btn">
+      <Sublink text='Remove all' color='dark' fnc={()=>{setItemsNumber(0)} }/>
     </div>
-    
+  </div>
+
+    </div>
     </>
   )
 }
