@@ -1,15 +1,17 @@
-import { json } from 'react-router-dom';
+import './Cart.scss'
 import { fetchData } from '../../../utils/functions/api_fn/fetchData';
 import { createObjsToPrint, parseCartItems } from '../../../utils/functions/parsers/cartItemsFunctions';
-import { cartItem } from '../../../utils/types/types';
 import '/src/components/pages/cart/Cart.scss'
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import CartItem from './CartItem/CartItem';
+import { redirectToUrl } from '../../../utils/functions/navigation_fn/redirectToUrl';
 
 const Cart = () => {
   const [ cartItemsReady, setCartItemsReady ] = useState<any[]>()
   
   useEffect(()=>{
+    sessionStorage.getItem('token') === null && redirectToUrl('/login')
+
     const prepareCartData = async () => {
       try {
         const data = await fetchData('/users/cart');
@@ -32,7 +34,7 @@ const Cart = () => {
           cartItemsReady?.map((item):any=>{
             return (
             <>
-            <CartItem item={item} />
+              <CartItem item={item} />
             </>
           )
           })

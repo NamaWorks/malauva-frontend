@@ -39,3 +39,11 @@ export type cartItem = {
   itemData: Wine,
   numberOfItems: number
 }
+
+export type cartReadyItem = {
+  name: String;
+  idNumber: Number;
+  numberOfItems: Number;
+  price: Number;
+  picture: String
+}
