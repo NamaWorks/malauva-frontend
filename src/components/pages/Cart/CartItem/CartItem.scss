@@ -5,12 +5,33 @@
   flex-direction:row;
   justify-content: space-between;
 
+.cart-item-horizontal-container {
+
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  justify-content: center;
+  gap: index.$d-gap-general-025;
+  
+  
+  .cart-item-img {
+    height: 30svh;
+    object-fit: cover;
+    position: relative;
+    bottom: -2svh;
+    
+    img{
+      object-fit: cover;
+      height: 100%;
+    }
+  }
+  
   .cart-item-name {
     font-family: index.$MU-secondary-font;
     font-size: index.$h5-primary-font-size;
     color: index.$MU-dark-200;
   }
-  
+
   .add-more-btn{
     display: flex;
     flex-direction: row;
@@ -24,10 +45,9 @@
     
     button{
       color: index.$MU-dark-200;
-      font-size: index.$d-font-size-btn-secondary;
-      
+      font-size: index.$d-font-size-btn-secondary;    
     }
-    
+   
     button{
       color: index.$MU-dark-200;
       font-size: index.$d-font-size-btn-secondary;
@@ -36,4 +56,13 @@
       cursor: pointer;
     }
   }
+}
+
+.cart-item-horizontal-container:last-of-type{
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: flex-end;
+}
+
 }

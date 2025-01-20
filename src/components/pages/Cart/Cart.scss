@@ -1,1 +1,7 @@
 @use '/src/index.scss';
+
+#cart-page {
+  background-color: index.$MU-beige-200;
+  padding: index.$d-padding-general-200
+  ;
+}
