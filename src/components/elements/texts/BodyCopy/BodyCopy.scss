@@ -7,10 +7,21 @@
   font-weight: 300;
 }
 
-.body-copy-highlight{
+.body-copy-highlight {
   color: index.$MU-dark-200;
   font-size: index.$copy-hl-font-size;
   font-family: index.$MU-primary-font;
   text-transform: uppercase;
   font-weight: 400;
+}
+
+.body-copy-bold {
+  font-weight: 900;
+}
+
+.body-copy-highlight-bold{
+  font-weight: 400;
+  color: index.$MU-dark-200;
+  font-family: index.$MU-secondary-font;
+  font-size: index.$d-font-size-cart;
 }

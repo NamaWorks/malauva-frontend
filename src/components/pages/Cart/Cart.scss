@@ -1,7 +1,69 @@
 @use '/src/index.scss';
 
 #cart-page {
-  background-color: index.$MU-beige-200;
-  padding: index.$d-padding-general-200
-  ;
-}
+  background-color: index.$MU-beige-300;
+  display: flex;
+  flex-direction: row;
+
+  section{
+    padding: index.$d-padding-general-100;
+    flex: 2;
+  }
+
+  .cart-page-payment {
+    display: flex;
+    flex-direction: column;
+    background-color: index.$MU-beige-200;
+    gap: index.$d-gap-general-100;
+    width: 100%;
+    flex: 1;
+
+    fieldset{
+      display: flex;
+      flex-direction: column;
+      gap: index.$d-gap-general-025;
+    }
+    
+    .radio-input{
+      display: flex;
+      gap: index.$d-gap-general-025;
+
+      input {
+        appearance: none;
+      
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+      
+        border: 2px solid #999;
+        transition: 0.2s all linear;
+        margin-right: 5px;
+      
+        position: relative;
+        top: 2px;
+      }
+      
+      input:checked {
+        border: 10px solid index.$MU-dark-200;
+      }
+    }
+
+
+  }
+
+  .cart-page-payment-order-summary {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: end;
+
+    .order-summary-div{
+      display: flex;
+      flex-direction: row;
+      gap: index.$d-gap-general-200;
+      align-items: center;
+    }
+  }
+
+  
+};

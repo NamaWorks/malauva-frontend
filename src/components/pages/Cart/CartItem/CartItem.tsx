@@ -40,10 +40,8 @@ const CartItem = ({item}: {item: cartReadyItem}) => {
   </div>
 
   <div className="cart-item-horizontal-container">
+    <Sublink text='Remove all' color='dark' fnc={()=>{setItemsNumber(0)} }/>
     <PriceText value={item.price * itemsNumber} background={true}/>
-    <div className="cart-item-remove-btn">
-      <Sublink text='Remove all' color='dark' fnc={()=>{setItemsNumber(0)} }/>
-    </div>
   </div>
 
     </div>
