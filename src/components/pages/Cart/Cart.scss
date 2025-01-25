@@ -4,6 +4,8 @@
   background-color: index.$MU-beige-300;
   display: flex;
   flex-direction: row;
+  background-color: index.$MU-beige-300;
+  min-height: calc(100svh - 80px);
 
   section{
     padding: index.$d-padding-general-100;
@@ -17,7 +19,18 @@
     gap: index.$d-gap-general-100;
     width: 100%;
     flex: 1;
+    justify-content: space-between;
 
+    .cart-page-payment-fieldsets{
+      display: flex;
+      flex-direction: column;
+      gap: index.$d-gap-general-100;
+
+      .link{
+        align-self: flex-end;
+      }
+    }
+    
     fieldset{
       display: flex;
       flex-direction: column;
@@ -27,18 +40,18 @@
     .radio-input{
       display: flex;
       gap: index.$d-gap-general-025;
-
+      
       input {
         appearance: none;
-      
+        
         border-radius: 50%;
         width: 20px;
         height: 20px;
-      
+        
         border: 2px solid #999;
         transition: 0.2s all linear;
         margin-right: 5px;
-      
+        
         position: relative;
         top: 2px;
       }
@@ -47,23 +60,24 @@
         border: 10px solid index.$MU-dark-200;
       }
     }
-
-
+    
+    
   }
-
+  
   .cart-page-payment-order-summary {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: end;
-
+    
     .order-summary-div{
       display: flex;
       flex-direction: row;
       gap: index.$d-gap-general-200;
       align-items: center;
     }
+    
   }
-
+  
   
 };

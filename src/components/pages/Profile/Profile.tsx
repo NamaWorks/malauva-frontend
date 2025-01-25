@@ -6,12 +6,18 @@ import BodyCopy from '/src/components/elements/texts/BodyCopy/BodyCopy';
 import LinkText from '/src/components/elements/texts/LinkText/LinkText';
 import ProfileInfoUpdateForm from '/src/components/pages/Profile/ProfileInfoUpdateForm/ProfileInfoUpdateForm';
 import { submitLogout } from '../../../utils/functions/submits/submitLogout';
+import { submitDeactivateAccount } from '../../../utils/functions/submits/submitDeactivateAccount';
+import { fetchData } from '../../../utils/functions/api_fn/fetchData';
+import { apiUrl } from '../../../data/globalVariables';
 
 const Profile = () => {
 
-  const [userData, setUserData] = useState(null)
+  const [ enableDeactivateAccount, setEnableDeactivateAccount ] = useState(false)
 
-  // Para poder pedir los datos del usuario podemos usar un sessionStorage/localStorage o un state dentro de un contexto. Podemos acceder al token del usuario logeado? si es así, podemos usar el state para guardar el idNumber del usuario y este junto con el token, usarlo para verificar el que el usuario es quien dice ser
+  useEffect(()=>{
+    console.log(enableDeactivateAccount)
+  },[enableDeactivateAccount])
+
 
   return (
     <>
@@ -36,7 +42,13 @@ const Profile = () => {
         </div>
         <div className='profile-content'>
           <LinkText text='Logout'  fnc={()=>{submitLogout()}}/>
-          <LinkText text='Deactivate account' link='#'/>
+          {/* <LinkText text='Deactivate account' fnc={setEnableDeactivateAccount===true ? ()=>{submitDeactivateAccount()} : ()=>{setEnableDeactivateAccount(true)}}/> */}
+          {
+            enableDeactivateAccount ?
+            <LinkText text='Deactivate account' fnc={()=>{submitDeactivateAccount()}} />
+            : <LinkText text='Deactivate account' fnc={()=>{setEnableDeactivateAccount(!enableDeactivateAccount)}} />
+          }
+          {/* We need to print a notification for telling the user that needs to click twice on the Deactivate Account button to make it effective */}
           <ProfileInfoUpdateForm/>
         </div>
       </div>

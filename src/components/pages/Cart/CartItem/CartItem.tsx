@@ -33,9 +33,9 @@ const CartItem = ({item}: {item: cartReadyItem}) => {
 
   <div className="cart-item-horizontal-container">
     <div className='add-more-btn'>
-        <button onClick={()=>{setItemsNumber(itemsNumber-1)}}>-</button>
+        <button onClick={()=>{setItemsNumber(itemsNumber-1);}}>-</button>
           <p>{itemsNumber}</p>
-        <button onClick={()=>setItemsNumber(itemsNumber+1)}>+</button>
+        <button onClick={()=>{setItemsNumber(itemsNumber+1);}}>+</button>
     </div>
   </div>
 
