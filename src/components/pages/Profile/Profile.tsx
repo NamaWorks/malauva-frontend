@@ -1,21 +1,26 @@
 import './Profile.scss';
-import React, { useEffect, useState } from 'react';
-import UserInterfaceButton from '/src/components/elements/buttons/UserInterfaceButton/UserInterfaceButton';
+import { useContext, useEffect, useState } from 'react';
 import NavigationButton from '/src/components/elements/buttons/NavigationButton/NavigationButton';
 import BodyCopy from '/src/components/elements/texts/BodyCopy/BodyCopy';
 import LinkText from '/src/components/elements/texts/LinkText/LinkText';
 import ProfileInfoUpdateForm from '/src/components/pages/Profile/ProfileInfoUpdateForm/ProfileInfoUpdateForm';
 import { submitLogout } from '../../../utils/functions/submits/submitLogout';
 import { submitDeactivateAccount } from '../../../utils/functions/submits/submitDeactivateAccount';
-import { fetchData } from '../../../utils/functions/api_fn/fetchData';
-import { apiUrl } from '../../../data/globalVariables';
+import { NotificationContext } from '../../../utils/contexts/contexts';
 
 const Profile = () => {
 
   const [ enableDeactivateAccount, setEnableDeactivateAccount ] = useState(false)
 
+  const { notificationOn, hideNotification, notificationText, notificationColor, setNotificationOn, setHideNotification, setNotificationText, setNotificationColor } = useContext(NotificationContext)
+
   useEffect(()=>{
-    console.log(enableDeactivateAccount)
+    if(enableDeactivateAccount === true){
+      setNotificationColor('pink')
+      setNotificationText('Click again to Remove your account')
+      setNotificationOn(true)
+
+    }
   },[enableDeactivateAccount])
 
 
