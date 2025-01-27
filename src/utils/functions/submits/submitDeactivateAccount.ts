@@ -7,17 +7,17 @@ export const submitDeactivateAccount = async () => {
     
     const { _id } = await fetchData('/users/profile');
     console.log(`user Deactivated`)
-    // const userRemoved = await fetch(`${apiUrl}/users/delete/${_id}`, {
-    //   method: 'DELETE',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     'Authorization': `Bearer ${sessionStorage.getItem('token')}`
-    //   }
-    // })
+    const userRemoved = await fetch(`${apiUrl}/users/delete/${_id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${sessionStorage.getItem('token')}`
+      }
+    })
 
-    // if(userRemoved.status === 200){
-    //   redirectToUrl('home')
-    // }
+    if(userRemoved.status === 200){
+      redirectToUrl('home')
+    }
 
   } catch (err) {
     console.log(err)

@@ -1,12 +1,12 @@
 import './PriceText.scss'
 import React from 'react'
 
-const PriceText = ({ value, currency='$', background=false, light=false }: { value: number | string, currency?: string, background?: boolean, light?:boolean}) => {
+const PriceText = ({ value, currency='$', background=false, light=false, extraClass }: { value: number | string, currency?: string, background?: boolean, light?:boolean, extraClass?:string}) => {
   
   if(!light){
     return (
     <>
-      <div className={`price-text ${background === true && 'price-text-background'}`}>
+      <div className={`price-text ${background === true && 'price-text-background'} ${extraClass}`}>
         <p className="price-amount">{currency}{Number(value).toFixed(2)}</p>
       </div>
     </>
@@ -14,7 +14,7 @@ const PriceText = ({ value, currency='$', background=false, light=false }: { val
 } else {
   return (
     <>
-      <div className={`price-text-light`}>
+      <div className={`price-text-light ${extraClass}`}>
         <p className="price-amount">{currency}{Number(value).toFixed(2)}</p>
       </div>
     </>

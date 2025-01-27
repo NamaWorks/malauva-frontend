@@ -8,12 +8,14 @@ import { redirectToUrl } from '../../../utils/functions/navigation_fn/redirectTo
 import LinkText from '../../elements/texts/LinkText/LinkText';
 import BodyCopy from '../../elements/texts/BodyCopy/BodyCopy';
 import PriceText from '../../elements/texts/PriceText/PriceText';
+import { getPriceToPrintInCart } from '../../../utils/functions/ui_fn/getPriceToPrintInCart';
 
 const Cart = () => {
   const [ cartItemsReady, setCartItemsReady ] = useState<any[]>();
   const [ totalPrice, setTotalPrice] = useState<number>(0);
   const [ shippingCost, setShippingCost ] = useState<number>(0);
   const [ updateData , setUpdateData ] = useState<boolean>(false);
+  const [ priceToPrint , setPriceToPrint ] = useState<Number>(0)
   
   useEffect(()=>{
     sessionStorage.getItem('token') === null && redirectToUrl('/login')
@@ -33,14 +35,18 @@ const Cart = () => {
         if(radioInput.checked){
           setShippingCost(4.99)
         } else {setShippingCost(0)}
-        setTotalPrice(totalPrice)
+
+        // This is a provisional function for getting the price to print correctly:
+        setTotalPrice(getPriceToPrintInCart())
+
       } catch (err) {
         console.log(err);
       }
     };
-
+    
     prepareCartData();
   },[updateData])
+  
 
   return (
     <main id='cart-page'>
@@ -49,7 +55,7 @@ const Cart = () => {
         {
           cartItemsReady?.map((item)=>{
             return (
-              <CartItem item={item}/>
+              <CartItem item={item} updateData={updateData} setUpdateData={setUpdateData}/>
           )
           })
         }

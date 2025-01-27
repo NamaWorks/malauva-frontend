@@ -1,7 +1,7 @@
 import { apiUrl } from "../../../data/globalVariables"
 import { fetchData } from "./fetchData"
 
-export const changeNumberOfItemsInUserCart = async(productIdNumber: String, numberToSet:Number) => {
+export const changeNumberOfItemsInUserCart = async(productIdNumber: String, numberToSet:number) => {
 
   const user = await fetchData("/users/cart")
   const userId = user._id
@@ -34,6 +34,7 @@ export const changeNumberOfItemsInUserCart = async(productIdNumber: String, numb
       method: "PATCH",
       body: JSON.stringify(newArr)
     })
+    console.log(data)
   }
 
 
