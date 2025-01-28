@@ -9,13 +9,15 @@ import LinkText from '../../elements/texts/LinkText/LinkText';
 import BodyCopy from '../../elements/texts/BodyCopy/BodyCopy';
 import PriceText from '../../elements/texts/PriceText/PriceText';
 import { getPriceToPrintInCart } from '../../../utils/functions/ui_fn/getPriceToPrintInCart';
+import { proceedToPayment } from '../../../utils/functions/api_fn/proceedToPayment';
 
 const Cart = () => {
   const [ cartItemsReady, setCartItemsReady ] = useState<any[]>();
   const [ totalPrice, setTotalPrice] = useState<number>(0);
   const [ shippingCost, setShippingCost ] = useState<number>(0);
   const [ updateData , setUpdateData ] = useState<boolean>(false);
-  const [ priceToPrint , setPriceToPrint ] = useState<Number>(0)
+  const [ priceToPrint , setPriceToPrint ] = useState<Number>(0);
+  const [ userData , setUserData ] = useState();
   
   useEffect(()=>{
     sessionStorage.getItem('token') === null && redirectToUrl('/login')
@@ -23,6 +25,7 @@ const Cart = () => {
     const prepareCartData = async () => {
       try {
         const data = await fetchData('/users/cart');
+        setUserData(data)
         const parsedItems = parseCartItems(data.cartItems);
         const objsToPrint = await createObjsToPrint(parsedItems);
         setCartItemsReady(objsToPrint);
@@ -112,7 +115,7 @@ const Cart = () => {
             </div>
           </div>
 
-          <LinkText link='#' text='Proceed to payment'/>
+          <LinkText text='Proceed to payment' fnc={async ():void | undefined =>{ await proceedToPayment(userData); setUpdateData(!updateData)}}/>
         </section>
 
     </main>

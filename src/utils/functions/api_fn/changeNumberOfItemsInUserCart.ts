@@ -12,9 +12,7 @@ export const changeNumberOfItemsInUserCart = async(productIdNumber: String, numb
   });
   const parsedItem = JSON.parse(user.cartItems[itemToModify])      
 
-  console.log(user)
-
-
+  // console.log(user)
 
   if(numberToSet>0){
     const newItem = {...parsedItem, numberOfItems: numberToSet}
@@ -55,7 +53,7 @@ export const changeNumberOfItemsInUserCart = async(productIdNumber: String, numb
           body: JSON.stringify(payload)
         })
 
-      console.log(data)
+      // console.log(data)
     } catch (err) {
       console.log(err)
     }

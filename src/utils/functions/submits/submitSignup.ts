@@ -1,10 +1,10 @@
 import { apiUrl } from "../../../data/globalVariables";
-import { asignIdNumber } from "../api_fn/asignIdNumber";
+import { asignUserIdNumber } from "../api_fn/asignIdNumber";
 
 export const signupSubmit = async ({ personName, email, username, password}: { personName:string, email:string, username:string, password:string}) => {
 
   const payload = {
-    idNumber: await asignIdNumber(),
+    idNumber: await asignUserIdNumber(),
     personName: personName,
     email: email,
     username: username,
