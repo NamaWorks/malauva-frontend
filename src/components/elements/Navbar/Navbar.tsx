@@ -18,7 +18,11 @@ const Navbar = () => {
     if(sessionStorage.getItem('token')){
       setUserLogged(true)
     }
-  }, []);
+
+    if(window.innerWidth <= 550){
+      setNavbarHeight(400)
+    } else {setNavbarHeight(800)}
+  }, [toggleNav]);
   
   return (
     <>

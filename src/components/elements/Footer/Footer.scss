@@ -45,12 +45,32 @@ footer{
     padding-top: index.$d-padding-general-100;
     margin-top: index.$d-margin-general-200;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
 
     a{
       text-decoration: none;
     }
+  }  
+}
+
+
+@media (max-width: 550px){
+  footer {
+    #footer-container-under-logo{
+      flex-direction: column;
+      gap: index.$d-gap-general-100;
+
+      div{
+        flex-direction: column;
+        gap: index.$d-gap-general-050;
+      }
+    }
+
+    #footer-navigation-links {
+      margin-top: index.$d-margin-general-100;
+      flex-direction: column;
+      align-items: center;
+    }
   }
-  
-  
 }

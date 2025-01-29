@@ -75,3 +75,9 @@ nav{
     display: flex;
   }
 }
+
+@media (max-width: 550px) {
+  #navbar-illustration-container{
+    display: none;
+  }
+}

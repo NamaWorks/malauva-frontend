@@ -36,3 +36,14 @@
 
   }
 }
+
+@media (max-width: 550px) {
+  #about-page{
+    height: 100%;
+    margin-bottom: index.$d-margin-general-100;
+
+    .about-container:last-child{
+      width: 75svw;
+    }
+  }
+}
