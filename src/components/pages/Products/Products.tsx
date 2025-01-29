@@ -83,6 +83,7 @@ const Products = () => {
     console.log(`select values changed`)
     const filteredArr = filterProducts(originsValue, tasteValue, priceValue, temperatureValue, sortValue, fetchWines)
     setFilteredWines(filteredArr)
+    useSubmitFilters({setOriginsValue, setTasteValue, setPriceValue, setTemperatureValue, setSortValue})
   },[originsValue, tasteValue, priceValue, temperatureValue, sortValue, fetchWines, loading])
 
   return (
