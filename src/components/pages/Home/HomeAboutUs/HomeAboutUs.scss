@@ -44,3 +44,24 @@
     width: 110%;
   }
 }
+
+@media (max-width:550px){
+  #home-about-us{
+    .home-about-us-container{
+      p{
+        font-size:index.$copy-m-body-font-size;
+      }
+    }
+    #home-about-us-illustration{
+      display: none;
+    }
+  }
+
+  #home-about-us :nth-child(2){
+    img{
+      object-fit: cover;
+      height:100%;
+      width: 100%;
+    }
+  }
+}

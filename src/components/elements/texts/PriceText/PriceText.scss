@@ -23,7 +23,8 @@
 
 .price-text-light{
   color: index.$MU-dark-200;
-  font-size: index.$copy-body-font-size;
+  // font-size: index.$copy-body-font-size;
+  font-size: index.$d-font-size-body;
   font-family: index.$MU-primary-font;
   font-weight: 300;
 }
