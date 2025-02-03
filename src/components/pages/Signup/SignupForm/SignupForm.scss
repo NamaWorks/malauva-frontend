@@ -43,3 +43,9 @@
     align-self: flex-end;
   };
 }
+
+@media (max-width: 850px){
+  #signup-form{
+    width: 100%;
+  }
+}

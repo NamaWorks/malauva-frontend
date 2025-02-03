@@ -56,3 +56,18 @@
     }
   }
 }
+
+@media (max-width:850px){
+  #profile-page{
+    .profile-container:first-child{
+      display: none;
+    }
+    .profile-container{
+      padding: index.$d-padding-general-050;
+      width: 100%;
+    }
+    .profile-container:last-child{
+      padding: index.$d-padding-general-075;
+    }
+  }
+}

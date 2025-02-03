@@ -1,4 +1,4 @@
-@use '/src/index.scss'; 
+ @use '/src/index.scss'; 
 
 #profile-form{
   padding-top: index.$d-padding-general-100;
@@ -14,6 +14,7 @@
     font-weight: 100;
     opacity: index.$MU-dimmed-opacity;
     text-transform: capitalize;
+    text-align: right;
   }
 
   .form-input-container{
@@ -39,4 +40,15 @@
     width: fit-content;
     align-self: flex-end;
   };
+}
+
+@media (max-width:850px){
+  #profile-form{
+    .form-input-container{
+      .form-input{
+        min-width: 260px;
+        max-width: 260px;
+      }
+    }
+  }
 }

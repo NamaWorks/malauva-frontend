@@ -53,3 +53,31 @@
 };
 
 }
+
+@media (max-width: 850px){
+  #signup-page{
+    height: 100%;
+    >div:last-child{
+      overflow: hidden;
+      display: flex;
+      width: 100%;
+      border-bottom-left-radius: index.$d-home-about-border-radius;
+      min-height: 25svh;
+      
+      img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      } 
+    }
+    .signup-container{
+      .signup-social{
+        .signup-social-buttons{
+          flex-direction: column;
+          gap: index.$d-gap-general-050;
+        }
+      }
+    }
+  }
+}
