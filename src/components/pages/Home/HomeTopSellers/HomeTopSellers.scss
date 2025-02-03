@@ -16,3 +16,11 @@
     padding: index.$d-padding-general-050;
   }
 }
+
+@media (max-width:550px){
+  #home-top-sellers{
+    #top-sellers-container{
+      flex-direction: column;
+    }
+  }
+}

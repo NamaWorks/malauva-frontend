@@ -35,3 +35,9 @@
     scale: 1.2;
   }
 }
+
+@media (max-width: 550px){
+  .wine-card{
+    max-width: 100%;
+  }
+}
