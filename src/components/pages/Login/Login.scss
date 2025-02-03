@@ -50,6 +50,19 @@
       object-fit: cover;
       object-position: center;
     }
-};
+  };
 
+}
+
+@media (max-width: 850px){
+  #login-page{
+    .login-container{
+      .login-social{
+        .login-social-buttons{
+          flex-direction: column;
+          gap: index.$d-gap-general-050;
+        }
+      }
+    }
+  }
 }
