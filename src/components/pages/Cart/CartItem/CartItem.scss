@@ -67,3 +67,26 @@
 }
 
 }
+
+@media (max-width:1000px){
+  .cart-item{
+    flex-direction: column;
+    gap: index.$d-gap-general-050;
+    .cart-item-horizontal-container{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      gap: index.$d-gap-general-025;
+      text-align: center;
+    }
+
+    .cart-item-horizontal-container:last-of-type{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

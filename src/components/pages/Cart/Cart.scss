@@ -39,13 +39,16 @@
     
     .radio-input{
       display: flex;
+      // flex-wrap: wrap;
       gap: index.$d-gap-general-025;
       
       input {
         appearance: none;
         
         border-radius: 50%;
+        min-width: 20px;
         width: 20px;
+        min-height: 20px;
         height: 20px;
         
         border: 2px solid #999;
@@ -81,3 +84,17 @@
   
   
 };
+
+@media (max-width: 1000px){
+  #cart-page{
+    flex-direction: column;
+    .cart-page-products{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: end;
+      justify-content: center;
+      gap: index.$d-gap-general-200;
+    }
+  }
+}
