@@ -35,7 +35,7 @@ export const proceedToPayment = async (userData:undefined) => {
       clearCartAfterPurchase(userData)
     }
 
-    alert(`We're working on the payment section of the page. Your purchase has ben recorded in our DB`)
+    alert(`We're working on the payment section of the page. Your purchase has been recorded in our DB`)
   } catch (err) {
     console.log(err)
   }

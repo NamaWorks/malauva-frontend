@@ -16,6 +16,7 @@ import { overAgeChecker } from "/src/utils/functions/ui_fn/overAgeChecker";
 import { filterProducts } from "../../../utils/functions/filters_fn/filterProducts";
 import { submitFilters } from "../../../utils/functions/filters_fn/submitFilters";
 import useSubmitFilters from "../../../utils/hooks/useSubmitFilters";
+import NavigationButton from "../../elements/buttons/NavigationButton/NavigationButton";
 
 const Products = () => {
   const { fetchWines, setFetchWines } = useContext(WinesContext);
@@ -37,7 +38,8 @@ const Products = () => {
   const [ priceValue, setPriceValue ] = useState<Number | string>('price');
   const [ temperatureValue, setTemperatureValue ] = useState<Number | string>('temperature');
   const [ sortValue, setSortValue ] = useState<string>('sort');
-  
+  const [ winInnerWidth, setWinInnerWidth ] = useState<number>(window.innerWidth)
+  const [ showFilters, setShowFilters ] = useState<boolean>(false)
 
   useEffect(() => {
     setCurrentPage("products");
@@ -90,15 +92,18 @@ const Products = () => {
     <>
       <main id="products-page">
         <section className="products-page-container" id="products-filter">
-          <div className="products-filter-container">
-            <div>
-              <ProductsFilterSelect selectName="origins" allText="Origins" arr={wineOrigins} />
-              <ProductsFilterSelect selectName="taste" allText="Taste" arr={wineTastes} />
-              <ProductsFilterSelect selectName="price" allText="Price" arr={prepareIntervals(winePrices)} />
-              <ProductsFilterSelect selectName="temperature" allText="Temperature" arr={prepareIntervals(wineTemps)} />
-              <ProductsFilterSelect selectName="sort" allText="Sort" arr={["alphabetically", "high price", "low price", "relevance"]} />
+        <div className="products-filter-container shown">
+          {winInnerWidth<=800 && (<UserInterfaceButton text={showFilters ? 'hide filters' : 'show filters'} fnc={()=>{setShowFilters(!showFilters)}} />)}
+            <div className={`filters-container ${showFilters ? 'filters-shown' : 'filters-hidden'}`}>
+              <div>
+                <ProductsFilterSelect selectName="origins" allText="Origins" arr={wineOrigins} />
+                <ProductsFilterSelect selectName="taste" allText="Taste" arr={wineTastes} />
+                <ProductsFilterSelect selectName="price" allText="Price" arr={prepareIntervals(winePrices)} />
+                <ProductsFilterSelect selectName="temperature" allText="Temperature" arr={prepareIntervals(wineTemps)} />
+                <ProductsFilterSelect selectName="sort" allText="Sort" arr={["alphabetically", "high price", "low price", "relevance"]} />
+              </div>
+              <UserInterfaceButton text="filter" color="pink" fnc={()=>{useSubmitFilters({setOriginsValue, setTasteValue, setPriceValue, setTemperatureValue, setSortValue}); console.warn(`submit button clicked`)}}/>
             </div>
-            <UserInterfaceButton text="filter" color="pink" fnc={()=>{useSubmitFilters({setOriginsValue, setTasteValue, setPriceValue, setTemperatureValue, setSortValue}); console.warn(`submit button clicked`)}}/>
           </div>
         </section>
         <section className="products-page-container" id="products-container">
