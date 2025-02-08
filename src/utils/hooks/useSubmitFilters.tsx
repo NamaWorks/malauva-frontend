@@ -1,6 +1,6 @@
 import React from 'react'
 
-const useSubmitFilters = ({setOriginsValue, setTasteValue, setPriceValue, setTemperatureValue, setSortValue}) => {
+const useSubmitFilters = ({setOriginsValue, setTasteValue, setPriceValue, setTemperatureValue, setSortValue}: {setOriginsValue: string, seTasteValue: string, setPriceValue: number, setTemperatureValue:number, setSortValue: string}):void => {
   const selectDomItems = document.querySelectorAll(`.products-filter-select`)
   selectDomItems.forEach((item)=>{
     const id = item.id.split('-')[1]

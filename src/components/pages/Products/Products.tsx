@@ -17,6 +17,7 @@ import { filterProducts } from "../../../utils/functions/filters_fn/filterProduc
 import { submitFilters } from "../../../utils/functions/filters_fn/submitFilters";
 import useSubmitFilters from "../../../utils/hooks/useSubmitFilters";
 import NavigationButton from "../../elements/buttons/NavigationButton/NavigationButton";
+import { sortProducts } from "../../../utils/functions/filters_fn/sortProducts";
 
 const Products = () => {
   const { fetchWines, setFetchWines } = useContext(WinesContext);
@@ -86,7 +87,10 @@ const Products = () => {
     const filteredArr = filterProducts(originsValue, tasteValue, priceValue, temperatureValue, sortValue, fetchWines)
     setFilteredWines(filteredArr)
     useSubmitFilters({setOriginsValue, setTasteValue, setPriceValue, setTemperatureValue, setSortValue})
+    sortProducts(filteredArr, sortValue)
   },[originsValue, tasteValue, priceValue, temperatureValue, sortValue, fetchWines, loading])
+
+  window.addEventListener('resize', ()=>{setWinInnerWidth(window.innerWidth)})
 
   return (
     <>
@@ -100,7 +104,7 @@ const Products = () => {
                 <ProductsFilterSelect selectName="taste" allText="Taste" arr={wineTastes} />
                 <ProductsFilterSelect selectName="price" allText="Price" arr={prepareIntervals(winePrices)} />
                 <ProductsFilterSelect selectName="temperature" allText="Temperature" arr={prepareIntervals(wineTemps)} />
-                <ProductsFilterSelect selectName="sort" allText="Sort" arr={["alphabetically", "high price", "low price", "relevance"]} />
+                <ProductsFilterSelect selectName="sort" allText="Sort" arr={["alphabetically", "high price", "low price"]} />
               </div>
               <UserInterfaceButton text="filter" color="pink" fnc={()=>{useSubmitFilters({setOriginsValue, setTasteValue, setPriceValue, setTemperatureValue, setSortValue}); console.warn(`submit button clicked`)}}/>
             </div>
