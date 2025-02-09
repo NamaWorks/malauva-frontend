@@ -8,17 +8,13 @@ export const sortProducts = (products: Wine[], sortKind:string) :Wine[] => {
     break;
 
   case 'high price':
-    
+    products.sort((a,b)=>{return (a.price > b.price) ? -1 : (a.price < b.price) ? 1 : 0})
     break;
-
-  case 'low price':
     
+    case 'low price':
+    products.sort((a,b)=>{return (a.price < b.price) ? -1 : (a.price > b.price) ? 1 : 0})  
     break;
-
-  case 'low price':
-    
-    break;
-
+      
   default:
     break;
  } 
