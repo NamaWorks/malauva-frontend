@@ -66,7 +66,7 @@ const SignupForm = () => {
           <Sublink fnc={():void=>{setPasswordVisible(!passwordVisible)}} text={passwordVisible ? 'Hide Password' : 'Show Password'} color="dark"/>
         </div>
 
-        <div className="signup-form-div">
+        {/* <div className="signup-form-div">
           <label htmlFor="signup-form-repeat-password">
             signup repeat password input
           </label>
@@ -84,7 +84,7 @@ const SignupForm = () => {
             }}
           />
           <Sublink fnc={():void=>{setRepeatPasswordVisible(!repeatPasswordVisible)}} text={repeatPasswordVisible ? 'Hide Password' : 'Show Password'} color="dark"/>
-        </div>
+        </div> */}
 
         <UserInterfaceButton
           text="Signup"

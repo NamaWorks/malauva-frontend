@@ -7,6 +7,12 @@
   flex-direction: column;
   width: 100%;
   gap: index.$d-gap-general-025;
+
+  .sublink{
+    line-break: none;
+    min-width: 120px;
+    // width: 100%;
+  }
  
   label{
     // display: none;
