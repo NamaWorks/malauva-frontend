@@ -27,6 +27,8 @@ export const submitProfileInfoUpdate = async (newUsername: string, newPersonName
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`)
+    } else {
+      window.location.reload()
     }
 
   } catch (err) {
