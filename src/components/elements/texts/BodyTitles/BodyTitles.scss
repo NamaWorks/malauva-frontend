@@ -5,6 +5,7 @@
   font-weight: 500;
   color: index.$MU-dark-200;
   text-transform: uppercase;
+  line-height: 25px;
 }
 
 .accent-font{
@@ -14,6 +15,7 @@
 
 .body-title-h1 {
   font-size: index.$h1-primary-font-size;
+  line-height: 65px;
   .accent-font{
     font-size: index.$h1-accent-font-size;
   }
@@ -21,6 +23,7 @@
 
 .body-title-h2 {
   font-size: index.$h2-primary-font-size;
+  line-height: 60px;
   .accent-font{
     font-size: index.$h2-accent-font-size;
   }
@@ -28,6 +31,7 @@
 
 .body-title-h3 {
   font-size: index.$h3-primary-font-size;
+  line-height: 50px;
   .accent-font{
     font-size: index.$h3-accent-font-size;
   }
@@ -35,6 +39,7 @@
 
 .body-title-h4 {
   font-size: index.$h4-primary-font-size;
+  line-height: 45px;
   .accent-font{
     font-size: index.$h4-accent-font-size;
   }
@@ -42,6 +47,7 @@
 
 .body-title-h5 {
   font-size: index.$h5-primary-font-size;
+  line-height: 35px;
   .accent-font{
     font-size: index.$h5-accent-font-size;
   }
@@ -49,6 +55,7 @@
 
 .body-title-h6 {
   font-size: index.$h6-primary-font-size;
+  line-height: 25px;
   .accent-font{
     font-size: index.$h6-accent-font-size;
   }
@@ -56,6 +63,7 @@
 
 .body-title-h7 {
   font-size: index.$h7-primary-font-size;
+  line-height: 45px;
   .accent-font{
     font-size: index.$h7-accent-font-size;
   }

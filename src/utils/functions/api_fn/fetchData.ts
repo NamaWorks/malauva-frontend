@@ -2,7 +2,7 @@ import { apiUrl } from "../../../data/globalVariables";
 
 export const fetchData = async (
   endpoint: string
-): Promise<[] | undefined | void | Response> => {
+): Promise<[] | undefined | void | Response | any> => {
   const token = sessionStorage.getItem('token');
 
   try {

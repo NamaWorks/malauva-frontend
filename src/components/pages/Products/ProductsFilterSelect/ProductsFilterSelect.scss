@@ -4,12 +4,18 @@
   background-color: transparent;
   color: index.$MU-dark-200;
   text-transform: capitalize;
-  // width: 100%;
+  width: 15%;
   text-align: end;
   // min-width: 10svw;
   option{
     ::before{
       display: none;
     }
+  }
+}
+
+@media (max-width:800px){
+  .products-filter-select{
+    width: 100%;
   }
 }

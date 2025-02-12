@@ -14,6 +14,7 @@
       align-items: center;
       justify-content: center;
       gap: index.$d-gap-general-100;
+
       div{
         display: flex;
         flex-direction: row;
@@ -30,7 +31,7 @@
     padding: index.$d-padding-general-100;
     justify-content: center;
     align-items: top;
-    gap: index.$d-gap-general-100;
+    gap: index.$d-gap-general-200;
   }
 
   .skip-one{

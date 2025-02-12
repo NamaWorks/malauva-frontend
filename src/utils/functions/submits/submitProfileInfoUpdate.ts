@@ -1,7 +1,7 @@
 import { apiUrl } from "../../../data/globalVariables"
 import { fetchData } from "../api_fn/fetchData"
 
-export const submitProfileInfoUpdate = async (newUsername: string, newPersonName: string, newPhoneNumber: number, newEmail:string,newPassword: string) => {
+export const submitProfileInfoUpdate = async (newUsername: string, newPersonName: string, newPhoneNumber: number, newEmail:string,newPassword: string):boolean => {
   const originalUser = await fetchData('/users/profile')
   console.table(originalUser)
 
@@ -27,12 +27,15 @@ export const submitProfileInfoUpdate = async (newUsername: string, newPersonName
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`)
+      return false
     } else {
       window.location.reload()
+      return true
     }
 
   } catch (err) {
     console.error('Error:', err)
+    return false
   }
 }
 

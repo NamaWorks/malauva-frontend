@@ -1,11 +1,14 @@
+import { NotificationContext } from '../../../../utils/contexts/contexts'
 import { fetchData } from '../../../../utils/functions/api_fn/fetchData'
 import { newProfileInfoChecker, submitProfileInfoUpdate } from '../../../../utils/functions/submits/submitProfileInfoUpdate'
 import Sublink from '../../../elements/Navbar/Sublink/Sublink'
 import UserInterfaceButton from '/src/components/elements/buttons/UserInterfaceButton/UserInterfaceButton'
 import '/src/components/pages/Profile/ProfileInfoUpdateForm/ProfileInfoUpdateForm.scss'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 const ProfileInfoUpdateForm = () => {
+
+  const {notificationOn, setNotificationOn, hideNotification, setHideNotification, notificationText, setNotificationText, notificationColor, setNotificationColor} = useContext(NotificationContext)
 
   const [idNumber, setIdNumber] = useState<string>();
   const [username, setUsername] = useState<string>();
@@ -21,7 +24,7 @@ const ProfileInfoUpdateForm = () => {
   const [ newEmail, setNewEmail ] = useState<string>();
   const [ newPassword, setNewPassword ] = useState<string>();
 
-  const [ changePasswordVisible, setChangePasswordVisible ] = useState<string>(false);
+  const [ changePasswordVisible, setChangePasswordVisible ] = useState<boolean>(false);
 
 
   useEffect(() => {
@@ -83,7 +86,15 @@ const ProfileInfoUpdateForm = () => {
         <input id="profile-form-payment" className="signup-input input-email form-input" type="number" placeholder={'payment method pending'}/>
       </div> */}
 
-      <UserInterfaceButton text='save' color='pink' kind='regular' fnc={(e:Event)=>{e.preventDefault(); submitProfileInfoUpdate(newUsername, newPersonName, newPhoneNumber, newEmail, newPassword)}} extraClass='profile-form-button'/>
+      <UserInterfaceButton text='save' color='pink' kind='regular' 
+      fnc={
+        (e:Event)=>{
+          e.preventDefault(); 
+          const changeOk = submitProfileInfoUpdate(newUsername, newPersonName, newPhoneNumber, newEmail, newPassword);
+
+          }
+        } 
+      extraClass='profile-form-button'/>
 
     </form>
     </>
