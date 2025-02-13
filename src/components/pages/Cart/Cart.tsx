@@ -9,7 +9,6 @@ import LinkText from '../../elements/texts/LinkText/LinkText';
 import PriceText from '../../elements/texts/PriceText/PriceText';
 import './Cart.scss';
 import CartItem from './CartItem/CartItem';
-import './Cart.scss';
 
 const Cart = () => {
   const [ cartItemsReady, setCartItemsReady ] = useState<any[]>();
