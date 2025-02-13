@@ -16,7 +16,6 @@ export const submitLogin = async({email, password}:{email: string | undefined, p
 
 
     if (data.status === 200){
-      window.location.href = '/home'
       const dataResponse = await data.json()
       sessionStorage.setItem('token', dataResponse.token)
     } else {console.log('not worked')}

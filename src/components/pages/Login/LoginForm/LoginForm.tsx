@@ -6,6 +6,7 @@ import { submitLogin } from '/src/utils/functions/submits/submitLogin'
 import { NavigationContext, NotificationContext } from '/src/utils/contexts/contexts'
 import { redirectToUrl } from '/src/utils/functions/navigation_fn/redirectToUrl'
 import Sublink from '../../../elements/Navbar/Sublink/Sublink'
+import Notification from '../../../elements/Notification/Notification'
 
 const LoginForm = () => {
 
@@ -26,7 +27,7 @@ const LoginForm = () => {
     if(loggedIn){
       redirectToUrl('home')
     }
-  },[loggedIn])
+  },[])
   
   return (
     <>
@@ -61,7 +62,24 @@ const LoginForm = () => {
           fnc={async(e:Event) => {
             e.preventDefault()
             const loginStatus = await submitLogin({email, password})
-            loginStatus == 200 ? (setLoggedIn(true), setNotificationColor('green'), setNotificationText('credentials ok')) : ( setLoggedIn(false), setNotificationColor('pink'), setNotificationText('something went wrong'));
+            if(loginStatus == 200) {
+              setLoggedIn(true);
+              setNotificationColor('green');
+              setNotificationText('credentials ok. Redirecting to Home');
+              setNotificationOn(true);
+              setTimeout(() => {
+                setNotificationOn(false)
+                redirectToUrl('home')
+              }, 2000);
+            } else { 
+              setLoggedIn(false);
+              setNotificationColor('pink');
+              setNotificationText('something went wrong');
+              setNotificationOn(true)
+              setTimeout(() => {
+                setNotificationOn(false)
+              }, 4000);
+            }
             setNotificationOn(true)
           }}
           extraClass="login-form-button"

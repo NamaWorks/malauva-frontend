@@ -1,6 +1,7 @@
 import { apiUrl } from "../../../data/globalVariables"
 import { fetchData } from "../api_fn/fetchData"
 import { redirectToUrl } from "../navigation_fn/redirectToUrl";
+import { submitLogout } from "./submitLogout";
 
 export const submitDeactivateAccount = async () => {
   try {
@@ -16,10 +17,11 @@ export const submitDeactivateAccount = async () => {
     })
 
     if(userRemoved.status === 200){
-      redirectToUrl('home')
-    }
+      return true
+    } else {return false}
 
   } catch (err) {
     console.log(err)
+    return false
   }
 }

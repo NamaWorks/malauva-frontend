@@ -1,11 +1,16 @@
-import { submitLogin } from "../../../../utils/functions/submits/submitLogin";
-import Sublink from "../../../elements/Navbar/Sublink/Sublink";
+import { NotificationContext } from "/src/utils/contexts/contexts";
+import { submitLogin } from "/src/utils/functions/submits/submitLogin";
+import Sublink from "/src/components/elements/Navbar/Sublink/Sublink";
 import "./SignupForm.scss";
 import UserInterfaceButton from "/src/components/elements/buttons/UserInterfaceButton/UserInterfaceButton";
 import { signupSubmit } from "/src/utils/functions/submits/submitSignup";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { redirectToUrl } from "../../../../utils/functions/navigation_fn/redirectToUrl";
 
 const SignupForm = () => {
+
+const {notificationOn, setNotificationOn, hideNotification, setHideNotification, notificationText, setNotificationText, notificationColor, setNotificationColor} = useContext(NotificationContext)
+
   // const [idNumber, setIdNumber] = useState<string>();
   const [personName, setPersonName] = useState<string>();
   const [email, setEmail] = useState<string>();
@@ -66,31 +71,11 @@ const SignupForm = () => {
           <Sublink fnc={():void=>{setPasswordVisible(!passwordVisible)}} text={passwordVisible ? 'Hide Password' : 'Show Password'} color="dark"/>
         </div>
 
-        {/* <div className="signup-form-div">
-          <label htmlFor="signup-form-repeat-password">
-            signup repeat password input
-          </label>
-          <input
-            id="signup-form-repeat-password"
-            className="signup-input input-password form-input"
-            type={repeatPasswordVisible ? "text" : "password" }
-            placeholder="Repeat password"
-            onChange={(e) => {
-              if (e.target.value == password) {
-                setPasswordVerification(true);
-              } else {
-                setPasswordVerification(false);
-              }
-            }}
-          />
-          <Sublink fnc={():void=>{setRepeatPasswordVisible(!repeatPasswordVisible)}} text={repeatPasswordVisible ? 'Hide Password' : 'Show Password'} color="dark"/>
-        </div> */}
-
         <UserInterfaceButton
           text="Signup"
           kind="regular"
           color="pink"
-          fnc={async (e): Event => {
+          fnc={async (e:Event) => {
             e.preventDefault();
             const signupStatus = await signupSubmit({
               personName,
@@ -98,10 +83,24 @@ const SignupForm = () => {
               username,
               password,
             });
-            console.log(signupStatus);
-            signupStatus = 201
-              ? submitLogin({ email, password })
-              : console.log(`something went wrong`);
+            if(signupStatus === 201){
+              setNotificationText('You signed up correctly')
+              setNotificationColor('green')
+              setNotificationOn(true)
+              setTimeout(() => {
+                setNotificationOn(false)
+                submitLogin({ email, password });
+                redirectToUrl('/home')
+              }, 2000);
+            } else {
+              console.log(`something went wrong`);
+              setNotificationText(`Check all the fields`);
+              setNotificationColor('pink');
+              setNotificationOn(true);
+              setTimeout(() => {
+                setNotificationOn(false)
+              }, 4000);
+            }
           }}
           extraClass="signup-form-button"
         />

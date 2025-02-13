@@ -7,6 +7,7 @@ import ProfileInfoUpdateForm from '/src/components/pages/Profile/ProfileInfoUpda
 import { submitLogout } from '../../../utils/functions/submits/submitLogout';
 import { submitDeactivateAccount } from '../../../utils/functions/submits/submitDeactivateAccount';
 import { NotificationContext } from '../../../utils/contexts/contexts';
+import { redirectToUrl } from '../../../utils/functions/navigation_fn/redirectToUrl';
 
 const Profile = () => {
 
@@ -15,13 +16,14 @@ const Profile = () => {
   const { notificationOn, hideNotification, notificationText, notificationColor, setNotificationOn, setHideNotification, setNotificationText, setNotificationColor } = useContext(NotificationContext)
 
   useEffect(()=>{
-    if(enableDeactivateAccount === true){
-      setNotificationColor('pink')
-      setNotificationText('Click again to Remove your account')
-      setNotificationOn(true)
+    setEnableDeactivateAccount(false)
+  },[])
 
+  useEffect(()=>{
+    if(enableDeactivateAccount === true){
+        setEnableDeactivateAccount(true)
     }
-  },[enableDeactivateAccount])
+  },[ notificationOn ])
 
 
   return (
@@ -50,8 +52,20 @@ const Profile = () => {
           {/* <LinkText text='Deactivate account' fnc={setEnableDeactivateAccount===true ? ()=>{submitDeactivateAccount()} : ()=>{setEnableDeactivateAccount(true)}}/> */}
           {
             enableDeactivateAccount ?
-            <LinkText text='Deactivate account' fnc={()=>{submitDeactivateAccount()}} />
-            : <LinkText text='Deactivate account' fnc={()=>{setEnableDeactivateAccount(!enableDeactivateAccount)}} />
+            <LinkText text='Deactivate account' fnc={()=>{
+              if(submitDeactivateAccount()){
+                setNotificationOn(false)
+                setNotificationText('account removed'); setNotificationColor('green'); setNotificationOn(true)
+                setTimeout(() => {
+                  submitLogout()
+                  redirectToUrl('/home')
+                }, 2000);}}} />
+            : <LinkText text='Deactivate account' fnc={()=>{
+              setEnableDeactivateAccount(!enableDeactivateAccount);
+              setNotificationColor('pink')
+              setNotificationText('Click again to Remove your account')
+              setNotificationOn(true)
+            }} />
           }
           {/* We need to print a notification for telling the user that needs to click twice on the Deactivate Account button to make it effective */}
           <ProfileInfoUpdateForm/>

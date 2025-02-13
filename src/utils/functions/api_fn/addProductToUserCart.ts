@@ -24,6 +24,8 @@ export const addProductToUserCart = async (productIdNumber: String, numberToAdd:
   } else{
     console.log(data.status)
   }
+
+  return data.status
 }
 
 

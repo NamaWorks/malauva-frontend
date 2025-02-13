@@ -33,7 +33,7 @@ const Footer = () => {
             id="navbar-btn-menu"
             text="faq"
             color="dark"
-            link="faq"
+            link="#"
           />
           <NavigationButton
             kind="link"

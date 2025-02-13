@@ -1,7 +1,7 @@
 import "./ProductEntry.scss";
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { NavigationContext, WinesContext } from "../../../utils/contexts/contexts";
+import { NavigationContext, NotificationContext, WinesContext } from "../../../utils/contexts/contexts";
 import { Wine } from "/src/utils/types/types";
 import { fetchData } from "/src/utils/functions/api_fn/fetchData";
 import BodyTitles from "/src/components/elements/texts/BodyTitles/BodyTitles";
@@ -15,11 +15,14 @@ import { overAgeChecker } from "/src/utils/functions/ui_fn/overAgeChecker";
 import { addProductToUserCart } from "../../../utils/functions/api_fn/addProductToUserCart";
 
 const ProductEntry = () => {
+
   const { fetchWines } = useContext<Wine[] | undefined>(WinesContext);
   let idNumber = useParams().idNumber?.toUpperCase();
   const [wineToPrint, setWineToPrint] = useState<Wine>();
   const { overAge } = useContext<boolean>(NavigationContext)
-    const [itemsNumber, setItemsNumber] = useState<number>(1)
+  const [itemsNumber, setItemsNumber] = useState<number>(1)
+
+  const {notificationOn, setNotificationOn, hideNotification, setHideNotification, notificationText, setNotificationText, notificationColor, setNotificationColor} = useContext(NotificationContext)
 
   useEffect(()=>{
     overAgeChecker(overAge)
@@ -106,7 +109,26 @@ const ProductEntry = () => {
               <p>{itemsNumber}</p>
             <button onClick={()=>setItemsNumber(itemsNumber+1)}>+</button>
         </div>
-          <UserInterfaceButton kind="bold" color="green" text="Add to cart" fnc={async():Promise<void>=>{await addProductToUserCart(window.location.href.split('/').slice(-1)[0], itemsNumber)}}/>
+          <UserInterfaceButton kind="bold" color="green" text="Add to cart" 
+            fnc={
+              async():Promise<void>=>{
+                const res = await addProductToUserCart(window.location.href.split('/').slice(-1)[0], itemsNumber)
+                if(res === 200){
+                  setNotificationColor('green');
+                  setNotificationText('Product added to cart');
+                  setNotificationOn(true);
+                  setTimeout(() => {
+                    setNotificationOn(false)
+                  }, 2000);
+                } else {
+                  setNotificationColor('pink');
+                  setNotificationText('Product could not be added to the cart');
+                  setNotificationOn(true);
+                  setTimeout(() => {
+                    setNotificationOn(false)
+                  }, 2000);
+                }
+                }}/>
         </div>
       </main>
     </div>

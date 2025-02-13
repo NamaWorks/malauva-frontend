@@ -1,15 +1,15 @@
 @use '/src/index.scss';
 
 .mu-notification{
-  position: absolute;
+  position: fixed;
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  // align-items: center;
+  // justify-content: center;
   gap: index.$d-gap-general-050;
   padding: index.$d-padding-general-050 index.$d-padding-general-100;
   border-radius: index.$btn-border-radius;
-  top: 20px;
+  top: 120px;
 
   button{
     position: relative;

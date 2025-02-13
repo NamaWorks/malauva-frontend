@@ -4,4 +4,3 @@ export const removeNotification = ():void => {
     notification.remove()
   })
 }
-
