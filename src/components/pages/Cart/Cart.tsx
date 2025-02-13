@@ -9,14 +9,13 @@ import LinkText from '../../elements/texts/LinkText/LinkText';
 import PriceText from '../../elements/texts/PriceText/PriceText';
 import './Cart.scss';
 import CartItem from './CartItem/CartItem';
-import '/src/components/pages/cart/Cart.scss';
+import './Cart.scss';
 
 const Cart = () => {
   const [ cartItemsReady, setCartItemsReady ] = useState<any[]>();
   const [ totalPrice, setTotalPrice] = useState<number>(0);
   const [ shippingCost, setShippingCost ] = useState<number>(0);
   const [ updateData , setUpdateData ] = useState<boolean>(false);
-  // const [ priceToPrint , setPriceToPrint ] = useState<Number>(0);
   const [ userData , setUserData ] = useState<any>();
   
   useEffect(()=>{

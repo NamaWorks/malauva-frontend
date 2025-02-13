@@ -11,11 +11,11 @@ const LinkText = ({
   link?: string,
   kind?: string,
   color?: string,
-  fnc?: ()=>void
+  fnc?: () => void
 }) => {
   return (
     <>
-      <a className={`link link-${kind} link-${color}`} href={link} onClick={()=>{fnc}} >{text}</a>
+      <a className={`link link-${kind} link-${color}`} href={link} onClick={fnc} >{text}</a>
     </>
   );
 };
