@@ -3,7 +3,7 @@ import { asignPurchaseIdNumber } from "./asignIdNumber"
 import { clearCartAfterPurchase } from "./clearCartAfterPurchase"
 import { fetchData } from "./fetchData"
 
-export const proceedToPayment = async (userData:undefined) => {
+export const proceedToPayment = async (userData:any) => {
   try {
     const itemsArr = await Promise.all(userData.cartItems.map(async (item:string)=>{
       const data = await fetchData(`/wines/idNumber/${JSON.parse(item).itemData}`)

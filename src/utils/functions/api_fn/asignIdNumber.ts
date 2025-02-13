@@ -1,4 +1,4 @@
-import { fetchData } from "/src/utils/functions/api_fn/fetchData"
+import { fetchData } from "../../../../src/utils/functions/api_fn/fetchData"
 
 export const asignUserIdNumber = async () => {
   const lastId = await fetchData('/users/lastid')

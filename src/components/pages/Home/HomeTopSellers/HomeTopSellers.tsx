@@ -1,12 +1,13 @@
 import { WinesContext } from "../../../../utils/contexts/contexts";
+import { WinesContextInterface } from "../../../../utils/types/interfaces";
 import { Wine } from "../../../../utils/types/types";
 import ProductCard from "../../../elements/ProductCard/ProductCard";
 import BodyTitles from "../../../elements/texts/BodyTitles/BodyTitles";
 import "./HomeTopSellers.scss";
-import React, { useContext } from "react";
+import { useContext } from "react";
 
 const HomeTopSellers = () => {
-  const { fetchWines } = useContext(WinesContext);
+  const { fetchWines } = useContext(WinesContext) as WinesContextInterface;
 
   return (
     <>

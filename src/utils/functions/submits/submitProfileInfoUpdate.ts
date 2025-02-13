@@ -1,7 +1,7 @@
 import { apiUrl } from "../../../data/globalVariables"
 import { fetchData } from "../api_fn/fetchData"
 
-export const submitProfileInfoUpdate = async (newUsername: string, newPersonName: string, newPhoneNumber: number, newEmail:string,newPassword: string):boolean => {
+export const submitProfileInfoUpdate = async (newUsername: string, newPersonName: string, newPhoneNumber: number, newEmail:string,newPassword: string): Promise<boolean> => {
   const originalUser = await fetchData('/users/profile')
   console.table(originalUser)
 
@@ -27,7 +27,6 @@ export const submitProfileInfoUpdate = async (newUsername: string, newPersonName
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`)
-      return false
     } else {
       window.location.reload()
       return true
@@ -44,50 +43,44 @@ export const newProfileInfoChecker =  (newInput: string, inputField: string) => 
     case 'username':
       usernameChecker(newInput)
       return true
-      break;
   
     case 'name':
       personNameChecker(newInput)
       return true
-      break;
 
     case 'phone':
       phoneChecker(newInput)
       return true
-      break;
 
     case 'email':
       emailChecker(newInput)
       return true
-      break;
 
     case 'password':
       passwordChecker(newInput)
       return true
-      break;
 
     default:
       return false
-      break;
   }
 }
 
-function usernameChecker (username){
+function usernameChecker (username:string){
   console.log(username)
 }
 
-function personNameChecker (personName){
+function personNameChecker (personName:string){
   console.log(personName)
 }
 
-function phoneChecker (phoneNumber){
+function phoneChecker (phoneNumber:string){
   console.log(phoneNumber)
 }
 
-function emailChecker (email){
+function emailChecker (email:string){
   console.log(email)
 }
 
-function passwordChecker (password){
+function passwordChecker (password:string){
   console.log(password)
 }

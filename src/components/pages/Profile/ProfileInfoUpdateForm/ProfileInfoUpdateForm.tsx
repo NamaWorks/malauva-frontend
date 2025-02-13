@@ -1,42 +1,40 @@
 import { NotificationContext } from '../../../../utils/contexts/contexts'
 import { fetchData } from '../../../../utils/functions/api_fn/fetchData'
+import { redirectToUrl } from '../../../../utils/functions/navigation_fn/redirectToUrl'
 import { newProfileInfoChecker, submitProfileInfoUpdate } from '../../../../utils/functions/submits/submitProfileInfoUpdate'
+import { NotificationContextInterface } from '../../../../utils/types/interfaces'
 import Sublink from '../../../elements/Navbar/Sublink/Sublink'
-import UserInterfaceButton from '/src/components/elements/buttons/UserInterfaceButton/UserInterfaceButton'
-import '/src/components/pages/Profile/ProfileInfoUpdateForm/ProfileInfoUpdateForm.scss'
-import React, { useContext, useEffect, useState } from 'react'
+import UserInterfaceButton from '../../../elements/buttons/UserInterfaceButton/UserInterfaceButton'
+import '../../../pages/Profile/ProfileInfoUpdateForm/ProfileInfoUpdateForm.scss'
+import {useContext, useEffect, useState } from 'react'
 
 const ProfileInfoUpdateForm = () => {
 
-  const {notificationOn, setNotificationOn, hideNotification, setHideNotification, notificationText, setNotificationText, notificationColor, setNotificationColor} = useContext(NotificationContext)
+  const { setNotificationOn, setNotificationText, setNotificationColor } = useContext(NotificationContext) as NotificationContextInterface
 
   const [idNumber, setIdNumber] = useState<string>();
   const [username, setUsername] = useState<string>();
   const [personName, setPersonName] = useState<string>();
   const [phoneNumber, setPhoneNumber] = useState<string | number>();
   const [email, setEmail] = useState<string>();
-  // const [adresses, setAdresses] = useState<string[]>()
-  // const [paymentMethods, setPaymentMethods] = useState<string|number []>()
 
-  const [ newUsername, setNewusername ] = useState<string>();
-  const [ newPersonName, setNewPersonName ] = useState<string>();
-  const [ newPhoneNumber, setNewPhoneNumber ] = useState<number>();
-  const [ newEmail, setNewEmail ] = useState<string>();
-  const [ newPassword, setNewPassword ] = useState<string>();
+  const [ newUsername, setNewusername ] = useState<string>('');
+  const [ newPersonName, setNewPersonName ] = useState<string>('');
+  const [ newPhoneNumber, setNewPhoneNumber ] = useState<number | string>(0);
+  const [ newEmail, setNewEmail ] = useState<string>('');
+  const [ newPassword, setNewPassword ] = useState<string>('');
 
   const [ changePasswordVisible, setChangePasswordVisible ] = useState<boolean>(false);
-
 
   useEffect(() => {
     const fetchProfileData = async () => {
       const data = await fetchData('/users/profile');
-      setIdNumber(data.idNumber)
-      setUsername(data.username)
-      setPersonName(data.personName)
-      setPhoneNumber(data.phoneNumber)
-      setEmail(data.email)
-      // setAdresses(data.adresses)
-      // setPaymentMethods(data.paymentMethods)
+      setIdNumber(data.idNumber);
+      setUsername(data.username);
+      setPersonName(data.personName);
+      setPhoneNumber(data.phoneNumber);
+      setEmail(data.email);
+      console.log(idNumber)
     };
     fetchProfileData();
   }, []);
@@ -57,14 +55,8 @@ const ProfileInfoUpdateForm = () => {
 
       <div className='form-input-container'>
         <label htmlFor="signup-form-phone">phone number</label>
-        <input id="profile-form-phone" className="signup-input input-phone form-input" type="number" placeholder={phoneNumber} onChange={(e)=>{if(newProfileInfoChecker(e.target.value, e.target.id.split('-')[e.target.id.split('-').length-1])){setNewPhoneNumber(e.target.value)}}}/>
+        <input id="profile-form-phone" className="signup-input input-phone form-input" type="number" placeholder={phoneNumber?.toString()} onChange={(e)=>{if(newProfileInfoChecker(e.target.value, e.target.id.split('-')[e.target.id.split('-').length-1])){setNewPhoneNumber(Number(e.target.value))}}}/>
       </div>
-
-    {/* tenemos que hacer un loop por las locations del usuario y añadir un espacio para crear una nueva locaion */}
-      {/* <div className='form-input-container'>
-        <label htmlFor="signup-form-location">location</label>
-        <input id="profile-form-location" className="signup-input input-phone form-input" type="text" placeholder={'location pending'}/>
-      </div> */}
 
       <div className='form-input-container'>
         <label htmlFor="signup-form-email">email</label>
@@ -77,23 +69,32 @@ const ProfileInfoUpdateForm = () => {
         <label htmlFor="signup-form-password">change password</label>
         <input id="profile-form-password" className="signup-input input-password form-input" type={changePasswordVisible ? 'text' : 'password'} placeholder="new password" onChange={(e)=>{if(newProfileInfoChecker(e.target.value, e.target.id.split('-')[e.target.id.split('-').length-1])){setNewPassword(e.target.value)}}}/>
         <Sublink fnc={():void=>{setChangePasswordVisible(!changePasswordVisible)}} text={changePasswordVisible ? 'Hide Password' : 'Show Password'} color="dark"/>
-          
       </div>
 
-      {/* tenemos que haceer un loop por los métodos de pago del usuario y añadir uno para crear un nuevo método */}
-      {/* <div className='form-input-container'>
-        <label htmlFor="signup-form-payment">Payment methods</label>
-        <input id="profile-form-payment" className="signup-input input-email form-input" type="number" placeholder={'payment method pending'}/>
-      </div> */}
-
       <UserInterfaceButton text='save' color='pink' kind='regular' 
-      fnc={
-        (e:Event)=>{
+      fnc={():any=>{
+        async (e: React.MouseEvent<HTMLButtonElement>)=>{
           e.preventDefault(); 
-          const changeOk = submitProfileInfoUpdate(newUsername, newPersonName, newPhoneNumber, newEmail, newPassword);
-
+          const changeOk = await submitProfileInfoUpdate(newUsername, newPersonName, Number(newPhoneNumber), newEmail, newPassword);
+          if (changeOk) {
+            setNotificationText('Changes saved')
+            setNotificationColor('green')
+            setNotificationOn(true)
+            setTimeout(() => {
+              setNotificationOn(false)
+              redirectToUrl('profile')
+            }, 3000);
+          } else {
+            setNotificationText('Could not save changes')
+            setNotificationColor('pink')
+            setNotificationOn(true)
+            setTimeout(() => {
+              setNotificationOn(false)
+            }, 3000);
           }
-        } 
+        }
+      } 
+      }
       extraClass='profile-form-button'/>
 
     </form>

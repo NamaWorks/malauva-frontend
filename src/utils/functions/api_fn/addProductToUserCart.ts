@@ -1,7 +1,7 @@
 import { apiUrl } from "../../../data/globalVariables";
 import { fetchData } from "./fetchData"
 
-export const addProductToUserCart = async (productIdNumber: String, numberToAdd:Number):Promise<String[]> => {
+export const addProductToUserCart = async (productIdNumber: string, numberToAdd:Number):Promise<Number> => {
 
   const user = await fetchData('/users/cart');
   const currentItemsInCart = user.cartItems;
@@ -29,8 +29,8 @@ export const addProductToUserCart = async (productIdNumber: String, numberToAdd:
 }
 
 
-function addNewProductToCartArr(originalArr:String[], newProduct:String, numberToAdd:Number=1):[] | void{
-  let parsedArr = originalArr.map(item=>JSON.parse(item))
+function addNewProductToCartArr(originalArr:string[], newProduct:string, numberToAdd:Number=1):string[]{
+  let parsedArr = originalArr.map((item)=>JSON.parse(item))
   parsedArr.forEach(item=>item.numberOfItems = Number(item.numberOfItems))
 
   const foundNewItem = parsedArr.find(item=>item.itemData===newProduct)

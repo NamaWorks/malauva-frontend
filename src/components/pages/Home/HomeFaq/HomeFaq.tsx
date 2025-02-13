@@ -1,5 +1,4 @@
 import "./HomeFaq.scss";
-import React from "react";
 
 const HomeFaq = () => {
   return (

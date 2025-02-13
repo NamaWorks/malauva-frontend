@@ -3,7 +3,7 @@ export const getPriceToPrintInCart = () => {
 
   let totalPrice = 0
 
-  const priceToPrint = priceTagsDivs.forEach((item) => {
+  priceTagsDivs.forEach((item) => {
     const itemPrice = Number(item.querySelector(`.price-amount`)?.innerHTML.replace(`$`, ``))
     totalPrice += itemPrice
   })

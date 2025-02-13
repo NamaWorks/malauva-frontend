@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { parsePath } from 'react-router-dom';
+// import { parsePath } from 'react-router-dom';
 
 // https://vite.dev/config/
 export default defineConfig({

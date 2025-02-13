@@ -5,10 +5,10 @@ export type Wine = {
   description?: string;
   picture?: string;
   taste?: string;
-  idealTemperature?:number;
+  idealTemperature:number;
   origin?: string;
   scores?: string[];
-  price?: number;
+  price: number;
   __v?: number;
   createdAt?: string;
   updatedAt?: string;
@@ -41,9 +41,9 @@ export type cartItem = {
 }
 
 export type cartReadyItem = {
-  name: String;
-  idNumber: Number;
-  numberOfItems: Number;
-  price: Number;
-  picture: String
+  name: string;
+  idNumber: string;
+  numberOfItems: number;
+  price: number;
+  picture: string
 }

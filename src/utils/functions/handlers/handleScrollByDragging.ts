@@ -1,66 +1,66 @@
-import { position } from "../types/types"
+// import { position } from "../types/types"
 
-export const handleScrollByDragging = (item:string):void=>{
+// export const handleScrollByDragging = (item:string):void=>{
 
-}
+// }
 
- export const handleMouseMove_ = (item: string) => {
-  window.onload = ()=>{
-    let held = false;
+//  export const handleMouseMove_ = (item: string) => {
+//   window.onload = ()=>{
+//     let held = false;
     
-    const element = document.querySelector("#" + item);
-    const elementRect = element?.getBoundingClientRect();
-    const parent = element?.parentElement;
+//     const element = document.querySelector("#" + item);
+//     const elementRect = element?.getBoundingClientRect();
+//     const parent = element?.parentElement;
     
-    let startMouseX = 0;
-    let startMouseY = 0;
-    let endMouseX = 0;
-    let endMouseY = 0;
+//     let startMouseX = 0;
+//     let startMouseY = 0;
+//     let endMouseX = 0;
+//     let endMouseY = 0;
     
-    let elementX = elementRect?.left;
-    let elementY = elementRect?.top;
+//     let elementX = elementRect?.left;
+//     let elementY = elementRect?.top;
     
-    const speed = 0.05;
+//     const speed = 0.05;
     
     
-    function animate(){
+//     function animate(){
       
-      const distX = endMouseX - (Math.abs(startMouseX));
-      const distY = endMouseY - (Math.abs(startMouseY));
+//       const distX = endMouseX - (Math.abs(startMouseX));
+//       const distY = endMouseY - (Math.abs(startMouseY));
       
       
-      elementX = elementX + (distX * speed);
-      elementY = elementY + (distY * speed);
+//       elementX = elementX + (distX * speed);
+//       elementY = elementY + (distY * speed);
       
-      element.style.left = elementX + "px";
-      element.style.top = elementY + "px";
+//       element.style.left = elementX + "px";
+//       element.style.top = elementY + "px";
       
-      requestAnimationFrame(animate);
+//       requestAnimationFrame(animate);
       
-      return [elementX, elementY]
-    }
-    animate();
+//       return [elementX, elementY]
+//     }
+//     animate();
     
-    document.addEventListener("mousemove", function(event){
-      if(held){
-        endMouseX = event.pageX;
-        endMouseY = event.pageY;
-      } else {
-        // console.log('choripanes')
-      }
-    })
+//     document.addEventListener("mousemove", function(event){
+//       if(held){
+//         endMouseX = event.pageX;
+//         endMouseY = event.pageY;
+//       } else {
+//         // console.log('choripanes')
+//       }
+//     })
     
-    parent?.addEventListener('mousedown', (e)=>{
-      // console.log('mousedown')
-      startMouseX = e.pageX;
-      startMouseY = e.pageY;
-      held = true
-    })
-    parent?.addEventListener('mouseup', (e)=>{
-      held = false
-      endMouseX = e.pageX;
-      endMouseY = e.pageY;
-    })
+//     parent?.addEventListener('mousedown', (e)=>{
+//       // console.log('mousedown')
+//       startMouseX = e.pageX;
+//       startMouseY = e.pageY;
+//       held = true
+//     })
+//     parent?.addEventListener('mouseup', (e)=>{
+//       held = false
+//       endMouseX = e.pageX;
+//       endMouseY = e.pageY;
+//     })
     
-  }
-  };
+//   }
+//   };

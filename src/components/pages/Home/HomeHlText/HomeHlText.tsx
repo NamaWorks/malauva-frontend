@@ -1,5 +1,4 @@
 import "./HomeHlText.scss";
-import React from "react";
 
 const HomeHlText = () => {
   return (

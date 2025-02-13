@@ -1,19 +1,20 @@
 import './Profile.scss';
 import { useContext, useEffect, useState } from 'react';
-import NavigationButton from '/src/components/elements/buttons/NavigationButton/NavigationButton';
-import BodyCopy from '/src/components/elements/texts/BodyCopy/BodyCopy';
-import LinkText from '/src/components/elements/texts/LinkText/LinkText';
-import ProfileInfoUpdateForm from '/src/components/pages/Profile/ProfileInfoUpdateForm/ProfileInfoUpdateForm';
+import NavigationButton from '../../../components/elements/buttons/NavigationButton/NavigationButton';
+import BodyCopy from '../../../components/elements/texts/BodyCopy/BodyCopy';
+import LinkText from '../../../components/elements/texts/LinkText/LinkText';
+import ProfileInfoUpdateForm from '../../../components/pages/Profile/ProfileInfoUpdateForm/ProfileInfoUpdateForm';
 import { submitLogout } from '../../../utils/functions/submits/submitLogout';
 import { submitDeactivateAccount } from '../../../utils/functions/submits/submitDeactivateAccount';
 import { NotificationContext } from '../../../utils/contexts/contexts';
 import { redirectToUrl } from '../../../utils/functions/navigation_fn/redirectToUrl';
+import { NotificationContextInterface } from '../../../utils/types/interfaces';
 
 const Profile = () => {
 
   const [ enableDeactivateAccount, setEnableDeactivateAccount ] = useState(false)
 
-  const { notificationOn, hideNotification, notificationText, notificationColor, setNotificationOn, setHideNotification, setNotificationText, setNotificationColor } = useContext(NotificationContext)
+  const { notificationOn, setNotificationOn, setNotificationText, setNotificationColor } = useContext(NotificationContext) as NotificationContextInterface
 
   useEffect(()=>{
     setEnableDeactivateAccount(false)
@@ -52,8 +53,8 @@ const Profile = () => {
           {/* <LinkText text='Deactivate account' fnc={setEnableDeactivateAccount===true ? ()=>{submitDeactivateAccount()} : ()=>{setEnableDeactivateAccount(true)}}/> */}
           {
             enableDeactivateAccount ?
-            <LinkText text='Deactivate account' fnc={()=>{
-              if(submitDeactivateAccount()){
+            <LinkText text='Deactivate account' fnc={async()=>{
+              if(await submitDeactivateAccount() === true){
                 setNotificationOn(false)
                 setNotificationText('account removed'); setNotificationColor('green'); setNotificationOn(true)
                 setTimeout(() => {

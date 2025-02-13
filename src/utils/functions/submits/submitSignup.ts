@@ -19,7 +19,7 @@ export const signupSubmit = async ({ personName, email, username, password}: { p
     body: JSON.stringify(payload),
   })
   
-  const dataResponse = await data.json()
+  // const dataResponse = await data.json()
   return data.status
 
 }

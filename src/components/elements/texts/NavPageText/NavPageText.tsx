@@ -1,5 +1,4 @@
 import './NavPageText.scss'
-import React, { Children } from 'react'
 
 const NavPageText = ({ text }: { text: string }) => {
   return (

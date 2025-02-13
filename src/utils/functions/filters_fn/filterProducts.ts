@@ -1,7 +1,7 @@
 import { Wine } from "../../types/types"
 
-export const filterProducts = (originsValue:string, tasteValue:string, priceValue:number | string, temperatureValue:number | string, sortValue:string, fetchWines:Wine[]):Array<Wine> => {
-  let filteredArr:Wine[] = [];
+export const filterProducts = (originsValue:string, tasteValue:string, priceValue:number|string, temperatureValue:number | string, sortValue:string, fetchWines:Wine[]):Array<Wine> => {
+  // let filteredArr:Wine[] = [];
 
   console.table([originsValue, tasteValue, priceValue, temperatureValue, sortValue])
   
@@ -30,7 +30,7 @@ function filterByTaste (item:Wine){
 function filterByPrice (item:Wine){
   if(priceValue === 'price'){
     return item
-  } else {
+  } else if(typeof priceValue==='number'){
     return item.price <= priceValue
   }
 }
@@ -38,7 +38,7 @@ function filterByPrice (item:Wine){
 function filterByTemperature (item:Wine){
   if(temperatureValue === 'temperature'){
     return item
-  } else {
+  } else if(typeof temperatureValue ==='number'){
     return item.idealTemperature <= temperatureValue
   }
 }

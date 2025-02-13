@@ -1,9 +1,7 @@
 import { apiUrl } from "../../../data/globalVariables"
 import { fetchData } from "../api_fn/fetchData"
-import { redirectToUrl } from "../navigation_fn/redirectToUrl";
-import { submitLogout } from "./submitLogout";
 
-export const submitDeactivateAccount = async () => {
+export const submitDeactivateAccount = async ():Promise<boolean> => {
   try {
     
     const { _id } = await fetchData('/users/profile');
@@ -18,7 +16,9 @@ export const submitDeactivateAccount = async () => {
 
     if(userRemoved.status === 200){
       return true
-    } else {return false}
+    } else {
+      return false
+    }
 
   } catch (err) {
     console.log(err)

@@ -1,6 +1,6 @@
 import BodyCopy from '../../../elements/texts/BodyCopy/BodyCopy'
 import './HomeAboutUs.scss'
-import React, { useContext, useEffect } from 'react'
+
 
 const HomeAboutUs = () => {
   return (

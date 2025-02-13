@@ -1,15 +1,16 @@
-import { NavigationContext } from '/src/utils/contexts/contexts'
-import { redirectToUrl } from '/src/utils/functions/navigation_fn/redirectToUrl'
-import '/src/components/pages/OverAge/OverAge.scss'
-import React, { useContext, useEffect } from 'react'
+import { NavigationContext } from '../../../utils/contexts/contexts'
+import { redirectToUrl } from '../../../utils/functions/navigation_fn/redirectToUrl'
+import '../../../components/pages/OverAge/OverAge.scss'
+import { useContext, useEffect } from 'react'
+import { NavigationContextInterface } from '../../../utils/types/interfaces'
 
 const OverAge = () => {
 
-  const { overAge, setOverAge } = useContext(NavigationContext)
+  const { overAge, setOverAge } = useContext(NavigationContext) as NavigationContextInterface
 
   console.log(overAge)
 
-  window.addEventListener('load', ()=>{if(overAge === 'true'){window.location.href='home'}})
+  window.addEventListener('load', ()=>{if(overAge===true){window.location.href='home'}})
 
   useEffect(()=>{
     overAge && redirectToUrl('home')
@@ -26,7 +27,7 @@ const OverAge = () => {
         <div className='overage-content-div'>
           <p>+21?</p>
           <div className='overage-buttons-container'>
-            <button className="overage-button" onClick={()=>{setOverAge(true); sessionStorage.setItem('overAge', true)}}>Y</button>
+            <button className="overage-button" onClick={()=>{setOverAge(true); sessionStorage.setItem('overAge', 'true')}}>Y</button>
             <p>/</p>
             <button className="overage-button" onClick={()=>{console.log('button clicked')}}>N</button>
           </div>

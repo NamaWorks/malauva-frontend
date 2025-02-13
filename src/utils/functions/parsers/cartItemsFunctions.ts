@@ -1,7 +1,7 @@
 import { cartItem } from "../../types/types";
 import { fetchData } from "../api_fn/fetchData"
 
-export const parseCartItems = (strArr: string[]):cartItem => {
+export const parseCartItems = (strArr: string[]):cartItem[] => {
   return strArr.map((item) => JSON.parse(item));
 };
 

@@ -1,8 +1,9 @@
-import React from 'react'
+import { UseSubmitFiltersProps } from '../types/interfaces'
 
-const useSubmitFilters = ({setOriginsValue, setTasteValue, setPriceValue, setTemperatureValue, setSortValue}: {setOriginsValue: (value: string) => void, setTasteValue: (value: string) => void, setPriceValue: (value: number | string) => void, setTemperatureValue: (value: number | string) => void, setSortValue: (value: string) => void}): void => {
+
+const useSubmitFilters = ({setOriginsValue, setTasteValue, setPriceValue, setTemperatureValue, setSortValue}: UseSubmitFiltersProps): void => {
   const selectDomItems = document.querySelectorAll(`.products-filter-select`)
-  selectDomItems.forEach((item: HTMLSelectElement) => {
+  selectDomItems.forEach((item: any) => {
     const id = item.id.split('-')[1]
     const value = item.value || '';
 

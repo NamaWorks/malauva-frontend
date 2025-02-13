@@ -1,5 +1,4 @@
 import './HomeHero.scss'
-import React from "react";
 
 const HomeHero = () => {
   return (

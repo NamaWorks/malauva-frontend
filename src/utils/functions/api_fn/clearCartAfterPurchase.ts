@@ -1,6 +1,6 @@
 import { apiUrl } from "../../../data/globalVariables";
 
-export const clearCartAfterPurchase = async (userData) => {
+export const clearCartAfterPurchase = async (userData:any) => {
   try {
     const newUser = { ...userData, cartItems:[]}
     console.log(newUser)

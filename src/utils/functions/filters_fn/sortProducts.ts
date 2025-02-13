@@ -4,15 +4,15 @@ export const sortProducts = (products: Wine[], sortKind:string) :Wine[] => {
 
  switch (sortKind) {
   case 'alphabetically':
-    products.sort((a,b) => compareAlph(a, b))
+    products.sort((a:any,b:any):any => compareAlph(a, b))
     break;
 
   case 'high price':
-    products.sort((a,b)=>{return (a.price > b.price) ? -1 : (a.price < b.price) ? 1 : 0})
+    products.sort((a:any,b:any)=>{return (a.price > b.price) ? -1 : (a.price < b.price) ? 1 : 0})
     break;
     
     case 'low price':
-    products.sort((a,b)=>{return (a.price < b.price) ? -1 : (a.price > b.price) ? 1 : 0})  
+    products.sort((a:any,b:any)=>{return (a.price < b.price) ? -1 : (a.price > b.price) ? 1 : 0})  
     break;
       
   default:
@@ -24,10 +24,11 @@ export const sortProducts = (products: Wine[], sortKind:string) :Wine[] => {
 
 
 function compareAlph (a:Wine, b:Wine){
-  const nameA = a.name;
-  const nameB = b.name;
+  const nameA:string|undefined = a.name;
+  const nameB:string|undefined = b.name;
 
-  console.log(nameA)
+  if(nameA && nameB){
+    return (nameA < nameB) ? -1 : (nameA > nameB) ? 1 : 0;
+  }
 
-  return (nameA < nameB) ? -1 : (nameA > nameB) ? 1 : 0;
 }

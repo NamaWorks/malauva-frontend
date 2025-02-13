@@ -1,4 +1,3 @@
-import React from 'react'
 import './NavbarLink.scss'
 
 const NavbarLink = ({text, link}: { text: string, link: string }) => {

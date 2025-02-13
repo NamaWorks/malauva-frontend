@@ -6,9 +6,9 @@ import { changeNumberOfItemsInUserCart } from '../../../../utils/functions/api_f
 import PriceText from '../../../elements/texts/PriceText/PriceText'
 import Sublink from '../../../elements/Navbar/Sublink/Sublink'
 
-const CartItem = ({item, updateData, setUpdateData}: {item: cartReadyItem}) => {
+const CartItem = ({item, updateData, setUpdateData}: {item: cartReadyItem, updateData:any, setUpdateData:React.Dispatch<React.SetStateAction<boolean>>}) => {
 
-  const [ itemsNumber, setItemsNumber ] = useState(item.numberOfItems)
+  const [ itemsNumber, setItemsNumber ] = useState<number>(item.numberOfItems)
 
   useEffect(()=>{
     changeNumberOfItemsInUserCart(item.idNumber, itemsNumber)

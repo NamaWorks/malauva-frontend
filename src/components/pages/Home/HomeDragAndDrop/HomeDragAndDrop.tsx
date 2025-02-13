@@ -1,13 +1,15 @@
 import { WinesContext } from '../../../../utils/contexts/contexts'
-import { handleMouseMove_, handleScrollByDragging } from '../../../../utils/functions/handleScrollByDragging'
-import useScrollByDragging from '../../../../utils/hooks/useScrollByDragging'
+import { WinesContextInterface } from '../../../../utils/types/interfaces'
+import { Wine } from '../../../../utils/types/types'
+// import { handleMouseMove_, handleScrollByDragging } from '../../../../utils/functions/handleScrollByDragging'
+// import useScrollByDragging from '../../../../utils/hooks/useScrollByDragging'
 import ProductCard from '../../../elements/ProductCard/ProductCard'
 import './HomeDragAndDrop.scss'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext} from 'react'
 
 const HomeDragAndDrop = React.memo(() => {
   
-  const { fetchWines } = useContext(WinesContext)
+  const { fetchWines } = useContext(WinesContext) as WinesContextInterface
   
   // handleScrollByDragging('drag-container')
   // useScrollByDragging('drag-container')

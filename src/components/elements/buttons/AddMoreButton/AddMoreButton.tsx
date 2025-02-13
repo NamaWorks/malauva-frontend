@@ -1,13 +1,10 @@
 import './AddMoreButton.scss'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
-const AddMoreButton = (stateSetter) => {
+const AddMoreButton = () => {
   const [itemsNumber, setItemsNumber] = useState<number>(1)
 
   useEffect(()=>{
-    // if(stateSetter){
-      // stateSetter(itemsNumber)
-    // }
   },[itemsNumber]
 )
 

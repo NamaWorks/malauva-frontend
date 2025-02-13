@@ -1,5 +1,4 @@
 import './LinkText.scss'
-import React from "react";
 
 const LinkText = ({
   text = "text pending",
@@ -12,11 +11,11 @@ const LinkText = ({
   link?: string,
   kind?: string,
   color?: string,
-  fnc?:undefined | void
+  fnc?: ()=>void
 }) => {
   return (
     <>
-      <a className={`link link-${kind} link-${color}`} href={link} onClick={fnc} >{text}</a>
+      <a className={`link link-${kind} link-${color}`} href={link} onClick={()=>{fnc}} >{text}</a>
     </>
   );
 };

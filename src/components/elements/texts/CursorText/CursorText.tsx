@@ -1,6 +1,3 @@
-
-import React from 'react'
-
 const CursorText = ({text}: {text: string}) => {
   return (
     <div className='cursor-text'>

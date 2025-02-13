@@ -1,4 +1,4 @@
-import { apiUrl } from '/src/data/globalVariables';
+import { apiUrl } from '../../../data/globalVariables';
 
 export const submitLogin = async({email, password}:{email: string | undefined, password: string | undefined}):Promise<number> => {
   const payload = {

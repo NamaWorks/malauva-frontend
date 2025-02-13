@@ -1,7 +1,6 @@
 import './PriceText.scss'
-import React from 'react'
 
-const PriceText = ({ value, currency='$', background=false, light=false, extraClass }: { value: number | string, currency?: string, background?: boolean, light?:boolean, extraClass?:string}) => {
+const PriceText = ({ value, currency='$', background=false, light=false, extraClass }: { value: number | string | undefined, currency?: string, background?: boolean, light?:boolean, extraClass?:string}) => {
   
   if(!light){
     return (

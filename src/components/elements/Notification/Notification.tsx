@@ -1,15 +1,15 @@
 import '/src/components/elements/Notification/Notification.scss';
 import { useContext, useEffect, useRef, useState } from 'react'
-import BodyTitles from '/src/components/elements/texts/BodyTitles/BodyTitles'
-import { removeNotification } from '/src/utils/functions/ui_fn/notificationFunctions';
-import { NotificationContext } from '/src/utils/contexts/contexts';
+import BodyTitles from '../../../components/elements/texts/BodyTitles/BodyTitles'
+import { NotificationContext } from '../../..//utils/contexts/contexts';
+import { NotificationContextInterface } from '../../../utils/types/interfaces';
 
-const Notification = ({color, text}: {color?: string, text: string}) => {
+const Notification = ({color}: {color?: string, text: string}) => {
 
   const [notificationPosX, setNotificationPosX] = useState<number>(window.innerWidth/2);
   const componentRef = useRef<HTMLDivElement>(null);
 
-  const {notificationOn, setNotificationOn, hideNotification, setHideNotification, notificationText, setNotificationText, notificationColor, setNotificationColor} = useContext(NotificationContext)
+  const {notificationOn, setNotificationOn, notificationText,notificationColor} = useContext(NotificationContext) as NotificationContextInterface
 
   
   useEffect(()=>{
@@ -30,7 +30,7 @@ const Notification = ({color, text}: {color?: string, text: string}) => {
     <div ref={componentRef} className={`mu-notification notification-${notificationColor}`} style={{left:notificationPosX}} onLoad={centerNotification} onChange={centerNotification}>
       <BodyTitles hierarchy={7} text={notificationText}/>
       <button className='notification-icon' onClick={()=>{setNotificationOn(false)}}>
-        <img src={`/public/assets/img/icons/close-notification-${color === ('pink' || 'dark') ? 'beige' : 'dark'}.svg`} alt="close button"/>
+        <img src={`/public/assets/img/icons/close-notification-${(color === 'pink' || 'dark') ? 'beige' : 'dark'}.svg`} alt="close button"/>
       </button>
     </div>
   )

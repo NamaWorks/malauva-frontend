@@ -1,10 +1,9 @@
 import "./Login.scss";
-import LinkText from "/src/components/elements/texts/LinkText/LinkText";
-import NavPageText from "/src/components/elements/texts/NavPageText/NavPageText";
-import BodyCopy from "/src/components/elements/texts/BodyCopy/BodyCopy";
-import UserInterfaceButton from "/src/components/elements/buttons/UserInterfaceButton/UserInterfaceButton";
-import LoginForm from "/src/components/pages/Login/LoginForm/LoginForm";
-import { submitLogin } from "/src/utils/functions/submits/submitLogin";
+import LinkText from "../../../components/elements/texts/LinkText/LinkText";
+import NavPageText from "../../../components/elements/texts/NavPageText/NavPageText";
+import BodyCopy from "../../../components/elements/texts/BodyCopy/BodyCopy";
+import UserInterfaceButton from "../../../components/elements/buttons/UserInterfaceButton/UserInterfaceButton";
+import LoginForm from "../../../components/pages/Login/LoginForm/LoginForm";
 
 const Login = () => {
 

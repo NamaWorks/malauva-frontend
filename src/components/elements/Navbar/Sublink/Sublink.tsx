@@ -1,8 +1,8 @@
+import { SublinkProps } from '../../../../utils/types/interfaces'
 import './Sublink.scss'
-import React from 'react'
 
 
-const Sublink = ({ text='text pending', link, fnc,  color='beige' }: {text: string, link: string, fnc: undefined, color: string}) => {
+const Sublink = ({ text='text pending', link, fnc,  color='beige' }: SublinkProps) => {
 
   if(link) {
     return (

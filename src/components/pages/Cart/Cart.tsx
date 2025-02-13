@@ -1,23 +1,23 @@
-import './Cart.scss'
-import { fetchData } from '../../../utils/functions/api_fn/fetchData';
-import { createObjsToPrint, parseCartItems } from '../../../utils/functions/parsers/cartItemsFunctions';
-import '/src/components/pages/cart/Cart.scss'
 import { useEffect, useState } from 'react';
-import CartItem from './CartItem/CartItem';
-import { redirectToUrl } from '../../../utils/functions/navigation_fn/redirectToUrl';
-import LinkText from '../../elements/texts/LinkText/LinkText';
-import BodyCopy from '../../elements/texts/BodyCopy/BodyCopy';
-import PriceText from '../../elements/texts/PriceText/PriceText';
-import { getPriceToPrintInCart } from '../../../utils/functions/ui_fn/getPriceToPrintInCart';
+import { fetchData } from '../../../utils/functions/api_fn/fetchData';
 import { proceedToPayment } from '../../../utils/functions/api_fn/proceedToPayment';
+import { redirectToUrl } from '../../../utils/functions/navigation_fn/redirectToUrl';
+import { createObjsToPrint, parseCartItems } from '../../../utils/functions/parsers/cartItemsFunctions';
+import { getPriceToPrintInCart } from '../../../utils/functions/ui_fn/getPriceToPrintInCart';
+import BodyCopy from '../../elements/texts/BodyCopy/BodyCopy';
+import LinkText from '../../elements/texts/LinkText/LinkText';
+import PriceText from '../../elements/texts/PriceText/PriceText';
+import './Cart.scss';
+import CartItem from './CartItem/CartItem';
+import '/src/components/pages/cart/Cart.scss';
 
 const Cart = () => {
   const [ cartItemsReady, setCartItemsReady ] = useState<any[]>();
   const [ totalPrice, setTotalPrice] = useState<number>(0);
   const [ shippingCost, setShippingCost ] = useState<number>(0);
   const [ updateData , setUpdateData ] = useState<boolean>(false);
-  const [ priceToPrint , setPriceToPrint ] = useState<Number>(0);
-  const [ userData , setUserData ] = useState();
+  // const [ priceToPrint , setPriceToPrint ] = useState<Number>(0);
+  const [ userData , setUserData ] = useState<any>();
   
   useEffect(()=>{
     sessionStorage.getItem('token') === null && redirectToUrl('/login')
@@ -34,10 +34,14 @@ const Cart = () => {
           totalPrice += item.price * item.numberOfItems
         })
 
-        const radioInput = document.querySelector('#home-delivery')
-        if(radioInput.checked){
-          setShippingCost(4.99)
-        } else {setShippingCost(0)}
+        const radioInput = document.querySelector('#home-delivery') as HTMLInputElement;
+        if(radioInput){
+          if(radioInput.checked){
+            setShippingCost(4.99)
+          } else {
+            setShippingCost(0)
+          }
+        }
 
         // This is a provisional function for getting the price to print correctly:
         setTotalPrice(getPriceToPrintInCart())
@@ -115,7 +119,7 @@ const Cart = () => {
             </div>
           </div>
 
-          <LinkText text='Proceed to payment' fnc={async ():void | undefined =>{ await proceedToPayment(userData); setUpdateData(!updateData)}}/>
+          <LinkText text='Proceed to payment' fnc={async ():Promise<void> =>{ await proceedToPayment(userData); setUpdateData(!updateData)}}/>
         </section>
 
     </main>

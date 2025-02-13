@@ -1,23 +1,23 @@
 import './LoginForm.scss'
-import LinkText from '/src/components/elements/texts/LinkText/LinkText'
-import UserInterfaceButton from '/src/components/elements/buttons/UserInterfaceButton/UserInterfaceButton'
+import LinkText from '../../../../components/elements/texts/LinkText/LinkText'
+import UserInterfaceButton from '../../../../components/elements/buttons/UserInterfaceButton/UserInterfaceButton'
 import { useContext, useEffect, useState } from 'react'
-import { submitLogin } from '/src/utils/functions/submits/submitLogin'
-import { NavigationContext, NotificationContext } from '/src/utils/contexts/contexts'
-import { redirectToUrl } from '/src/utils/functions/navigation_fn/redirectToUrl'
+import { submitLogin } from '../../../../utils/functions/submits/submitLogin'
+import { NavigationContext, NotificationContext } from '../../../../utils/contexts/contexts'
+import { redirectToUrl } from '../../../../utils/functions/navigation_fn/redirectToUrl'
 import Sublink from '../../../elements/Navbar/Sublink/Sublink'
-import Notification from '../../../elements/Notification/Notification'
+import { NavigationContextInterface, NotificationContextInterface } from '../../../../utils/types/interfaces'
 
 const LoginForm = () => {
 
   
-  const { loggedIn, setLoggedIn } = useContext(NavigationContext) 
+  const { loggedIn, setLoggedIn } = useContext(NavigationContext) as NavigationContextInterface 
   
   const [ email, setEmail ] = useState<string | undefined>();
   const [ password, setPassword ] = useState<string | undefined>();
   const [ passwordVisible, setPasswordVisible ] = useState<boolean>(false);
 
-  const {notificationOn, setNotificationOn, hideNotification, setHideNotification, notificationText, setNotificationText, notificationColor, setNotificationColor} = useContext(NotificationContext)
+  const {setNotificationOn, setNotificationText,setNotificationColor} = useContext(NotificationContext) as NotificationContextInterface;
   
   window.addEventListener("keydown", async (e)=>{
     e.key === 'Enter' && e.preventDefault()
@@ -59,28 +59,30 @@ const LoginForm = () => {
           text="Login"
           kind="regular"
           color="pink"
-          fnc={async(e:Event) => {
-            e.preventDefault()
-            const loginStatus = await submitLogin({email, password})
-            if(loginStatus == 200) {
-              setLoggedIn(true);
-              setNotificationColor('green');
-              setNotificationText('credentials ok. Redirecting to Home');
-              setNotificationOn(true);
-              setTimeout(() => {
-                setNotificationOn(false)
-                redirectToUrl('home')
-              }, 2000);
-            } else { 
-              setLoggedIn(false);
-              setNotificationColor('pink');
-              setNotificationText('something went wrong');
+          fnc={():any=>{
+            async(e:Event) => {
+              e.preventDefault()
+              const loginStatus = await submitLogin({email, password})
+              if(loginStatus == 200) {
+                setLoggedIn(true);
+                setNotificationColor('green');
+                setNotificationText('credentials ok. Redirecting to Home');
+                setNotificationOn(true);
+                setTimeout(() => {
+                  setNotificationOn(false)
+                  redirectToUrl('home')
+                }, 2000);
+              } else { 
+                setLoggedIn(false);
+                setNotificationColor('pink');
+                setNotificationText('something went wrong');
+                setNotificationOn(true)
+                setTimeout(() => {
+                  setNotificationOn(false)
+                }, 4000);
+              }
               setNotificationOn(true)
-              setTimeout(() => {
-                setNotificationOn(false)
-              }, 4000);
             }
-            setNotificationOn(true)
           }}
           extraClass="login-form-button"
         />

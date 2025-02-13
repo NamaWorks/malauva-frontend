@@ -1,6 +1,4 @@
-import "/src/components/pages/Products/ProductsFilterSelect/ProductsFilterSelect.scss";
-
-import React, { useEffect } from "react";
+import './ProductsFilterSelect.scss'
 
 const ProductsFilterSelect = ({selectName, allText, arr}: {selectName: string, allText: string, arr?: string[] | number[]}) => {
 
@@ -13,7 +11,7 @@ const ProductsFilterSelect = ({selectName, allText, arr}: {selectName: string, a
         {arr && arr.map((value, i) => {
           return (
             <option value={value} key={i}>
-              {value === String ? value.split('-').join(' ') : value}
+              {typeof value === 'string' ? value.split('-').join(' ') : value}
             </option>
           );
         })};

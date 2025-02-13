@@ -1,34 +1,32 @@
 import "./Products.scss";
-import React, { useContext, useEffect, useMemo, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   NavigationContext,
   WinesContext,
-} from "/src/utils/contexts/contexts";
-import { Wine } from "/src/utils/types/types";
-import { fetchData } from "/src/utils/functions/api_fn/fetchData";
-import ProductCard from "/src/components/elements/ProductCard/ProductCard";
-import UserInterfaceButton from "/src/components/elements/buttons/UserInterfaceButton/UserInterfaceButton";
-import {addAllStrings, prepareIntervals, } from "/src/utils/functions/ui_fn/productsFilters";
+} from "../../../utils/contexts/contexts";
+import { Wine } from "../../../utils/types/types";
+import { fetchData } from "../../../utils/functions/api_fn/fetchData";
+import ProductCard from "../../../components/elements/ProductCard/ProductCard";
+import UserInterfaceButton from "../../../components/elements/buttons/UserInterfaceButton/UserInterfaceButton";
+import {addAllStrings, prepareIntervals, } from "../../../utils/functions/ui_fn/productsFilters";
 import ProductsFilterSelect from "./ProductsFilterSelect/ProductsFilterSelect";
-import { getFooterTop } from "/src/utils/functions/ui_fn/getFooterTop";
-import { getRandomIndex } from "/src/utils/functions/math/getRandomIndex";
-import { overAgeChecker } from "/src/utils/functions/ui_fn/overAgeChecker";
+import { getFooterTop } from "../../../utils/functions/ui_fn/getFooterTop";
+import { getRandomIndex } from "../../../utils/functions/math/getRandomIndex";
+import { overAgeChecker } from "../../../utils/functions/ui_fn/overAgeChecker";
 import { filterProducts } from "../../../utils/functions/filters_fn/filterProducts";
-import { submitFilters } from "../../../utils/functions/filters_fn/submitFilters";
 import useSubmitFilters from "../../../utils/hooks/useSubmitFilters";
-import NavigationButton from "../../elements/buttons/NavigationButton/NavigationButton";
 import { sortProducts } from "../../../utils/functions/filters_fn/sortProducts";
+import { NavigationContextInterface, WinesContextInterface } from "../../../utils/types/interfaces";
 
 const Products = () => {
-  const { fetchWines, setFetchWines } = useContext(WinesContext);
-  const { currentPage, setCurrentPage } = useContext(NavigationContext);
-  const {overAge} = useContext(NavigationContext)
+  const { fetchWines, setFetchWines } = useContext(WinesContext) as WinesContextInterface;
+  const { setCurrentPage, overAge } = useContext(NavigationContext) as NavigationContextInterface;
 
   const [lastPrintItem, setLastPrintItem] = useState<number>(12);
   const [wineOrigins, setWineOrigins] = useState<string[]>([]);
   const [wineTastes, setWineTastes] = useState<string[]>([]);
-  const [wineTemps, setWineTemps] = useState<Number[]>([5, 7, 12, 15, 20]);
-  const [winePrices, setWinePrices] = useState<Number[]>([20, 50, 100, 200, 300, 450,]);
+  const [wineTemps, setWineTemps] = useState<number[]>([5, 7, 12, 15, 20]);
+  const [winePrices, setWinePrices] = useState<number[]>([20, 50, 100, 200, 300, 450,]);
   const [printedItems, setPrintedItems] = useState<Map<number, string>>(new Map());
   const [loading, setLoading] = useState<boolean>(true);
   const [filteredWines, setFilteredWines] = useState<Wine[]>(fetchWines)
@@ -36,11 +34,15 @@ const Products = () => {
   // Here the different fil†er values
   const [ originsValue, setOriginsValue ] = useState<string>('origin');
   const [ tasteValue, setTasteValue ] = useState<string>('taste');
-  const [ priceValue, setPriceValue ] = useState<Number | string>('price');
-  const [ temperatureValue, setTemperatureValue ] = useState<Number | string>('temperature');
+  const [ priceValue, setPriceValue ] = useState<number | string>('price');
+  const [ temperatureValue, setTemperatureValue ] = useState<number | string>('temperature');
   const [ sortValue, setSortValue ] = useState<string>('sort');
   const [ winInnerWidth, setWinInnerWidth ] = useState<number>(window.innerWidth)
   const [ showFilters, setShowFilters ] = useState<boolean>(false)
+
+
+  setWineTemps(wineTemps)
+  setWinePrices(winePrices)
 
   useEffect(() => {
     setCurrentPage("products");

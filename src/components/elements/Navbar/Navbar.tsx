@@ -1,15 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./Navbar.scss";
 import NavbarLink from "./NavbarLink/NavbarLink";
 import Sublink from "./Sublink/Sublink";
 import NavigationButton from "../buttons/NavigationButton/NavigationButton";
-import { getNavbarHeight } from "../../../utils/functions/ui_fn/getNavbarHeight";
 import { redirectToUrl } from "../../../utils/functions/navigation_fn/redirectToUrl";
 import { submitLogout } from "../../../utils/functions/submits/submitLogout";
 
 const Navbar = () => {
-
-
   const [ userLogged, setUserLogged ] = useState<boolean>()
   const [navbarHeight, setNavbarHeight] = useState<number>(800);
   const [toggleNav, setToggleNav] = useState<boolean>(false);
@@ -41,7 +38,7 @@ const Navbar = () => {
               id="navbar-btn-menu"
               text="menu"
               color={toggleNav ? 'dark' : 'beige'}
-              fnc={(): undefined | void => {
+              fnc={() => {
                 setToggleNav(!toggleNav);
               }}
             />

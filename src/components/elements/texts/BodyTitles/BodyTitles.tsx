@@ -1,15 +1,15 @@
 import { addAccentFont } from "../../../../utils/functions/ui_fn/addAccentFont";
 import "./BodyTitles.scss";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const BodyTitles = ({
   text='pending text',
   hierarchy,
   color = "dark",
 }: {
-  text: string;
-  hierarchy: number;
-  color?: string;
+  text: string | undefined;
+  hierarchy: number | undefined;
+  color?: string | undefined;
 }) => {
 
   const [initialLetter, setInitialLetter] = useState<string>()
