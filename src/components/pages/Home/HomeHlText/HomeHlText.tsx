@@ -10,7 +10,7 @@ const HomeHlText = () => {
             <span className="home-hl-illustrations">
               <img
                 id="home-hl-old-ill"
-                src="/public/assets/img/illustrations/old-man-drinking.svg"
+                src="/assets/img/illustrations/old-man-drinking.svg"
                 alt="old man drinking a glass of wine"
               />
             </span>
@@ -18,7 +18,7 @@ const HomeHlText = () => {
             <span className="home-hl-illustrations">
               <img
                 id="home-hl-flowers-ill"
-                src="/public/assets/img/illustrations/flowers.svg"
+                src="/assets/img/illustrations/flowers.svg"
                 alt="flowers illustration"
               />
             </span>{" "}
