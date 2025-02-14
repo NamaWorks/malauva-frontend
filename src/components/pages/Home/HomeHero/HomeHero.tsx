@@ -12,7 +12,7 @@ const HomeHero = () => {
         </div>
         <div id="home-hero-container-logo">
           <img
-            src="/public/assets/img/brand/malauva-logo-up-down.svg"
+            src="/assets/img/brand/malauva-logo-up-down.svg"
             alt="MalaUva logo over Giussepe's picture"
           />
         </div>

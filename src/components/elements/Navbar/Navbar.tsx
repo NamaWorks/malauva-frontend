@@ -28,8 +28,8 @@ const Navbar = () => {
           <div id="navbar-logo-container" onClick={()=>{redirectToUrl('/')}}>
             {
               toggleNav ?
-              <img src="/public/assets/img/brand/malauva-logo-up-down-dark.svg" alt="MalaUva Logo" />
-              : <img src="/public/assets/img/brand/malauva-logo-up-down.svg" alt="Malauva logo" />
+              <img src="/assets/img/brand/malauva-logo-up-down-dark.svg" alt="MalaUva Logo" />
+              : <img src="/assets/img/brand/malauva-logo-up-down.svg" alt="Malauva logo" />
             }
           </div>
           <div>
@@ -64,7 +64,7 @@ const Navbar = () => {
             id="navbar-illustration-container"
           >
             <img
-              src="/public/assets/img/illustrations/pouring-wine.svg"
+              src="/assets/img/illustrations/pouring-wine.svg"
               alt="illustration of wine being poured in two glasses"
             />
           </div>

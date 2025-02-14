@@ -13,11 +13,11 @@ const HomeAboutUs = () => {
         color='dark'
       />
       <div id='home-about-us-illustration'>
-        <img src="/public/assets/img/illustrations/another-one.svg" alt="illustration of pouring wine" />
+        <img src="/assets/img/illustrations/another-one.svg" alt="illustration of pouring wine" />
       </div>
     </div>
     <div className='home-about-us-container'>
-      <img src="/public/assets/img/pictures/gondola-ride.png" alt="image of a gondola ride" />
+      <img src="/assets/img/pictures/gondola-ride.png" alt="image of a gondola ride" />
     </div>
   </section>
   </>

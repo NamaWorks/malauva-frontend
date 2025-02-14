@@ -22,7 +22,7 @@ const OverAge = () => {
 
       <div className='overage-container'>
         <div className='overage-content-div'>
-          <img src="/public/assets/img/illustrations/glasses.svg" alt="illustrations of stored glasses" />
+          <img src="/assets/img/illustrations/glasses.svg" alt="illustrations of stored glasses" />
         </div>
         <div className='overage-content-div'>
           <p>+21?</p>

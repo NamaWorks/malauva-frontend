@@ -39,7 +39,7 @@ const Profile = () => {
           {/* <UserInterfaceButton text='profile' fnc={()=>{console.log('button clicked')}} kind='regular' color='dark'/> */}
         </div>
         <div className="profile-content">
-          <img src="/public/assets/img/illustrations/skol-glasses.svg" alt="" />
+          <img src="/assets/img/illustrations/skol-glasses.svg" alt="" />
         </div>
       </div>
 
@@ -49,7 +49,7 @@ const Profile = () => {
           <BodyCopy text='General information'/>
         </div>
         <div className='profile-content'>
-          <LinkText text='Logout'  fnc={()=>{submitLogout()}}/>
+          <LinkText text='Logout'  fnc={submitLogout}/>
           {/* <LinkText text='Deactivate account' fnc={setEnableDeactivateAccount===true ? ()=>{submitDeactivateAccount()} : ()=>{setEnableDeactivateAccount(true)}}/> */}
           {
             enableDeactivateAccount ?

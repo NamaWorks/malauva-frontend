@@ -48,7 +48,7 @@ const ProductEntry = () => {
               <div className="arrows-left">
                 <div className="arrow-data arrow-left">
                   <img
-                    className="arrow" src="/public/assets/img/arrows/arrow_left_02.svg" alt="arrow illustration"
+                    className="arrow" src="/assets/img/arrows/arrow_left_02.svg" alt="arrow illustration"
                   />
                   <div className="arrow-data-text">
                     <h6 className="arrow-title">Name:</h6>
@@ -56,7 +56,7 @@ const ProductEntry = () => {
                   </div>
                 </div>
                 <div className="arrow-data arrow-left">
-                  <img className="arrow" src="/public/assets/img/arrows/arrow_left_01.svg" alt="arrow illustration"
+                  <img className="arrow" src="/assets/img/arrows/arrow_left_01.svg" alt="arrow illustration"
                   />
                   <div className="arrow-data-text">
                     <h6 className="arrow-title">Origin:</h6>
@@ -68,7 +68,7 @@ const ProductEntry = () => {
               <div className="arrows-right">
                 <div className="arrow-data arrow-right">
                   <img
-                    className="arrow" src="/public/assets/img/arrows/arrow_right_01.svg" alt="arrow illustration"
+                    className="arrow" src="/assets/img/arrows/arrow_right_01.svg" alt="arrow illustration"
                   />
                   <div className="arrow-data-text">
                     <h6 className="arrow-title">Taste:</h6>
@@ -78,7 +78,7 @@ const ProductEntry = () => {
 
                 <div className="arrow-data arrow-right">
                   <img
-                    className="arrow" src="/public/assets/img/arrows/arrow_right_02.svg" alt="arrow illustration"
+                    className="arrow" src="/assets/img/arrows/arrow_right_02.svg" alt="arrow illustration"
                   />
                   <div className="arrow-data-text">
                     <h6 className="arrow-title">Temperature:</h6>

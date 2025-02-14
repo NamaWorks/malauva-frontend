@@ -25,7 +25,7 @@ const Login = () => {
                 color="beige"
                 icons={[
                   {
-                    url: "/public/assets/img/icons/facebook_icon.svg",
+                    url: "/assets/img/icons/facebook_icon.svg",
                     name: "facebook",
                   },
                 ]}
@@ -39,7 +39,7 @@ const Login = () => {
                 color="beige"
                 icons={[
                   {
-                    url: "/public/assets/img/icons/google_icon.svg",
+                    url: "/assets/img/icons/google_icon.svg",
                     name: "google icon",
                   },
                 ]}
@@ -53,7 +53,7 @@ const Login = () => {
                 color="beige"
                 icons={[
                   {
-                    url: "/public/assets/img/icons/instagram_icon.svg",
+                    url: "/assets/img/icons/instagram_icon.svg",
                     name: "instagram icon",
                   },
                 ]}
@@ -67,7 +67,7 @@ const Login = () => {
 
         <div className="login-container">
           <img
-            src="/public/assets/img/pictures/login_wine-serving.png"
+            src="/assets/img/pictures/login_wine-serving.png"
             alt="man serving wine in Venezia"
           />
         </div>

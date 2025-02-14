@@ -11,7 +11,7 @@ const About = () => {
     <main id='about-page'>
 
       <div className="about-container">
-        <img src="/public/assets/img/pictures/old-man.png" alt="old man sitting on the street" />
+        <img src="/assets/img/pictures/old-man.png" alt="old man sitting on the street" />
       </div>
       <div className="about-container">
         <BodyTitles text='About' hierarchy={5}/>

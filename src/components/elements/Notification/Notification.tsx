@@ -30,7 +30,7 @@ const Notification = ({color}: {color?: string, text: string}) => {
     <div ref={componentRef} className={`mu-notification notification-${notificationColor}`} style={{left:notificationPosX}} onLoad={centerNotification} onChange={centerNotification}>
       <BodyTitles hierarchy={7} text={notificationText}/>
       <button className='notification-icon' onClick={()=>{setNotificationOn(false)}}>
-        <img src={`/public/assets/img/icons/close-notification-${(color === 'pink' || 'dark') ? 'beige' : 'dark'}.svg`} alt="close button"/>
+        <img src={`/assets/img/icons/close-notification-${(color === 'pink' || 'dark') ? 'beige' : 'dark'}.svg`} alt="close button"/>
       </button>
     </div>
   )
