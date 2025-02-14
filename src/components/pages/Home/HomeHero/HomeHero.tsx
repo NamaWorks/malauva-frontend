@@ -6,7 +6,7 @@ const HomeHero = () => {
       <section className="home-section" id="home-hero">
         <div id="home-hero-container-img">
           <img
-            src="/public/assets/img/pictures/Hero-img.png"
+            src="../../../../../public/assets/img/pictures/Hero-img.png"
             alt="image of Giussepe, founder of MalaUva"
           />
         </div>
