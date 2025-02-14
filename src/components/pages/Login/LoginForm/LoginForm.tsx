@@ -59,10 +59,11 @@ const LoginForm = () => {
           text="Login"
           kind="regular"
           color="pink"
-          fnc={():any=>{
-            async(e:Event) => {
+          fnc={
+            async(e:Event):Promise<any> => {
               e.preventDefault()
               const loginStatus = await submitLogin({email, password})
+              console.log(loginStatus)
               if(loginStatus == 200) {
                 setLoggedIn(true);
                 setNotificationColor('green');
@@ -70,7 +71,7 @@ const LoginForm = () => {
                 setNotificationOn(true);
                 setTimeout(() => {
                   setNotificationOn(false)
-                  redirectToUrl('home')
+                  redirectToUrl('/home')
                 }, 2000);
               } else { 
                 setLoggedIn(false);
@@ -83,7 +84,7 @@ const LoginForm = () => {
               }
               setNotificationOn(true)
             }
-          }}
+          }
           extraClass="login-form-button"
         />
       </form>

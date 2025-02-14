@@ -1,4 +1,4 @@
-import { NotificationContext } from "../../../../utils/contexts/contexts";
+import { NavigationContext, NotificationContext } from "../../../../utils/contexts/contexts";
 import { submitLogin } from "../../../../utils/functions/submits/submitLogin";
 import Sublink from "../../../../components/elements/Navbar/Sublink/Sublink";
 import "./SignupForm.scss";
@@ -6,10 +6,11 @@ import UserInterfaceButton from "../../../../components/elements/buttons/UserInt
 import { signupSubmit } from "../../../../utils/functions/submits/submitSignup";
 import { useContext, useState } from "react";
 import { redirectToUrl } from "../../../../utils/functions/navigation_fn/redirectToUrl";
-import { NotificationContextInterface } from "../../../../utils/types/interfaces";
+import { NavigationContextInterface, NotificationContextInterface } from "../../../../utils/types/interfaces";
 
 const SignupForm = () => {
   const { setNotificationOn, setNotificationText, setNotificationColor } = useContext(NotificationContext) as NotificationContextInterface;
+  const { loggedIn, setLoggedIn } = useContext(NavigationContext) as NavigationContextInterface
 
   const [personName, setPersonName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
@@ -24,7 +25,7 @@ const SignupForm = () => {
         <input
           id="signup-form-name"
           className="signup-input input-text form-input"
-          type="email"
+          type="text"
           placeholder="Name"
           onChange={(e) => {
             setPersonName(e.target.value);
@@ -71,9 +72,12 @@ const SignupForm = () => {
           text="Signup"
           kind="regular"
           color="pink"
-          fnc={():any=>{
+          fnc={
             async (e: React.MouseEvent<HTMLButtonElement>) => {
               e.preventDefault();
+              setNotificationText('creating new Profile')
+              setNotificationColor('dark')
+              setNotificationOn(true)
               const signupStatus = await signupSubmit({
                 personName,
                 email,
@@ -81,13 +85,28 @@ const SignupForm = () => {
                 password,
               });
               if(signupStatus === 201){
+                setNotificationOn(false)
+                console.log('signed up correctly')
                 setNotificationText('You signed up correctly')
                 setNotificationColor('green')
                 setNotificationOn(true)
                 setTimeout(async() => {
                   setNotificationOn(false)
-                  await submitLogin({ email, password });
-                  redirectToUrl('/home')
+                  const loginRes = await submitLogin({ email, password });
+                  if(loginRes === 200){
+                    setLoggedIn(true)
+                    redirectToUrl('/profile')
+                  } else {
+                    setNotificationOn(false)
+                    console.error('could not sign up')
+                    setNotificationText('There was a problem when login in')
+                    setNotificationColor('pink')
+                    setNotificationOn(true)
+                    loggedIn && setLoggedIn(false)
+                    setTimeout(() => {
+                      setNotificationOn(false)
+                    }, 4000);
+                  }
                 }, 2000);
               } else {
                 console.log(`something went wrong`);
@@ -99,7 +118,7 @@ const SignupForm = () => {
                 }, 4000);
               }
             }
-          }}
+          }
           extraClass="signup-form-button"
         />
       </form>

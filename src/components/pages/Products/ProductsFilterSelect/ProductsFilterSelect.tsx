@@ -1,6 +1,7 @@
 import './ProductsFilterSelect.scss'
 
 const ProductsFilterSelect = ({selectName, allText, arr}: {selectName: string, allText: string, arr?: string[] | number[]}) => {
+  console.log(arr)
 
   return (
     <>

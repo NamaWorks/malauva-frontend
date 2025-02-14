@@ -18,6 +18,7 @@ export const submitLogin = async({email, password}:{email: string | undefined, p
     if (data.status === 200){
       const dataResponse = await data.json()
       sessionStorage.setItem('token', dataResponse.token)
+      return data.status
     } else {console.log('not worked')}
     return  data.status
 }

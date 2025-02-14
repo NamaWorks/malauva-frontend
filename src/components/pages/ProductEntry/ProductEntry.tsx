@@ -12,12 +12,14 @@ import Notification from "../../../components/elements/Notification/Notification
 import { overAgeChecker } from "../../../utils/functions/ui_fn/overAgeChecker";
 import { addProductToUserCart } from "../../../utils/functions/api_fn/addProductToUserCart";
 import { WinesContextInterface, NavigationContextInterface, NotificationContextInterface } from "../../../utils/types/interfaces";
+import { redirectToUrl } from "../../../utils/functions/navigation_fn/redirectToUrl";
+import Login from "../Login/Login";
 
 const ProductEntry = () => {
   const { fetchWines } = useContext(WinesContext) as WinesContextInterface;
   const { idNumber } = useParams<{ idNumber: string }>();
   const [wineToPrint, setWineToPrint] = useState<Wine | null>(null);
-  const { overAge } = useContext(NavigationContext) as NavigationContextInterface;
+  const { overAge, loggedIn, setLoggedIn } = useContext(NavigationContext) as NavigationContextInterface;
   const [itemsNumber, setItemsNumber] = useState<number>(1);
   const { setNotificationOn, setNotificationText, setNotificationColor } = useContext(NotificationContext) as NotificationContextInterface;
 
@@ -39,7 +41,7 @@ const ProductEntry = () => {
   return (
     <div>
       <Notification text={'test notification'} color={'beige'}/>
-      <main id="product-entry">
+      <main id="product-entry" onLoad={()=>{sessionStorage.getItem('token') && setLoggedIn(true)}}>
         <div className="product-entry-container" id="product-info-container">
           <div className="image-container">
             <img src={wineToPrint?.picture} alt={wineToPrint?.name} />
@@ -101,25 +103,34 @@ const ProductEntry = () => {
             <button onClick={()=>setItemsNumber(itemsNumber+1)}>+</button>
           </div>
           <UserInterfaceButton kind="bold" color="green" text="Add to cart" 
-            fnc={
+            fnc={ 
               async():Promise<void>=>{
-                const res = await addProductToUserCart(window.location.href.split('/').slice(-1)[0], itemsNumber)
-                if(res === 200){
-                  setNotificationColor('green');
-                  setNotificationText('Product added to cart');
+                if(loggedIn){
+                  setNotificationColor('dark');
+                  setNotificationText('adding products to cart');
                   setNotificationOn(true);
-                  setTimeout(() => {
+                  const res = await addProductToUserCart(window.location.href.split('/').slice(-1)[0], itemsNumber)
+                  if(res === 200){
                     setNotificationOn(false)
-                  }, 2000);
-                } else {
-                  setNotificationColor('pink');
-                  setNotificationText('Product could not be added to the cart');
-                  setNotificationOn(true);
-                  setTimeout(() => {
+                    setNotificationColor('green');
+                    setNotificationText('Product added to cart');
+                    setNotificationOn(true);
+                    setTimeout(() => {
+                      setNotificationOn(false)
+                    }, 2000);
+                  } else {
                     setNotificationOn(false)
-                  }, 2000);
-                }
-              }}/>
+                    setNotificationColor('pink');
+                    setNotificationText('Product could not be added to the cart');
+                    setNotificationOn(true);
+                    setTimeout(() => {
+                      setNotificationOn(false)
+                    }, 2000);
+                  }
+                } else {redirectToUrl('/login')}
+              }
+            }
+            />
         </div>
       </main>
     </div>

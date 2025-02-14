@@ -1,15 +1,19 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./Navbar.scss";
 import NavbarLink from "./NavbarLink/NavbarLink";
 import Sublink from "./Sublink/Sublink";
 import NavigationButton from "../buttons/NavigationButton/NavigationButton";
 import { redirectToUrl } from "../../../utils/functions/navigation_fn/redirectToUrl";
 import { submitLogout } from "../../../utils/functions/submits/submitLogout";
+import { NavigationContext } from "../../../utils/contexts/contexts";
+import { NavigationContextInterface } from "../../../utils/types/interfaces";
 
 const Navbar = () => {
   const [ userLogged, setUserLogged ] = useState<boolean>()
   const [navbarHeight, setNavbarHeight] = useState<number>(800);
   const [toggleNav, setToggleNav] = useState<boolean>(false);
+
+  const { loggedIn, setLoggedIn } = useContext(NavigationContext) as NavigationContextInterface
 
   useEffect(() => {
     if(sessionStorage.getItem('token')){
@@ -77,7 +81,7 @@ const Navbar = () => {
               {userLogged && (
                 <>
                   <Sublink link="/profile" text="My Account" />
-                  <Sublink fnc={()=>{submitLogout()}} text="Logout" />
+                  <Sublink fnc={()=>{submitLogout(); loggedIn && setLoggedIn(false)}} text="Logout" />
                 </>
               )}
 

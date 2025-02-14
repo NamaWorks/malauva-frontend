@@ -1,7 +1,7 @@
 import { Icon } from '../../../../utils/types/types'
 import './UserInterfaceButton.scss'
 
-const UserInterfaceButton = ({ kind='regular', icons, text='text pending', fnc, color='dark', extraClass="" }: { kind?:string, icons?: Array<Icon>, text?: string, fnc?: () => void , color?: string, extraClass?:string }) => {
+const UserInterfaceButton = ({ kind='regular', icons, text='text pending', fnc, color='dark', extraClass="" }: { kind?:string, icons?: Array<Icon>, text?: string, fnc?: (e:any) => any , color?: string, extraClass?:string }) => {
   return (
     <>
       <button 

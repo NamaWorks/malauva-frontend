@@ -26,7 +26,7 @@ const Footer = () => {
             id="navbar-btn-menu"
             text="home"
             color="dark"
-            link="home"
+            link="/home"
           />
           <NavigationButton
             kind="link"
@@ -40,14 +40,14 @@ const Footer = () => {
             id="navbar-btn-menu"
             text="shop"
             color="dark"
-            link="products"
+            link="/products"
           />
           <NavigationButton
             kind="link"
             id="navbar-btn-menu"
             text="about"
             color="dark"
-            link="about"
+            link="/about"
           />
         </div>
       </footer>

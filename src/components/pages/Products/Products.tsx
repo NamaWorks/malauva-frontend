@@ -2,6 +2,7 @@ import "./Products.scss";
 import { useContext, useEffect, useState } from "react";
 import {
   NavigationContext,
+  NotificationContext,
   WinesContext,
 } from "../../../utils/contexts/contexts";
 import { Wine } from "../../../utils/types/types";
@@ -16,11 +17,12 @@ import { overAgeChecker } from "../../../utils/functions/ui_fn/overAgeChecker";
 import { filterProducts } from "../../../utils/functions/filters_fn/filterProducts";
 import useSubmitFilters from "../../../utils/hooks/useSubmitFilters";
 import { sortProducts } from "../../../utils/functions/filters_fn/sortProducts";
-import { NavigationContextInterface, WinesContextInterface } from "../../../utils/types/interfaces";
+import { NavigationContextInterface, NotificationContextInterface, WinesContextInterface } from "../../../utils/types/interfaces";
 
 const Products = () => {
   const { fetchWines, setFetchWines } = useContext(WinesContext) as WinesContextInterface;
   const { setCurrentPage, overAge } = useContext(NavigationContext) as NavigationContextInterface;
+  const { setNotificationOn, setNotificationText, setNotificationColor } = useContext(NotificationContext) as NotificationContextInterface;
 
   const [lastPrintItem, setLastPrintItem] = useState<number>(12);
   const [wineOrigins, setWineOrigins] = useState<string[]>([]);
@@ -41,10 +43,16 @@ const Products = () => {
   const [ showFilters, setShowFilters ] = useState<boolean>(false)
 
 
-  setWineTemps(wineTemps)
-  setWinePrices(winePrices)
+console.log(setWineTemps, setWinePrices)
+
 
   useEffect(() => {
+    if(loading){
+      setNotificationText('loading products')
+      setNotificationColor('dark')
+      setNotificationOn(true)
+    }; 
+
     setCurrentPage("products");
 
     overAgeChecker(overAge);
@@ -52,12 +60,13 @@ const Products = () => {
     fetchData("/wines")
       .then((res:Wine[]) => {
         setFetchWines(res);
-        setWineOrigins(addAllStrings(fetchWines, "origin"));
-        setWineTastes(addAllStrings(fetchWines, "taste"));
+        setWineOrigins(addAllStrings(res, "origin"));
+        setWineTastes(addAllStrings(res, "taste"));
       })
       .catch((err:Error) => console.warn(err))
       .finally(() => {
         setLoading(false);
+        setNotificationOn(false)
       });
 
       setFilteredWines(fetchWines)
@@ -113,7 +122,7 @@ const Products = () => {
           </div>
         </section>
         <section className="products-page-container" id="products-container">
-          {loading && <p>fetching</p>}
+          {/* {loading && <p>fetching</p>} */}
           {filteredWines.map((wineObj:Wine, i:number) => {
                           const randomVal = getRandomIndex();
                           let className = "skip-zero";
