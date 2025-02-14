@@ -13,7 +13,6 @@ import { overAgeChecker } from "../../../utils/functions/ui_fn/overAgeChecker";
 import { addProductToUserCart } from "../../../utils/functions/api_fn/addProductToUserCart";
 import { WinesContextInterface, NavigationContextInterface, NotificationContextInterface } from "../../../utils/types/interfaces";
 import { redirectToUrl } from "../../../utils/functions/navigation_fn/redirectToUrl";
-import Login from "../Login/Login";
 
 const ProductEntry = () => {
   const { fetchWines } = useContext(WinesContext) as WinesContextInterface;
