@@ -20,7 +20,9 @@ const OverAge = () => {
 
   return (
     <>
-    <main id='overage-page'>
+    <main id='overage-page'
+      onLoad={()=>{window.scrollTo(0,0)}}
+    >
 
       <div className='overage-container'>
         <div className='overage-content-div'>

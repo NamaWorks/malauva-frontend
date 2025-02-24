@@ -40,7 +40,7 @@ const ProductEntry = () => {
   return (
     <div>
       <Notification text={'test notification'} color={'beige'}/>
-      <main id="product-entry" onLoad={()=>{sessionStorage.getItem('token') && setLoggedIn(true)}}>
+      <main id="product-entry" onLoad={()=>{sessionStorage.getItem('token') && setLoggedIn(true) && window.scrollTo(0,0)}}>
         <div className="product-entry-container" id="product-info-container">
           <div className="image-container">
             <img src={wineToPrint?.picture} alt={wineToPrint?.name} />

@@ -9,7 +9,9 @@ const Login = () => {
 
   return (
     <>
-      <main id="login-page">
+      <main id="login-page"
+        onLoad={()=>{window.scrollTo(0,0)}}
+      >
         <div className="login-container">
           <LinkText text="Sign Up" link="/signup" />
           <NavPageText text="Login" />

@@ -30,7 +30,9 @@ const Profile = () => {
   return (
     <>
     
-    <main id="profile-page">
+    <main id="profile-page"
+      onLoad={()=>{window.scrollTo(0,0)}}
+    >
 
       <div className="profile-container">
         <div className="profile-content profile-buttons">

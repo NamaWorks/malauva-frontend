@@ -25,6 +25,7 @@ const Cart = () => {
   useEffect(()=>{
     sessionStorage.getItem('token') === null && redirectToUrl('/login')
 
+
     const prepareCartData = async () => {
       if(loading){
         setNotificationText('loading cart')
@@ -68,7 +69,9 @@ const Cart = () => {
   
 
   return (
-    <main id='cart-page'>
+    <main id='cart-page'
+      onLoad={()=>{window.scrollTo(0,0)}}
+    >
 
       <section className={`cart-page-products`}>
         {

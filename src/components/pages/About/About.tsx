@@ -8,7 +8,9 @@ Come for the wine, stay for the stories. Welcome to MalaUva.`
 
 const About = () => {
   return (
-    <main id='about-page'>
+    <main id='about-page'
+      onLoad={()=>{window.scrollTo(0,0)}}
+    >
 
       <div className="about-container">
         <img src="/assets/img/pictures/old-man.png" alt="old man sitting on the street" />
