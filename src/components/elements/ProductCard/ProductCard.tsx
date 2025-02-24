@@ -4,7 +4,7 @@ import BodyCopy from "../texts/BodyCopy/BodyCopy";
 import BodyTitles from "../texts/BodyTitles/BodyTitles";
 import PriceText from "../texts/PriceText/PriceText";
 import "./ProductCard.scss";
-import { redirectToUrl } from "../../../utils/functions/navigation_fn/redirectToUrl";
+// import { redirectToUrl } from "../../../utils/functions/navigation_fn/redirectToUrl";
 
 const ProductCard = ({
   wineData,
@@ -42,7 +42,9 @@ const ProductCard = ({
           <UserInterfaceButton
             kind="regular"
             text="see wine"
-            fnc={()=>{redirectToUrl(`/products/${wineData.idNumber}`)}}
+            // fnc={()=>{redirectToUrl(`/products/${wineData.idNumber}`)}}
+            fnc={()=>{console.log('clicked')}}
+            link={`/products/${wineData.idNumber}`}
             color="dark"
           />
         </div>

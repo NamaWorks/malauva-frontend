@@ -25,7 +25,7 @@ const LoginForm = () => {
 
   useEffect(()=>{
     if(loggedIn){
-      redirectToUrl('home')
+      redirectToUrl('/home')
     }
   },[])
   

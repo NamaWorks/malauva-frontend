@@ -30,7 +30,7 @@ const Login = () => {
                   },
                 ]}
                 fnc={() => {
-                  console.log("choripanes");
+                  console.log("click");
                 }}
               />
               <UserInterfaceButton
@@ -44,7 +44,7 @@ const Login = () => {
                   },
                 ]}
                 fnc={() => {
-                  console.log("choripanes");
+                  console.log("click");
                 }}
               />
               <UserInterfaceButton
@@ -58,7 +58,7 @@ const Login = () => {
                   },
                 ]}
                 fnc={() => {
-                  console.log('choripanes')
+                  console.log('click')
                 }}
               />
             </div>

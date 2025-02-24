@@ -126,7 +126,9 @@ const ProductEntry = () => {
                       setNotificationOn(false)
                     }, 2000);
                   }
-                } else {redirectToUrl('/login')}
+                } else {
+                  redirectToUrl('/login')
+                }
               }
             }
             />

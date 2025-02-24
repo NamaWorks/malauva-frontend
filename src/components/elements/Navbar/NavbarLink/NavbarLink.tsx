@@ -1,9 +1,10 @@
+import { Link } from 'react-router-dom'
 import './NavbarLink.scss'
 
 const NavbarLink = ({text, link}: { text: string, link: string }) => {
   return (
     <div className="navbar-link-container">
-      <a href={link} className="navbar-link">{text}</a>
+      <Link to={link} className="navbar-link">{text}</Link>
     </div>
   )
 }

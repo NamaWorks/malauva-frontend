@@ -20,7 +20,7 @@ const Signup = () => {
   return (
     <main id='signup-page'>
       <div className="signup-container">
-        <LinkText text='Log In' link='login'/>
+        <LinkText text='Log In' link='/login'/>
         <NavPageText text='Sign up'/>
         <BodyCopy text='Sign up or login to see our top picks for you'/>
         <SignupForm/>

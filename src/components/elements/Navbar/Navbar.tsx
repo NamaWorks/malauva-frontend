@@ -3,10 +3,11 @@ import "./Navbar.scss";
 import NavbarLink from "./NavbarLink/NavbarLink";
 import Sublink from "./Sublink/Sublink";
 import NavigationButton from "../buttons/NavigationButton/NavigationButton";
-import { redirectToUrl } from "../../../utils/functions/navigation_fn/redirectToUrl";
+// import { redirectToUrl } from "../../../utils/functions/navigation_fn/redirectToUrl";ys
 import { submitLogout } from "../../../utils/functions/submits/submitLogout";
 import { NavigationContext } from "../../../utils/contexts/contexts";
 import { NavigationContextInterface } from "../../../utils/types/interfaces";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [ userLogged, setUserLogged ] = useState<boolean>()
@@ -27,15 +28,19 @@ const Navbar = () => {
   
   return (
     <>
-      <nav>
+      <nav
+        onClick={()=>{setToggleNav(!toggleNav)}}
+      >
         <div className={`navbar-content ${toggleNav ? 'nav-shown' : 'nav-hidden'}`} id="navbar-top-bar">
-          <div id="navbar-logo-container" onClick={()=>{redirectToUrl('/')}}>
+          <Link to={'home'}>
+          <div id="navbar-logo-container" onClick={()=>{console.log('home'); setToggleNav(true)}}>
             {
               toggleNav ?
               <img src="/assets/img/brand/malauva-logo-up-down-dark.svg" alt="MalaUva Logo" />
               : <img src="/assets/img/brand/malauva-logo-up-down.svg" alt="Malauva logo" />
             }
           </div>
+            </Link>
           <div>
             <NavigationButton
               kind="fnc"
@@ -59,8 +64,8 @@ const Navbar = () => {
           }}
         >
           <div className="navbar-toggle-content" id="navbar-links">
-            <NavbarLink link="/products" text="Shop" />
-            <NavbarLink link="/about" text="About MalaUva" />
+              <NavbarLink link="/products" text="Shop" />
+              <NavbarLink link="/about" text="About MalaUva" />
           </div>
 
           <div
@@ -80,21 +85,23 @@ const Navbar = () => {
             <div className="navbar-utilities-content">
               {userLogged && (
                 <>
-                  <Sublink link="/profile" text="My Account" />
-                  <Sublink fnc={()=>{submitLogout(); loggedIn && setLoggedIn(false)}} text="Logout" />
+                    <Sublink link="/profile" text="My Account" />
+                  
+                    <Sublink fnc={()=>{submitLogout(); loggedIn && setLoggedIn(false)}} text="Logout" />
+                  
                 </>
               )}
 
               {!userLogged && (
                 <>
-                  <Sublink link="/login" text="Login" />
-                  <Sublink link="/signup" text="signup" />
+                    <Sublink link="/login" text="Login" />
+                    <Sublink link="/signup" text="signup" />
                 </>
               )
               }
             </div>
             <div className="navbar-utilities-content">
-              <Sublink link="/cart" text="My Cart" />
+                <Sublink link="/cart" text="My Cart" />
             </div>
           </div>
         </div>

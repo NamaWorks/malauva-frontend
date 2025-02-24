@@ -1,8 +1,10 @@
 import { NavigationContext } from '../../../utils/contexts/contexts'
-import { redirectToUrl } from '../../../utils/functions/navigation_fn/redirectToUrl'
+// import { redirectToUrl } from '../../../utils/functions/navigation_fn/redirectToUrl'
 import '../../../components/pages/OverAge/OverAge.scss'
 import { useContext, useEffect } from 'react'
 import { NavigationContextInterface } from '../../../utils/types/interfaces'
+// import useRedirectToPage from '../../../utils/hooks/useRedirectToPage'
+import { redirectToUrl } from '../../../utils/functions/navigation_fn/redirectToUrl'
 
 const OverAge = () => {
 
@@ -27,7 +29,9 @@ const OverAge = () => {
         <div className='overage-content-div'>
           <p>+21?</p>
           <div className='overage-buttons-container'>
-            <button className="overage-button" onClick={()=>{setOverAge(true); sessionStorage.setItem('overAge', 'true')}}>Y</button>
+            {/* <Link to={}> */}
+              <button className="overage-button" onClick={()=>{setOverAge(true); sessionStorage.setItem('overAge', 'true')}}>Y</button>
+            {/* </Link> */}
             <p>/</p>
             <button className="overage-button" onClick={()=>{console.log('button clicked')}}>N</button>
           </div>

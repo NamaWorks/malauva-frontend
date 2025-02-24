@@ -6,9 +6,9 @@
 //   navigation: auto;
 // }
 
-html {
+// html {
   // background-color: index.$MU-beige-200;
-}
+// }
 
 *{
   overscroll-behavior: none; /* Prevent overscroll */
@@ -16,6 +16,10 @@ html {
   padding: 0;
   border: 0;
   box-sizing: border-box;
+}
+
+a:-webkit-any-link {
+  text-decoration: none;
 }
 
 #root {
