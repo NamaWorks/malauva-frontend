@@ -26,7 +26,9 @@ const {setFetchWines} = useContext(WinesContext) as WinesContextInterface;
   
   return (
     <>
-    <main id='home'>
+    <main id='home'
+      onLoad={()=>{window.scrollTo(0,0)}}
+    >
       <HomeHero/>
       <HomeHlText/>
       <HomeDragAndDrop/>

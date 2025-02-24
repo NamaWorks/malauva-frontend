@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './LinkText.scss'
 
 const LinkText = ({
@@ -15,7 +16,7 @@ const LinkText = ({
 }) => {
   return (
     <>
-      <a className={`link link-${kind} link-${color}`} href={link} onClick={fnc} >{text}</a>
+      <Link className={`link link-${kind} link-${color}`} to={link} onClick={fnc} >{text}</Link>
     </>
   );
 };

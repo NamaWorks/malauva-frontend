@@ -1,12 +1,13 @@
 import { NotificationContext } from '../../../../utils/contexts/contexts'
 import { fetchData } from '../../../../utils/functions/api_fn/fetchData'
-import { redirectToUrl } from '../../../../utils/functions/navigation_fn/redirectToUrl'
+// import redirectToPage from '../../../../utils/hooks/useRedirectToPage'
 import { newProfileInfoChecker, submitProfileInfoUpdate } from '../../../../utils/functions/submits/submitProfileInfoUpdate'
 import { NotificationContextInterface } from '../../../../utils/types/interfaces'
 import Sublink from '../../../elements/Navbar/Sublink/Sublink'
 import UserInterfaceButton from '../../../elements/buttons/UserInterfaceButton/UserInterfaceButton'
 import '../../../pages/Profile/ProfileInfoUpdateForm/ProfileInfoUpdateForm.scss'
 import {useContext, useEffect, useState } from 'react'
+import useRedirectToPage from '../../../../utils/hooks/useRedirectToPage'
 
 const ProfileInfoUpdateForm = () => {
 
@@ -72,7 +73,7 @@ const ProfileInfoUpdateForm = () => {
       </div>
 
       <UserInterfaceButton text='save' color='pink' kind='regular' 
-      fnc={():any=>{
+      fnc={
         async (e: React.MouseEvent<HTMLButtonElement>)=>{
           e.preventDefault(); 
           const changeOk = await submitProfileInfoUpdate(newUsername, newPersonName, Number(newPhoneNumber), newEmail, newPassword);
@@ -82,7 +83,7 @@ const ProfileInfoUpdateForm = () => {
             setNotificationOn(true)
             setTimeout(() => {
               setNotificationOn(false)
-              redirectToUrl('profile')
+              useRedirectToPage('profile')
             }, 3000);
           } else {
             setNotificationText('Could not save changes')
@@ -94,7 +95,6 @@ const ProfileInfoUpdateForm = () => {
           }
         }
       } 
-      }
       extraClass='profile-form-button'/>
 
     </form>

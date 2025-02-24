@@ -105,7 +105,9 @@ console.log(setWineTemps, setWinePrices)
 
   return (
     <>
-      <main id="products-page">
+      <main id="products-page"
+        // onLoad={()=>{window.scrollTo(0,0)}}
+      >
         <section className="products-page-container" id="products-filter">
         <div className="products-filter-container shown">
           {winInnerWidth<=800 && (<UserInterfaceButton text={showFilters ? 'hide filters' : 'show filters'} fnc={()=>{setShowFilters(!showFilters)}} />)}
