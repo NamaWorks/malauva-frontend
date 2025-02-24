@@ -106,7 +106,7 @@ console.log(setWineTemps, setWinePrices)
   return (
     <>
       <main id="products-page"
-        onLoad={()=>{window.scrollTo(0,0)}}
+        // onLoad={()=>{window.scrollTo(0,0)}}
       >
         <section className="products-page-container" id="products-filter">
         <div className="products-filter-container shown">

@@ -29,11 +29,11 @@ const Navbar = () => {
   return (
     <>
       <nav
-        onClick={()=>{setToggleNav(!toggleNav)}}
+        // onClick={()=>{setToggleNav(!toggleNav)}}
       >
         <div className={`navbar-content ${toggleNav ? 'nav-shown' : 'nav-hidden'}`} id="navbar-top-bar">
           <Link to={'home'}>
-          <div id="navbar-logo-container" onClick={()=>{console.log('home'); setToggleNav(true)}}>
+          <div id="navbar-logo-container" onClick={()=>{console.log('home')}}>
             {
               toggleNav ?
               <img src="/assets/img/brand/malauva-logo-up-down-dark.svg" alt="MalaUva Logo" />
@@ -64,8 +64,8 @@ const Navbar = () => {
           }}
         >
           <div className="navbar-toggle-content" id="navbar-links">
-              <NavbarLink link="/products" text="Shop" />
-              <NavbarLink link="/about" text="About MalaUva" />
+              <NavbarLink link="/products" text="Shop" setToggleNav={setToggleNav}/>
+              <NavbarLink link="/about" text="About MalaUva" setToggleNav={setToggleNav}/>
           </div>
 
           <div
@@ -85,23 +85,23 @@ const Navbar = () => {
             <div className="navbar-utilities-content">
               {userLogged && (
                 <>
-                    <Sublink link="/profile" text="My Account" />
+                    <Sublink link="/profile" text="My Account" fnc={()=>{setToggleNav(false)}}/>
                   
-                    <Sublink fnc={()=>{submitLogout(); loggedIn && setLoggedIn(false)}} text="Logout" />
+                    <Sublink fnc={()=>{submitLogout(); loggedIn && setLoggedIn(false) && setToggleNav(false)}} text="Logout" />
                   
                 </>
               )}
 
               {!userLogged && (
                 <>
-                    <Sublink link="/login" text="Login" />
-                    <Sublink link="/signup" text="signup" />
+                    <Sublink link="/login" text="Login" fnc={()=>{setToggleNav(false)}}/>
+                    <Sublink link="/signup" text="signup" fnc={()=>{setToggleNav(false)}}/>
                 </>
               )
               }
             </div>
             <div className="navbar-utilities-content">
-                <Sublink link="/cart" text="My Cart" />
+                <Sublink link="/cart" text="My Cart" fnc={()=>{setToggleNav(false)}}/>
             </div>
           </div>
         </div>

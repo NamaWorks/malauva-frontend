@@ -7,7 +7,7 @@ const Sublink = ({ text='text pending', link, fnc,  color='beige' }: SublinkProp
 
   if(link) {
     return (
-      (<Link to={link} className={`sublink sublink-${color}`} onClick={()=>{console.log('clicked')}}>{text}</Link>)
+      (<Link to={link} className={`sublink sublink-${color}`} onClick={fnc}>{text}</Link>)
     )
   }
 
