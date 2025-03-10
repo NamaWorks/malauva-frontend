@@ -11,7 +11,7 @@ import useRedirectToPage from '../../../../utils/hooks/useRedirectToPage'
 
 const ProfileInfoUpdateForm = () => {
 
-  const { setNotificationOn, setNotificationText, setNotificationColor } = useContext(NotificationContext) as NotificationContextInterface
+  const { dispatchNotification } = useContext(NotificationContext) as NotificationContextInterface
 
   const [idNumber, setIdNumber] = useState<string>();
   const [username, setUsername] = useState<string>();
@@ -78,19 +78,21 @@ const ProfileInfoUpdateForm = () => {
           e.preventDefault(); 
           const changeOk = await submitProfileInfoUpdate(newUsername, newPersonName, Number(newPhoneNumber), newEmail, newPassword);
           if (changeOk) {
-            setNotificationText('Changes saved')
-            setNotificationColor('green')
-            setNotificationOn(true)
+            dispatchNotification({ type: 'SET_NOTIFICATION_TEXT', payload: 'changes saved' })
+            dispatchNotification({ type: 'SET_NOTIFICATION_COLOR', payload: 'green' })
+            dispatchNotification({ type: 'SET_NOTIFICATION_ON', payload: true })
+            
             setTimeout(() => {
-              setNotificationOn(false)
+              dispatchNotification({ type: 'SET_NOTIFICATION_ON', payload: false })
               useRedirectToPage('profile')
             }, 3000);
           } else {
-            setNotificationText('Could not save changes')
-            setNotificationColor('pink')
-            setNotificationOn(true)
+            dispatchNotification({ type: 'SET_NOTIFICATION_TEXT', payload: 'could not save the changes' })
+            dispatchNotification({ type: 'SET_NOTIFICATION_COLOR', payload: 'pink' })
+            dispatchNotification({ type: 'SET_NOTIFICATION_ON', payload: true })
+            
             setTimeout(() => {
-              setNotificationOn(false)
+              dispatchNotification({ type: 'SET_NOTIFICATION_ON', payload: false })
             }, 3000);
           }
         }
