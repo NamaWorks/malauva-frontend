@@ -11,10 +11,10 @@ import { NavigationContext } from '../../..//utils/contexts/contexts'
 import { NavigationContextInterface } from '../../../utils/types/interfaces'
 
 const Signup = () => {
-  const { overAge } = useContext(NavigationContext) as NavigationContextInterface
+  const { navigationState } = useContext(NavigationContext) as NavigationContextInterface
 
   useEffect(()=>{
-    overAgeChecker(overAge)
+    overAgeChecker(navigationState.overAge)
   },[])
 
   return (

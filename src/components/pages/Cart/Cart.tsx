@@ -20,7 +20,7 @@ const Cart = () => {
   const [ userData , setUserData ] = useState<any>();
   const [ loading, setLoading ] = useState<boolean>(true)
 
-  const { setNotificationOn, setNotificationText, setNotificationColor } = useContext(NotificationContext) as NotificationContextInterface;
+  const { dispatchNotification } = useContext(NotificationContext) as NotificationContextInterface;
   
   useEffect(()=>{
     sessionStorage.getItem('token') === null && redirectToUrl('/login')
@@ -28,9 +28,9 @@ const Cart = () => {
 
     const prepareCartData = async () => {
       if(loading){
-        setNotificationText('loading cart')
-        setNotificationColor('green')
-        setNotificationOn(true)
+        dispatchNotification({ type: 'SET_NOTIFICATION_TEXT', payload: 'loading cart' })
+        dispatchNotification({ type: 'SET_NOTIFICATION_COLOR', payload: 'green'})
+        dispatchNotification({ type: 'SET_NOTIFICATION_ON', payload: true})
       }; 
         try {
           const data = await fetchData('/users/cart');
@@ -56,7 +56,7 @@ const Cart = () => {
           setTotalPrice(getPriceToPrintInCart())
 
           setLoading(false)
-          setNotificationOn(false)
+          dispatchNotification({ type: 'SET_NOTIFICATION_ON', payload: false})
   
         } catch (err) {
           console.log(err);

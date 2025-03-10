@@ -14,7 +14,7 @@ const Profile = () => {
 
   const [ enableDeactivateAccount, setEnableDeactivateAccount ] = useState(false)
 
-  const { notificationOn, setNotificationOn, setNotificationText, setNotificationColor } = useContext(NotificationContext) as NotificationContextInterface
+  const {notificationState, dispatchNotification} = useContext(NotificationContext) as NotificationContextInterface
 
   useEffect(()=>{
     setEnableDeactivateAccount(false)
@@ -24,7 +24,7 @@ const Profile = () => {
     if(enableDeactivateAccount === true){
         setEnableDeactivateAccount(true)
     }
-  },[ notificationOn ])
+  },[ notificationState.notificationOn ])
 
 
   return (
@@ -57,17 +57,20 @@ const Profile = () => {
             enableDeactivateAccount ?
             <LinkText text='Deactivate account' fnc={async()=>{
               if(await submitDeactivateAccount() === true){
-                setNotificationOn(false)
-                setNotificationText('account removed'); setNotificationColor('green'); setNotificationOn(true)
+                dispatchNotification({type: "SET_NOTIFICATION_ON", payload: false})
+                dispatchNotification({type: 'SET_NOTIFICATION_TEXT', payload: 'account removed'})
+                dispatchNotification({type: "SET_NOTIFICATION_COLOR", payload: 'green'})
+                dispatchNotification({type: "SET_NOTIFICATION_ON", payload: true})
                 setTimeout(() => {
                   submitLogout()
                   redirectToUrl('/home')
                 }, 2000);}}} />
-            : <LinkText text='Deactivate account' fnc={()=>{
-              setEnableDeactivateAccount(!enableDeactivateAccount);
-              setNotificationColor('pink')
-              setNotificationText('Click again to Remove your account')
-              setNotificationOn(true)
+                : <LinkText text='Deactivate account' fnc={()=>{
+                  setEnableDeactivateAccount(!enableDeactivateAccount);
+                  
+              dispatchNotification({type: 'SET_NOTIFICATION_TEXT', payload: 'click again to remove your account'})
+              dispatchNotification({type: "SET_NOTIFICATION_COLOR", payload: 'pink'})
+              dispatchNotification({type: "SET_NOTIFICATION_ON", payload: true})
             }} />
           }
           {/* We need to print a notification for telling the user that needs to click twice on the Deactivate Account button to make it effective */}

@@ -18,7 +18,7 @@ const HomeTopSellers = () => {
             if (i < 4) {
               return (
                 <>
-                  <ProductCard wineData={wineObj} key={i} />
+                  <ProductCard key={`top-seller-${i}`} wineData={wineObj} />
                 </>
               );
             }

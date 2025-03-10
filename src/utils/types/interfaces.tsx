@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Dispatch } from "react";
 import { Wine } from "./types";
 
 export interface UseSubmitFiltersProps {
@@ -27,25 +27,48 @@ export interface SublinkProps {
 
 export interface WinesContextInterface {
   fetchWines: Wine[];
-  setFetchWines: React.Dispatch<React.SetStateAction<Wine[]>>;
+  dispatchFetchWines: Dispatch<{ type: 'SET_FETCH_WINES'; payload: Wine[] }>;
 }
 
+// export interface NavigationContextInterface {
+//   currentPage: string;
+//   setCurrentPage: React.Dispatch<React.SetStateAction<string>>;
+//   overAge: boolean;
+//   setOverAge: React.Dispatch<React.SetStateAction<boolean>>;
+//   loggedIn: boolean;
+//   setLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
+// }
+
 export interface NavigationContextInterface {
-  currentPage: string;
-  setCurrentPage: React.Dispatch<React.SetStateAction<string>>;
-  overAge: boolean;
-  setOverAge: React.Dispatch<React.SetStateAction<boolean>>;
-  loggedIn: boolean;
-  setLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
+  navigationState: NavigationState;
+  dispatchNavigation: Dispatch<
+    | { type: 'SET_CURRENT_PAGE'; payload: string }
+    | { type: 'SET_OVER_AGE'; payload: boolean }
+    | { type: 'SET_LOGGED_IN'; payload: boolean }
+  >;
 }
 
 export interface NotificationContextInterface {
-  notificationOn: boolean;
-  setNotificationOn: React.Dispatch<React.SetStateAction<boolean>>;
-  hideNotification: boolean;
-  setHideNotification: React.Dispatch<React.SetStateAction<boolean>>;
-  notificationText: string;
-  setNotificationText: React.Dispatch<React.SetStateAction<string>>;
-  notificationColor: string;
-  setNotificationColor: React.Dispatch<React.SetStateAction<string>>;
+  notificationState: NotificationState;
+  dispatchNotification: Dispatch<
+    | { type: 'SET_NOTIFICATION_ON'; payload: boolean }
+    | { type: 'SET_HIDE_NOTIFICATION'; payload: boolean }
+    | { type: 'SET_NOTIFICATION_TEXT'; payload: string }
+    | { type: 'SET_NOTIFICATION_COLOR'; payload: string }
+  >;
 }
+
+export interface NavigationState {
+  currentPage: string;
+  overAge: boolean;
+  loggedIn: boolean;
+}
+
+export interface NotificationState {
+  notificationOn: boolean;
+  hideNotification: boolean;
+  notificationText: string;
+  notificationColor: string;
+}
+
+

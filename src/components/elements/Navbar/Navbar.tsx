@@ -14,7 +14,7 @@ const Navbar = () => {
   const [navbarHeight, setNavbarHeight] = useState<number>(800);
   const [toggleNav, setToggleNav] = useState<boolean>(false);
 
-  const { loggedIn, setLoggedIn } = useContext(NavigationContext) as NavigationContextInterface
+  const { dispatchNavigation, navigationState } = useContext(NavigationContext) as NavigationContextInterface
 
   useEffect(() => {
     if(sessionStorage.getItem('token')){
@@ -32,7 +32,7 @@ const Navbar = () => {
         // onClick={()=>{setToggleNav(!toggleNav)}}
       >
         <div className={`navbar-content ${toggleNav ? 'nav-shown' : 'nav-hidden'}`} id="navbar-top-bar">
-          <Link to={'home'}>
+          <Link to={'home'} onClick={()=>{setToggleNav(false)}}>
           <div id="navbar-logo-container" onClick={()=>{console.log('home')}}>
             {
               toggleNav ?
@@ -87,7 +87,7 @@ const Navbar = () => {
                 <>
                     <Sublink link="/profile" text="My Account" fnc={()=>{setToggleNav(false)}}/>
                   
-                    <Sublink fnc={()=>{submitLogout(); loggedIn && setLoggedIn(false) && setToggleNav(false)}} text="Logout" />
+                    <Sublink fnc={()=>{submitLogout(); navigationState.loggedIn && dispatchNavigation({type: 'SET_LOGGED_IN', payload: false}) && setToggleNav(false)}} text="Logout" />
                   
                 </>
               )}

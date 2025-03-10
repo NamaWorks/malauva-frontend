@@ -11,20 +11,20 @@ import { NavigationContextInterface, NotificationContextInterface } from '../../
 const LoginForm = () => {
 
   
-  const { loggedIn, setLoggedIn } = useContext(NavigationContext) as NavigationContextInterface 
+  const { navigationState, dispatchNavigation} = useContext(NavigationContext) as NavigationContextInterface 
   
   const [ email, setEmail ] = useState<string | undefined>();
   const [ password, setPassword ] = useState<string | undefined>();
   const [ passwordVisible, setPasswordVisible ] = useState<boolean>(false);
 
-  const {setNotificationOn, setNotificationText,setNotificationColor} = useContext(NotificationContext) as NotificationContextInterface;
+  const {dispatchNotification, notificationState} = useContext(NotificationContext) as NotificationContextInterface;
   
   window.addEventListener("keydown", async (e)=>{
     e.key === 'Enter' && e.preventDefault()
   })
 
   useEffect(()=>{
-    if(loggedIn){
+    if(navigationState.loggedIn){
       redirectToUrl('/home')
     }
   },[])
@@ -62,27 +62,36 @@ const LoginForm = () => {
           fnc={
             async(e:Event):Promise<any> => {
               e.preventDefault()
+
+            dispatchNotification({type: 'SET_NOTIFICATION_COLOR', payload: 'dark'})
+            dispatchNotification({type: "SET_NOTIFICATION_TEXT", payload: 'Connecting with server'})
+            dispatchNotification({type: 'SET_NOTIFICATION_ON', payload: true})
+            setTimeout(() => {
+              dispatchNotification({type: 'SET_NOTIFICATION_ON', payload: false})
+            }, 4000);
+
               const loginStatus = await submitLogin({email, password})
               console.log(loginStatus)
               if(loginStatus == 200) {
-                setLoggedIn(true);
-                setNotificationColor('green');
-                setNotificationText('credentials ok. Redirecting to Home');
-                setNotificationOn(true);
+                dispatchNavigation({type: 'SET_LOGGED_IN', payload: true})
+                dispatchNotification({type: 'SET_NOTIFICATION_COLOR', payload: 'green'})
+                dispatchNotification({type: "SET_NOTIFICATION_TEXT", payload: 'credentials ok. Redirecting to Home'})
+                dispatchNotification({type: 'SET_NOTIFICATION_ON', payload: true})
                 setTimeout(() => {
-                  setNotificationOn(false)
+                  dispatchNotification({type: 'SET_NOTIFICATION_ON', payload: false})
                   redirectToUrl('/home')
                 }, 2000);
-              } else { 
-                setLoggedIn(false);
-                setNotificationColor('pink');
-                setNotificationText('something went wrong');
-                setNotificationOn(true)
+              } else {
+                console.log(notificationState)
+                dispatchNavigation({type: 'SET_LOGGED_IN', payload: false})
+                dispatchNotification({type: 'SET_NOTIFICATION_COLOR', payload: 'pink'})
+                dispatchNotification({type: "SET_NOTIFICATION_TEXT", payload: 'something went wrong'})
+                dispatchNotification({type: 'SET_NOTIFICATION_ON', payload: true})
                 setTimeout(() => {
-                  setNotificationOn(false)
+                  dispatchNotification({type: 'SET_NOTIFICATION_ON', payload: false})
                 }, 4000);
               }
-              setNotificationOn(true)
+              dispatchNotification({type: 'SET_NOTIFICATION_ON', payload: true})
             }
           }
           extraClass="login-form-button"

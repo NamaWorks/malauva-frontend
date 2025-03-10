@@ -15,13 +15,13 @@ import { NavigationContextInterface, WinesContextInterface } from '../../../util
 
 const Home = () => {
 
-  const {overAge} = useContext(NavigationContext) as NavigationContextInterface;
+  const {navigationState } = useContext(NavigationContext) as NavigationContextInterface;
 
-const {setFetchWines} = useContext(WinesContext) as WinesContextInterface;
+const {dispatchFetchWines} = useContext(WinesContext) as WinesContextInterface;
 
   useEffect(() =>{
-    overAgeChecker(overAge)
-    fetchData('/wines').then(res => setFetchWines(res)).catch(err => console.warn(err))
+    overAgeChecker(navigationState.overAge)
+    fetchData('/wines').then(res => dispatchFetchWines({type: "SET_FETCH_WINES", payload: res})).catch(err => console.warn(err))
   },[])
   
   return (

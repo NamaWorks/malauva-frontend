@@ -20,9 +20,9 @@ import { sortProducts } from "../../../utils/functions/filters_fn/sortProducts";
 import { NavigationContextInterface, NotificationContextInterface, WinesContextInterface } from "../../../utils/types/interfaces";
 
 const Products = () => {
-  const { fetchWines, setFetchWines } = useContext(WinesContext) as WinesContextInterface;
-  const { setCurrentPage, overAge } = useContext(NavigationContext) as NavigationContextInterface;
-  const { setNotificationOn, setNotificationText, setNotificationColor } = useContext(NotificationContext) as NotificationContextInterface;
+  const { fetchWines, dispatchFetchWines } = useContext(WinesContext) as WinesContextInterface;
+  const { navigationState, dispatchNavigation} = useContext(NavigationContext) as NavigationContextInterface;
+  const { dispatchNotification } = useContext(NotificationContext) as NotificationContextInterface;
 
   const [lastPrintItem, setLastPrintItem] = useState<number>(12);
   const [wineOrigins, setWineOrigins] = useState<string[]>([]);
@@ -42,31 +42,32 @@ const Products = () => {
   const [ winInnerWidth, setWinInnerWidth ] = useState<number>(window.innerWidth)
   const [ showFilters, setShowFilters ] = useState<boolean>(false)
 
+  //! could we use a sweet useReducer here? Should we?
+
 
 console.log(setWineTemps, setWinePrices)
 
 
   useEffect(() => {
     if(loading){
-      setNotificationText('loading products')
-      setNotificationColor('dark')
-      setNotificationOn(true)
+      dispatchNotification({type: "SET_NOTIFICATION_TEXT", payload: 'loading products'})
+      dispatchNotification({type: "SET_NOTIFICATION_COLOR", payload: 'dark'})
+      dispatchNotification({type: "SET_NOTIFICATION_ON", payload: true})
     }; 
+    dispatchNavigation({type: "SET_CURRENT_PAGE", payload: "products"})
 
-    setCurrentPage("products");
-
-    overAgeChecker(overAge);
+    overAgeChecker(navigationState.overAge);
 
     fetchData("/wines")
       .then((res:Wine[]) => {
-        setFetchWines(res);
+        dispatchFetchWines({type: "SET_FETCH_WINES", payload: res})
         setWineOrigins(addAllStrings(res, "origin"));
         setWineTastes(addAllStrings(res, "taste"));
       })
       .catch((err:Error) => console.warn(err))
       .finally(() => {
         setLoading(false);
-        setNotificationOn(false)
+        dispatchNotification({type: "SET_NOTIFICATION_ON", payload: false})
       });
 
       setFilteredWines(fetchWines)

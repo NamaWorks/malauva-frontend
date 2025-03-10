@@ -9,8 +9,8 @@ import { redirectToUrl } from "../../../../utils/functions/navigation_fn/redirec
 import { NavigationContextInterface, NotificationContextInterface } from "../../../../utils/types/interfaces";
 
 const SignupForm = () => {
-  const { setNotificationOn, setNotificationText, setNotificationColor } = useContext(NotificationContext) as NotificationContextInterface;
-  const { loggedIn, setLoggedIn } = useContext(NavigationContext) as NavigationContextInterface
+  const { dispatchNotification } = useContext(NotificationContext) as NotificationContextInterface;
+  const { dispatchNavigation, navigationState } = useContext(NavigationContext) as NavigationContextInterface
 
   const [personName, setPersonName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
@@ -75,9 +75,9 @@ const SignupForm = () => {
           fnc={
             async (e: React.MouseEvent<HTMLButtonElement>) => {
               e.preventDefault();
-              setNotificationText('creating new Profile')
-              setNotificationColor('dark')
-              setNotificationOn(true)
+              dispatchNotification({type: 'SET_NOTIFICATION_TEXT', payload: "creating new profile"})
+              dispatchNotification({type: 'SET_NOTIFICATION_COLOR', payload: "dark"})
+              dispatchNotification({type: 'SET_NOTIFICATION_ON', payload: true})
               const signupStatus = await signupSubmit({
                 personName,
                 email,
@@ -85,36 +85,34 @@ const SignupForm = () => {
                 password,
               });
               if(signupStatus === 201){
-                setNotificationOn(false)
-                console.log('signed up correctly')
-                setNotificationText('You signed up correctly')
-                setNotificationColor('green')
-                setNotificationOn(true)
+                dispatchNotification({type: 'SET_NOTIFICATION_ON', payload: false})
+                dispatchNotification({type: "SET_NOTIFICATION_TEXT", payload: "you signed up correctly"})
+                dispatchNotification({type: 'SET_NOTIFICATION_COLOR', payload: 'green'})
+                dispatchNotification({type: 'SET_NOTIFICATION_ON', payload: true})
                 setTimeout(async() => {
-                  setNotificationOn(false)
+                  dispatchNotification({type: 'SET_NOTIFICATION_ON', payload: false})
                   const loginRes = await submitLogin({ email, password });
                   if(loginRes === 200){
-                    setLoggedIn(true)
+                    dispatchNavigation({type: 'SET_LOGGED_IN', payload: true})
                     redirectToUrl('/profile')
                   } else {
-                    setNotificationOn(false)
-                    console.error('could not sign up')
-                    setNotificationText('There was a problem when login in')
-                    setNotificationColor('pink')
-                    setNotificationOn(true)
-                    loggedIn && setLoggedIn(false)
+                    dispatchNotification({type: 'SET_NOTIFICATION_ON', payload: false})
+                    dispatchNotification({type: 'SET_NOTIFICATION_TEXT', payload: 'there was a problem when login in'})
+                    dispatchNotification({type: 'SET_NOTIFICATION_COLOR', payload: 'pink'})
+                    dispatchNotification({type: 'SET_NOTIFICATION_ON', payload: true})
+                    navigationState.loggedIn && dispatchNavigation({type: 'SET_LOGGED_IN', payload: false})
                     setTimeout(() => {
-                      setNotificationOn(false)
+                      dispatchNotification({type: 'SET_NOTIFICATION_ON', payload: false})
                     }, 4000);
                   }
                 }, 2000);
               } else {
                 console.log(`something went wrong`);
-                setNotificationText(`Check all the fields`);
-                setNotificationColor('pink');
-                setNotificationOn(true);
+                dispatchNotification({type: 'SET_NOTIFICATION_COLOR', payload: 'pink'})
+                dispatchNotification({type: 'SET_NOTIFICATION_ON', payload: true})
+                dispatchNotification({type: 'SET_NOTIFICATION_TEXT', payload: "check all the fields"})
                 setTimeout(() => {
-                  setNotificationOn(false)
+                  dispatchNotification({type: 'SET_NOTIFICATION_ON', payload: false})
                 }, 4000);
               }
             }

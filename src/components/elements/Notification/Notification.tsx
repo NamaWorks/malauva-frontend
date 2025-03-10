@@ -9,12 +9,12 @@ const Notification = ({color}: {color?: string, text: string}) => {
   const [notificationPosX, setNotificationPosX] = useState<number>(window.innerWidth/2);
   const componentRef = useRef<HTMLDivElement>(null);
 
-  const {notificationOn, setNotificationOn, notificationText,notificationColor} = useContext(NotificationContext) as NotificationContextInterface
+  const {notificationState, dispatchNotification} = useContext(NotificationContext) as NotificationContextInterface
 
   
   useEffect(()=>{
     centerNotification
-  },[notificationOn, notificationText, notificationColor])
+  },[notificationState.notificationOn, notificationState.notificationText, notificationState.notificationColor])
   
   function centerNotification () {
     if (componentRef.current) {
@@ -24,12 +24,12 @@ const Notification = ({color}: {color?: string, text: string}) => {
     }
   }
 
-  if(!notificationOn){return (null)}
+  if(!notificationState.notificationOn){return (null)}
 
   return (
-    <div ref={componentRef} className={`mu-notification notification-${notificationColor}`} style={{left:notificationPosX}} onLoad={centerNotification} onChange={centerNotification}>
-      <BodyTitles hierarchy={7} text={notificationText}/>
-      <button className='notification-icon' onClick={()=>{setNotificationOn(false)}}>
+    <div ref={componentRef} className={`mu-notification notification-${notificationState.notificationColor}`} style={{left:notificationPosX}} onLoad={centerNotification} onChange={centerNotification}>
+      <BodyTitles hierarchy={7} text={notificationState.notificationText}/>
+      <button className='notification-icon' onClick={()=>{dispatchNotification({type: "SET_NOTIFICATION_ON", payload: false})}}>
         <img src={`/assets/img/icons/close-notification-${(color === 'pink' || 'dark') ? 'beige' : 'dark'}.svg`} alt="close button"/>
       </button>
     </div>

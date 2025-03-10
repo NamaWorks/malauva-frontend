@@ -18,13 +18,13 @@ const ProductEntry = () => {
   const { fetchWines } = useContext(WinesContext) as WinesContextInterface;
   const { idNumber } = useParams<{ idNumber: string }>();
   const [wineToPrint, setWineToPrint] = useState<Wine | null>(null);
-  const { overAge, loggedIn, setLoggedIn } = useContext(NavigationContext) as NavigationContextInterface;
+  const { navigationState, dispatchNavigation } = useContext(NavigationContext) as NavigationContextInterface;
   const [itemsNumber, setItemsNumber] = useState<number>(1);
-  const { setNotificationOn, setNotificationText, setNotificationColor } = useContext(NotificationContext) as NotificationContextInterface;
+  const { dispatchNotification } = useContext(NotificationContext) as NotificationContextInterface;
 
   useEffect(() => {
-    overAgeChecker(overAge);
-  }, [overAge]);
+    overAgeChecker(navigationState.overAge);
+  }, [navigationState.overAge]);
 
   useEffect(() => {
     if (fetchWines.length > 0) {
@@ -40,7 +40,7 @@ const ProductEntry = () => {
   return (
     <div>
       <Notification text={'test notification'} color={'beige'}/>
-      <main id="product-entry" onLoad={()=>{sessionStorage.getItem('token') && setLoggedIn(true) && window.scrollTo(0,0)}}>
+      <main id="product-entry" onLoad={()=>{sessionStorage.getItem('token') && dispatchNavigation({type: "SET_LOGGED_IN", payload: true}) && window.scrollTo(0,0)}}>
         <div className="product-entry-container" id="product-info-container">
           <div className="image-container">
             <img src={wineToPrint?.picture} alt={wineToPrint?.name} />
@@ -104,26 +104,26 @@ const ProductEntry = () => {
           <UserInterfaceButton kind="bold" color="green" text="Add to cart" 
             fnc={ 
               async():Promise<void>=>{
-                if(loggedIn){
-                  setNotificationColor('dark');
-                  setNotificationText('adding products to cart');
-                  setNotificationOn(true);
+                if(navigationState.loggedIn){
+                  dispatchNotification({type: "SET_NOTIFICATION_COLOR", payload: 'dark'})
+                  dispatchNotification({type: 'SET_NOTIFICATION_TEXT', payload: 'adding products to cart'})
+                  dispatchNotification({type: "SET_NOTIFICATION_ON", payload: true})
                   const res = await addProductToUserCart(window.location.href.split('/').slice(-1)[0], itemsNumber)
                   if(res === 200){
-                    setNotificationOn(false)
-                    setNotificationColor('green');
-                    setNotificationText('Product added to cart');
-                    setNotificationOn(true);
+                    dispatchNotification({type: "SET_NOTIFICATION_ON", payload: false})
+                    dispatchNotification({type: "SET_NOTIFICATION_COLOR", payload: 'green'})
+                    dispatchNotification({type: 'SET_NOTIFICATION_TEXT', payload: 'product added to cart'})
+                    dispatchNotification({type: "SET_NOTIFICATION_ON", payload: true})
                     setTimeout(() => {
-                      setNotificationOn(false)
+                      dispatchNotification({type: "SET_NOTIFICATION_ON", payload: false})
                     }, 2000);
                   } else {
-                    setNotificationOn(false)
-                    setNotificationColor('pink');
-                    setNotificationText('Product could not be added to the cart');
-                    setNotificationOn(true);
+                    dispatchNotification({type: "SET_NOTIFICATION_ON", payload: false})
+                    dispatchNotification({type: "SET_NOTIFICATION_COLOR", payload: 'pink'})
+                    dispatchNotification({type: 'SET_NOTIFICATION_TEXT', payload: 'product could not be added to the cart'})
+                    dispatchNotification({type: "SET_NOTIFICATION_ON", payload: true})
                     setTimeout(() => {
-                      setNotificationOn(false)
+                      dispatchNotification({type: "SET_NOTIFICATION_ON", payload: false})
                     }, 2000);
                   }
                 } else {

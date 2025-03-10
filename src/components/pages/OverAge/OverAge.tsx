@@ -8,15 +8,15 @@ import { redirectToUrl } from '../../../utils/functions/navigation_fn/redirectTo
 
 const OverAge = () => {
 
-  const { overAge, setOverAge } = useContext(NavigationContext) as NavigationContextInterface
+  const { navigationState, dispatchNavigation } = useContext(NavigationContext) as NavigationContextInterface
 
-  console.log(overAge)
+  console.log(navigationState.overAge)
 
-  window.addEventListener('load', ()=>{if(overAge===true){window.location.href='home'}})
+  window.addEventListener('load', ()=>{if(navigationState.overAge===true){window.location.href='home'}})
 
   useEffect(()=>{
-    overAge && redirectToUrl('home')
-  },[overAge])
+    navigationState.overAge && redirectToUrl('home')
+  },[navigationState.overAge])
 
   return (
     <>
@@ -32,7 +32,7 @@ const OverAge = () => {
           <p>+21?</p>
           <div className='overage-buttons-container'>
             {/* <Link to={}> */}
-              <button className="overage-button" onClick={()=>{setOverAge(true); sessionStorage.setItem('overAge', 'true')}}>Y</button>
+              <button className="overage-button" onClick={()=>{dispatchNavigation({type:"SET_OVER_AGE", payload:true}); sessionStorage.setItem('overAge', 'true')}}>Y</button>
             {/* </Link> */}
             <p>/</p>
             <button className="overage-button" onClick={()=>{console.log('button clicked')}}>N</button>
