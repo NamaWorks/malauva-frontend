@@ -5,7 +5,7 @@ const useSubmitFilters = ({setOriginsValue, setTasteValue, setPriceValue, setTem
   const selectDomItems = document.querySelectorAll(`.products-filter-select`)
   selectDomItems.forEach((item: any) => {
     const id = item.id.split('-')[1]
-    const value = item.value || '';
+    const value = item.querySelector('.chosen-filter').innerHTML.toLowerCase();
 
     switch (id) {
       case 'origins':
@@ -17,11 +17,11 @@ const useSubmitFilters = ({setOriginsValue, setTasteValue, setPriceValue, setTem
         break;
 
       case 'price':
-        setPriceValue(value === 'price' ? 'price' : Number(value.replace('<', '')))
+        setPriceValue(value === 'price' ? 'price' : Number(value.replace('<', '').replace('&lt;', '')))
         break;
 
       case 'temperature':
-        setTemperatureValue(value === 'temperature' ? 'temperature' : Number(value.replace('<', '')))
+        setTemperatureValue(value === 'temperature' ? 'temperature' : Number(value.replace('<', '').replace('&lt;', '')))
         break;
 
       case 'sort':

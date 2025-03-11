@@ -18,6 +18,7 @@ import { filterProducts } from "../../../utils/functions/filters_fn/filterProduc
 import useSubmitFilters from "../../../utils/hooks/useSubmitFilters";
 import { sortProducts } from "../../../utils/functions/filters_fn/sortProducts";
 import { NavigationContextInterface, NotificationContextInterface, WinesContextInterface } from "../../../utils/types/interfaces";
+import { resetFilters } from "../../../utils/functions/filters_fn/resetFilters";
 
 const Products = () => {
   const { fetchWines, dispatchFetchWines } = useContext(WinesContext) as WinesContextInterface;
@@ -45,7 +46,7 @@ const Products = () => {
   //! could we use a sweet useReducer here? Should we?
 
 
-console.log(setWineTemps, setWinePrices)
+// console.log(setWineTemps, setWinePrices)
 
 
   useEffect(() => {
@@ -113,14 +114,19 @@ console.log(setWineTemps, setWinePrices)
         <div className="products-filter-container shown">
           {winInnerWidth<=800 && (<UserInterfaceButton text={showFilters ? 'hide filters' : 'show filters'} fnc={()=>{setShowFilters(!showFilters)}} />)}
             <div className={`filters-container ${showFilters ? 'filters-shown' : 'filters-hidden'}`}>
-              <div>
+              <div className="filters-components">
                 <ProductsFilterSelect selectName="origins" allText="Origins" arr={wineOrigins} />
                 <ProductsFilterSelect selectName="taste" allText="Taste" arr={wineTastes} />
                 <ProductsFilterSelect selectName="price" allText="Price" arr={prepareIntervals(winePrices)} />
                 <ProductsFilterSelect selectName="temperature" allText="Temperature" arr={prepareIntervals(wineTemps)} />
                 <ProductsFilterSelect selectName="sort" allText="Sort" arr={["alphabetically", "high price", "low price"]} />
               </div>
-              <UserInterfaceButton text="filter" color="pink" fnc={()=>{useSubmitFilters({setOriginsValue, setTasteValue, setPriceValue, setTemperatureValue, setSortValue}); console.warn(`submit button clicked`)}}/>
+              <UserInterfaceButton text="filter" color="dark" fnc={()=>{useSubmitFilters({setOriginsValue, setTasteValue, setPriceValue, setTemperatureValue, setSortValue}); console.warn(`submit button clicked`)}}/>
+              <UserInterfaceButton text="clean filters" color="dark" 
+                fnc={()=>{ 
+                  resetFilters();
+                  useSubmitFilters({setOriginsValue, setTasteValue, setPriceValue, setTemperatureValue, setSortValue});
+              }}/>
             </div>
           </div>
         </section>

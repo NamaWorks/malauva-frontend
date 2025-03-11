@@ -5,19 +5,29 @@
     background-color: index.$MU-green-100;
     height: 6svh;
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    width: 100%;
+    align-items: flex-start;
     justify-content: center;
     .products-filter-container{
       display: flex;
       flex-direction: row;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
+      width: 100%;
       gap: index.$d-gap-general-100;
+      height: 100%;
 
-      div{
+      .filters-container{
+        display: flex;
+        align-items: center;
+        height: 100%;
+        gap: index.$d-gap-general-100;
+      }
+
+      .filters-components{
         display: flex;
         flex-direction: row;
+        height: 100%;
         align-items: center;
         justify-content: center;
         gap: index.$d-gap-general-100;
