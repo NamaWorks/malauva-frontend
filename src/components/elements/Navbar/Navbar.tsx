@@ -41,7 +41,17 @@ const Navbar = () => {
             }
           </div>
             </Link>
-          <div>
+          <div className="navbar-menu-side">
+
+            {
+              userLogged === true
+              ?<></>
+              :<>
+                <Sublink link="/login" text="Login" fnc={()=>{setToggleNav(false)}}/>
+                <Sublink link="/signup" text="signup" fnc={()=>{setToggleNav(false)}}/>
+              </>
+            }
+
             <NavigationButton
               kind="fnc"
               id="navbar-btn-menu"
