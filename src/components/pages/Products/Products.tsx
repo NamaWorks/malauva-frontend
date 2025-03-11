@@ -19,6 +19,7 @@ import useSubmitFilters from "../../../utils/hooks/useSubmitFilters";
 import { sortProducts } from "../../../utils/functions/filters_fn/sortProducts";
 import { NavigationContextInterface, NotificationContextInterface, WinesContextInterface } from "../../../utils/types/interfaces";
 import { resetFilters } from "../../../utils/functions/filters_fn/resetFilters";
+import BodyTitles from "../../elements/texts/BodyTitles/BodyTitles";
 
 const Products = () => {
   const { fetchWines, dispatchFetchWines } = useContext(WinesContext) as WinesContextInterface;
@@ -47,7 +48,7 @@ const Products = () => {
 
 
 console.log(setWineTemps, setWinePrices)
-
+ 
 
   useEffect(() => {
     if(loading){
@@ -132,38 +133,41 @@ console.log(setWineTemps, setWinePrices)
         </section>
         <section className="products-page-container" id="products-container">
           {/* {loading && <p>fetching</p>} */}
-          {filteredWines.map((wineObj:Wine, i:number) => {
-                          const randomVal = getRandomIndex();
-                          let className = "skip-zero";
+          {
+            filteredWines.length === 0 
+            ? <div className="no-wines-msg"><BodyTitles text="No wines with that selection" hierarchy={6}/></div>
+            : filteredWines.map((wineObj:Wine, i:number) => {
+              const randomVal = getRandomIndex();
+              let className = "skip-zero";
 
-                          // Check if the wine item already has a printed class
-                          if (printedItems.has(i)) {
-                            className = printedItems.get(i) as string;
-                          } else {
-                            // Assign class based on random value
-                            if (i < lastPrintItem) {
-                              if (randomVal > 7) {
-                                className = "skip-one";
-                              } else if (randomVal > 9) {
-                                className = "skip-two";
-                              } else {
-                                className = "skip-zero";
-                              }
+              // Check if the wine item already has a printed class
+              if (printedItems.has(i)) {
+                className = printedItems.get(i) as string;
+              } else {
+                // Assign class based on random value
+                if (i < lastPrintItem) {
+                  if (randomVal > 7) {
+                    className = "skip-one";
+                  } else if (randomVal > 9) {
+                    className = "skip-two";
+                  } else {
+                    className = "skip-zero";
+                  }
 
-                              // Update the printed items map with the assigned class
-                              setPrintedItems((previousMap) => new Map(previousMap).set(i, className));
-                            }
-                          }
+                  // Update the printed items map with the assigned class
+                  setPrintedItems((previousMap) => new Map(previousMap).set(i, className));
+                }
+              }
 
-                          // Return ProductCard with appropriate class
-                          if (i < lastPrintItem) {
-                            return (
-                              <ProductCard wineData={wineObj} key={wineObj.idNumber} extraClass={className}/>
-                            );
-                          }
+              // Return ProductCard with appropriate class
+              if (i < lastPrintItem) {
+                return (
+                  <ProductCard wineData={wineObj} key={wineObj.idNumber} extraClass={className}/>
+                );
+              }
 
-                          return null; // Avoid rendering items beyond lastPrintItem
-                        })
+              return null; // Avoid rendering items beyond lastPrintItem
+            })
           }
         </section>
       </main>
