@@ -46,7 +46,7 @@ const Products = () => {
   //! could we use a sweet useReducer here? Should we?
 
 
-// console.log(setWineTemps, setWinePrices)
+console.log(setWineTemps, setWinePrices)
 
 
   useEffect(() => {
