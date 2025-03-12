@@ -4,13 +4,17 @@ import NavPageText from "../../../components/elements/texts/NavPageText/NavPageT
 import BodyCopy from "../../../components/elements/texts/BodyCopy/BodyCopy";
 import UserInterfaceButton from "../../../components/elements/buttons/UserInterfaceButton/UserInterfaceButton";
 import LoginForm from "../../../components/pages/Login/LoginForm/LoginForm";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { NavigationContext } from "../../../utils/contexts/contexts";
 import { NavigationContextInterface } from "../../../utils/types/interfaces";
 
 const Login = () => {   
   
   const { navigationState } = useContext(NavigationContext) as NavigationContextInterface
+
+
+  useEffect(()=>{},[])
+
   
     return (
       <>
