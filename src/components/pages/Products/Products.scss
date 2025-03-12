@@ -2,6 +2,7 @@
 
 #products-page{
   #products-filter{
+    // overflow-x: hidden;
     background-color: index.$MU-green-100;
     height: 6svh;
     display: flex;
@@ -64,77 +65,75 @@
 
 @media (max-width:800px){
   #products-page{
+    overflow-x: hidden;
+    #products-container{
+      display: grid;
+      grid-template-columns: repeat(2,auto);
+      justify-content: center;
+      align-items: top;
+      gap: index.$d-gap-general-200;
+    }
 
     #products-filter{
       background-color: transparent;
-      justify-self: end;
-      flex-direction: column;
-      height: auto;
-      padding: index.$d-padding-general-075;
-      align-items: end;
-
+      
       .products-filter-container{
-        position: fixed;
-        top: 100px;
+        display: flex;
         flex-direction: column;
-        align-items: end;
+        align-items: flex-start;
+        justify-content: flex-start;
+        position: relative;
+        gap: index.$d-gap-general-050;
+        top: 20px;
+        left: 20px;
         
-        .filters-container {
-          position: fixed;
+        .filters-container{
+          height: auto;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: flex-start;
+          background-color: index.$MU-green-100;
+          border-radius: index.$btn-border-radius;
+          padding: index.$d-padding-general-075;
+          position: relative;
+          gap: index.$d-gap-general-050;
+          left: 0;
           transition: index.$general-transition;
         }
         
-        .filters-shown{
-          position: fixed;
-          top: 150px;
-          width: 150px;
-          right: 16px;
-          padding: index.$d-padding-general-100;
-          border-radius: index.$btn-border-radius;
-          background-color: index.$MU-green-100;
+        .filters-container.filters-hidden {
+          left: -250px;
         }
         
-        .filters-hidden{
-          position: fixed;
-          top: 150px;
-          right: -240px;
-          width: 148px;
-          padding: index.$d-padding-general-100;
-          border-radius: index.$btn-border-radius;
-          background-color: index.$MU-green-100;
-        }
-
-        div{
+        .filters-components{
+          width: 100%;
+          gap: index.$d-gap-general-050;
+          display: flex;
           flex-direction: column;
-          justify-content: end;
-          align-items: end;
+          align-items: flex-start;
+          justify-content: flex-start;
+
         }
       }
     }
 
-    #products-container{
-      display: grid;
-      grid-template-columns: repeat(3,auto);
-      grid-template-rows: repeat(auto, 1fr);
-      padding: index.$d-padding-general-100;
-      justify-content: center;
-      align-items: top;
-      gap: index.$d-gap-general-100;
-    }
   }
+
 }
 
-@media (max-width: 550px){
+@media (max-width: 500px){
   #products-page{
-
+    overflow-x: hidden;
     #products-container{
+      grid-template-columns: repeat(1,auto);
       display: grid;
-      grid-template-columns: repeat(2,auto);
-      grid-template-rows: repeat(auto, 1fr);
-      padding: index.$d-padding-general-100;
-      justify-content: center;
-      align-items: top;
       gap: index.$d-gap-general-100;
+      .wine-card-vertical{
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-column: span 1;
+      }
     }
   }
 }
