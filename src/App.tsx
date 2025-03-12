@@ -22,7 +22,7 @@ import { notificationReducer } from './reducers/notificationReducer';
 function App() {
   const [fetchWines, dispatchFetchWines] = useReducer(winesReducer, []);
   const [navigationState, dispatchNavigation] = useReducer(navigationReducer, {
-    currentPage: 'Home',
+    currentPage: '',
     overAge: sessionStorage.getItem('overAge') === 'true',
     loggedIn: sessionStorage.getItem('token') === 'true',
   });

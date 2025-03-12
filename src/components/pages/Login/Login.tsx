@@ -4,13 +4,23 @@ import NavPageText from "../../../components/elements/texts/NavPageText/NavPageT
 import BodyCopy from "../../../components/elements/texts/BodyCopy/BodyCopy";
 import UserInterfaceButton from "../../../components/elements/buttons/UserInterfaceButton/UserInterfaceButton";
 import LoginForm from "../../../components/pages/Login/LoginForm/LoginForm";
+import { useContext } from "react";
+import { NavigationContext } from "../../../utils/contexts/contexts";
+import { NavigationContextInterface } from "../../../utils/types/interfaces";
 
-const Login = () => {
-
-  return (
-    <>
+const Login = () => {   
+  
+  const { navigationState } = useContext(NavigationContext) as NavigationContextInterface
+  
+    return (
+      <>
       <main id="login-page"
-        onLoad={()=>{window.scrollTo(0,0)}}
+        onLoad={
+          ()=>{
+            window.scrollTo(0,0);
+            console.log(navigationState)
+          }
+        }
       >
         <div className="login-container">
           <LinkText text="Sign Up" link="/signup" />
@@ -69,7 +79,7 @@ const Login = () => {
 
         <div className="login-container">
           <img
-            src="/assets/img/pictures/login_wine-serving.png"
+            src="/assets/img/pictures/login_wine-serving.webp"
             alt="man serving wine in Venezia"
           />
         </div>

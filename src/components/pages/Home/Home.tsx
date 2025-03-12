@@ -15,7 +15,7 @@ import { NavigationContextInterface, WinesContextInterface } from '../../../util
 
 const Home = () => {
 
-  const {navigationState } = useContext(NavigationContext) as NavigationContextInterface;
+  const {navigationState, dispatchNavigation } = useContext(NavigationContext) as NavigationContextInterface;
 
 const {dispatchFetchWines} = useContext(WinesContext) as WinesContextInterface;
 
@@ -27,7 +27,11 @@ const {dispatchFetchWines} = useContext(WinesContext) as WinesContextInterface;
   return (
     <>
     <main id='home'
-      onLoad={()=>{window.scrollTo(0,0)}}
+      onLoad={()=>{
+        window.scrollTo(0,0)
+        dispatchNavigation({ type: "SET_CURRENT_PAGE", payload: 'home'})
+        sessionStorage.setItem('currentPage', `home`)
+      }}
     >
       <HomeHero/>
       <HomeHlText/>

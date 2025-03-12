@@ -22,6 +22,8 @@ const ProductEntry = () => {
   const [itemsNumber, setItemsNumber] = useState<number>(1);
   const { dispatchNotification } = useContext(NotificationContext) as NotificationContextInterface;
 
+
+
   useEffect(() => {
     overAgeChecker(navigationState.overAge);
   }, [navigationState.overAge]);
@@ -37,10 +39,17 @@ const ProductEntry = () => {
     }
   }, [fetchWines, idNumber]);
 
+  useEffect(()=>{
+    console.log(navigationState)
+  },[navigationState.currentPage])
+
   return (
     <div>
       <Notification text={'test notification'} color={'beige'}/>
-      <main id="product-entry" onLoad={()=>{sessionStorage.getItem('token') && dispatchNavigation({type: "SET_LOGGED_IN", payload: true}) && window.scrollTo(0,0)}} >
+      <main id="product-entry" onLoad={()=>{sessionStorage.getItem('token') && dispatchNavigation({type: "SET_LOGGED_IN", payload: true}) && window.scrollTo(0,0) ;
+      dispatchNavigation({ type: "SET_CURRENT_PAGE", payload: `products/${idNumber}`})
+      sessionStorage.setItem('currentPage', `products/${idNumber}`)
+      }} >
         <div className="product-entry-container" id="product-info-container">
           <div className="image-container">
             <img src={wineToPrint?.picture} alt={wineToPrint?.name} />
@@ -127,7 +136,8 @@ const ProductEntry = () => {
                     }, 2000);
                   }
                 } else {
-                  redirectToUrl('/login')
+                  redirectToUrl('/login');
+                  sessionStorage.setItem('currentPage', `products/${idNumber}`)
                 }
               }
             }

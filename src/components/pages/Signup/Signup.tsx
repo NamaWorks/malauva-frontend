@@ -11,7 +11,7 @@ import { NavigationContext } from '../../..//utils/contexts/contexts'
 import { NavigationContextInterface } from '../../../utils/types/interfaces'
 
 const Signup = () => {
-  const { navigationState } = useContext(NavigationContext) as NavigationContextInterface
+  const { navigationState, dispatchNavigation } = useContext(NavigationContext) as NavigationContextInterface
 
   useEffect(()=>{
     overAgeChecker(navigationState.overAge)
@@ -19,7 +19,10 @@ const Signup = () => {
 
   return (
     <main id='signup-page'
-      onLoad={()=>{window.scrollTo(0,0)}}
+      onLoad={()=>{
+        window.scrollTo(0,0)
+        dispatchNavigation({ type: "SET_CURRENT_PAGE", payload: `signup`})
+      }}
     >
       <div className="signup-container">
         <LinkText text='Log In' link='/login'/>
@@ -36,7 +39,7 @@ const Signup = () => {
         </div>
       </div>
       <div className="signup-container">
-        <img src="/assets/img/pictures/rear_view.png" />
+        <img src="/assets/img/pictures/rear_view.webp" />
       </div>
     </main>
   )

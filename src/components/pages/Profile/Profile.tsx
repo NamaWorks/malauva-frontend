@@ -31,7 +31,10 @@ const Profile = () => {
     <>
     
     <main id="profile-page"
-      onLoad={()=>{window.scrollTo(0,0)}}
+      onLoad={()=>{
+        window.scrollTo(0,0)
+        sessionStorage.setItem('currentPage', `profile`)
+      }}
     >
 
       <div className="profile-container">

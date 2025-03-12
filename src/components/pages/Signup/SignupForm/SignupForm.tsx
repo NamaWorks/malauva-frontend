@@ -9,6 +9,9 @@ import { redirectToUrl } from "../../../../utils/functions/navigation_fn/redirec
 import { NavigationContextInterface, NotificationContextInterface } from "../../../../utils/types/interfaces";
 
 const SignupForm = () => {
+
+  const currentPageH = sessionStorage.getItem('currentPage') || ''
+
   const { dispatchNotification } = useContext(NotificationContext) as NotificationContextInterface;
   const { dispatchNavigation, navigationState } = useContext(NavigationContext) as NavigationContextInterface
 
@@ -94,7 +97,7 @@ const SignupForm = () => {
                   const loginRes = await submitLogin({ email, password });
                   if(loginRes === 200){
                     dispatchNavigation({type: 'SET_LOGGED_IN', payload: true})
-                    redirectToUrl('/profile')
+                    redirectToUrl(currentPageH)
                   } else {
                     dispatchNotification({type: 'SET_NOTIFICATION_ON', payload: false})
                     dispatchNotification({type: 'SET_NOTIFICATION_TEXT', payload: 'there was a problem when login in'})

@@ -3,11 +3,11 @@ import "./Navbar.scss";
 import NavbarLink from "./NavbarLink/NavbarLink";
 import Sublink from "./Sublink/Sublink";
 import NavigationButton from "../buttons/NavigationButton/NavigationButton";
-// import { redirectToUrl } from "../../../utils/functions/navigation_fn/redirectToUrl";ys
-import { submitLogout } from "../../../utils/functions/submits/submitLogout";
+// import { redirectToUrl } from "../../../utils/functions/navigation_fn/redirectToUrl";
 import { NavigationContext } from "../../../utils/contexts/contexts";
 import { NavigationContextInterface } from "../../../utils/types/interfaces";
 import { Link } from "react-router-dom";
+import { redirectToUrl } from "../../../utils/functions/navigation_fn/redirectToUrl";
 
 const Navbar = () => {
   const [ userLogged, setUserLogged ] = useState<boolean>()
@@ -97,7 +97,11 @@ const Navbar = () => {
                 <>
                     <Sublink link="/profile" text="My Account" fnc={()=>{setToggleNav(false)}}/>
                   
-                    <Sublink fnc={()=>{submitLogout(); navigationState.loggedIn && dispatchNavigation({type: 'SET_LOGGED_IN', payload: false}) && setToggleNav(false)}} text="Logout" />
+                    <Sublink fnc={()=>{
+                      sessionStorage.removeItem('token')
+                      redirectToUrl(`/${navigationState.currentPage}`); 
+                      navigationState.loggedIn && dispatchNavigation({type: 'SET_LOGGED_IN', payload: false}) && setToggleNav(false)
+                      }} text="Logout" />
                   
                 </>
               )}

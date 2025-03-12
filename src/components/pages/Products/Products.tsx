@@ -110,6 +110,10 @@ console.log(setWineTemps, setWinePrices)
     <>
       <main id="products-page"
         // onLoad={()=>{window.scrollTo(0,0)}}
+        onLoad={()=>{
+          dispatchNavigation({ type: "SET_CURRENT_PAGE", payload: `products`})
+          sessionStorage.setItem('currentPage', `products`)
+        }}
       >
         <section className="products-page-container" id="products-filter">
         <div className="products-filter-container shown">

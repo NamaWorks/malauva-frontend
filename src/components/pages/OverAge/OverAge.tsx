@@ -29,13 +29,13 @@ const OverAge = () => {
           <img src="/assets/img/illustrations/glasses.svg" alt="illustrations of stored glasses" />
         </div>
         <div className='overage-content-div'>
-          <p>+21?</p>
+          <p>Are you over 21 years old?</p>
           <div className='overage-buttons-container'>
             {/* <Link to={}> */}
-              <button className="overage-button" onClick={()=>{dispatchNavigation({type:"SET_OVER_AGE", payload:true}); sessionStorage.setItem('overAge', 'true')}}>Y</button>
+              <button className="overage-button" onClick={()=>{dispatchNavigation({type:"SET_OVER_AGE", payload:true}); sessionStorage.setItem('overAge', 'true')}}>Yes</button>
             {/* </Link> */}
             <p>/</p>
-            <button className="overage-button" onClick={()=>{console.log('button clicked')}}>N</button>
+            <button className="overage-button" onClick={()=>{console.log('button clicked')}}>No</button>
           </div>
         </div>
       </div>

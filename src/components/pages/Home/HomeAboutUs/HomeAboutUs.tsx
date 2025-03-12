@@ -17,7 +17,7 @@ const HomeAboutUs = () => {
       </div>
     </div>
     <div className='home-about-us-container'>
-      <img src="/assets/img/pictures/gondola-ride.png" alt="image of a gondola ride" />
+      <img src="/assets/img/pictures/gondola-ride.webp" alt="image of a gondola ride" />
     </div>
   </section>
   </>

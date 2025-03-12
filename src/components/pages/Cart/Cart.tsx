@@ -9,8 +9,8 @@ import LinkText from '../../elements/texts/LinkText/LinkText';
 import PriceText from '../../elements/texts/PriceText/PriceText';
 import './Cart.scss';
 import CartItem from './CartItem/CartItem';
-import { NotificationContext } from '../../../utils/contexts/contexts';
-import { NotificationContextInterface } from '../../../utils/types/interfaces';
+import { NavigationContext, NotificationContext } from '../../../utils/contexts/contexts';
+import { NavigationContextInterface, NotificationContextInterface } from '../../../utils/types/interfaces';
 
 const Cart = () => {
   const [ cartItemsReady, setCartItemsReady ] = useState<any[]>();
@@ -21,9 +21,11 @@ const Cart = () => {
   const [ loading, setLoading ] = useState<boolean>(true)
 
   const { dispatchNotification } = useContext(NotificationContext) as NotificationContextInterface;
+  const { dispatchNavigation } = useContext(NavigationContext) as NavigationContextInterface
   
   useEffect(()=>{
     sessionStorage.getItem('token') === null && redirectToUrl('/login')
+    dispatchNavigation({ type: "SET_CURRENT_PAGE", payload: 'cart'})
 
 
     const prepareCartData = async () => {

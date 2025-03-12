@@ -14,7 +14,6 @@ export const submitLogin = async({email, password}:{email: string | undefined, p
     body: JSON.stringify(payload),
   })
 
-
     if (data.status === 200){
       const dataResponse = await data.json()
       sessionStorage.setItem('token', dataResponse.token)

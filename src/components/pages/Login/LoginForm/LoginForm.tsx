@@ -9,6 +9,7 @@ import Sublink from '../../../elements/Navbar/Sublink/Sublink'
 import { NavigationContextInterface, NotificationContextInterface } from '../../../../utils/types/interfaces'
 
 const LoginForm = () => {
+  const currentPageH = sessionStorage.getItem('currentPage') || ''
 
   
   const { navigationState, dispatchNavigation} = useContext(NavigationContext) as NavigationContextInterface 
@@ -25,7 +26,7 @@ const LoginForm = () => {
 
   useEffect(()=>{
     if(navigationState.loggedIn){
-      redirectToUrl('/home')
+      redirectToUrl(`${navigationState.currentPage}`)
     }
   },[])
   
@@ -75,11 +76,11 @@ const LoginForm = () => {
               if(loginStatus == 200) {
                 dispatchNavigation({type: 'SET_LOGGED_IN', payload: true})
                 dispatchNotification({type: 'SET_NOTIFICATION_COLOR', payload: 'green'})
-                dispatchNotification({type: "SET_NOTIFICATION_TEXT", payload: 'credentials ok. Redirecting to Home'})
+                dispatchNotification({type: "SET_NOTIFICATION_TEXT", payload: 'credentials ok. Redirecting...'})
                 dispatchNotification({type: 'SET_NOTIFICATION_ON', payload: true})
                 setTimeout(() => {
                   dispatchNotification({type: 'SET_NOTIFICATION_ON', payload: false})
-                  redirectToUrl('/home')
+                  redirectToUrl(currentPageH)
                 }, 2000);
               } else {
                 console.log(notificationState)
