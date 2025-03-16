@@ -20,6 +20,7 @@ import { sortProducts } from "../../../utils/functions/filters_fn/sortProducts";
 import { NavigationContextInterface, NotificationContextInterface, WinesContextInterface } from "../../../utils/types/interfaces";
 import { resetFilters } from "../../../utils/functions/filters_fn/resetFilters";
 import BodyTitles from "../../elements/texts/BodyTitles/BodyTitles";
+import { filterProductsBackend } from "../../../utils/functions/filters_fn/filterProductsBackend";
 
 const Products = () => {
   const { fetchWines, dispatchFetchWines } = useContext(WinesContext) as WinesContextInterface;
@@ -44,10 +45,12 @@ const Products = () => {
   const [ winInnerWidth, setWinInnerWidth ] = useState<number>(window.innerWidth)
   const [ showFilters, setShowFilters ] = useState<boolean>(false)
 
+  // should we group the filters values in a reducer and then use it as a context for the useSubmitFilters hook?
+
   //! could we use a sweet useReducer here? Should we?
 
 
-console.log(setWineTemps, setWinePrices)
+// console.log(setWineTemps, setWinePrices)
  
 
   useEffect(() => {
@@ -98,10 +101,14 @@ console.log(setWineTemps, setWinePrices)
 
   useEffect(() => {
     console.log(`select values changed`)
-    const filteredArr = filterProducts(originsValue, tasteValue, priceValue, temperatureValue, sortValue, fetchWines)
-    setFilteredWines(filteredArr)
+    // const filteredArr = filterProducts(originsValue, tasteValue, priceValue, temperatureValue, sortValue, fetchWines)
+    // setFilteredWines(filteredArr)
     useSubmitFilters({setOriginsValue, setTasteValue, setPriceValue, setTemperatureValue, setSortValue})
-    sortProducts(filteredArr, sortValue)
+    const filterBe = async () => {
+      await setFilteredWines(await filterProductsBackend({originsValue, tasteValue, priceValue, temperatureValue}))
+    }
+    filterBe()
+    setFilteredWines(sortProducts(filteredWines, sortValue))
   },[originsValue, tasteValue, priceValue, temperatureValue, sortValue, fetchWines, loading])
 
   window.addEventListener('resize', ()=>{setWinInnerWidth(window.innerWidth)})
@@ -126,7 +133,16 @@ console.log(setWineTemps, setWinePrices)
                 <ProductsFilterSelect selectName="temperature" allText="Temperature" arr={prepareIntervals(wineTemps)} />
                 <ProductsFilterSelect selectName="sort" allText="Sort" arr={["alphabetically", "high price", "low price"]} />
               </div>
-              <UserInterfaceButton text="filter" color="dark" fnc={()=>{useSubmitFilters({setOriginsValue, setTasteValue, setPriceValue, setTemperatureValue, setSortValue}); console.warn(`submit button clicked`)}}/>
+              <UserInterfaceButton text="filter" color="dark" fnc={
+                async ()=>{
+                  useSubmitFilters({setOriginsValue, setTasteValue, setPriceValue, setTemperatureValue, setSortValue});
+
+                  const newFilter = await filterProductsBackend({originsValue, tasteValue, priceValue, temperatureValue})
+                  setFilteredWines(newFilter)
+
+                  sortProducts(filteredWines, sortValue)
+                }
+              }/>
               <UserInterfaceButton text="clean filters" color="dark" 
                 fnc={()=>{ 
                   resetFilters();
