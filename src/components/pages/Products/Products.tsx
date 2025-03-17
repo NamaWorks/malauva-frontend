@@ -74,41 +74,41 @@ console.log(setWineTemps, setWinePrices)
         setLoading(false);
         dispatchNotification({type: "SET_NOTIFICATION_ON", payload: false})
       });
-
+      
       setFilteredWines(fetchWines)
       
-  }, [loading]);
-
-  useEffect(() => {
-    // Scroll listener to load more items
-    const handleScroll = () => {
-      const footerTop = getFooterTop();
-      if (
-        window.scrollY + footerTop <=
-        window.scrollY + window.innerHeight * 1.5
-      ) {
-        setLoading(true);
-        setLastPrintItem(lastPrintItem + 12);
-        setLoading(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [lastPrintItem]);
-
-  useEffect(() => {
-    console.log(`select values changed`)
-    const filteredArr = filterProducts(originsValue, tasteValue, priceValue, temperatureValue, sortValue, fetchWines)
-    setFilteredWines(filteredArr)
-    useSubmitFilters({setOriginsValue, setTasteValue, setPriceValue, setTemperatureValue, setSortValue})
-    // const filterBe = async () => {
-      // await setFilteredWines(await filterProductsBackend({originsValue, tasteValue, priceValue, temperatureValue}))
-    // }
-    // filterBe()
-    setFilteredWines(sortProducts(filteredArr, sortValue))
+    }, [loading]);
+    
+    useEffect(() => {
+      // Scroll listener to load more items
+      const handleScroll = () => {
+        const footerTop = getFooterTop();
+        if (
+          window.scrollY + footerTop <=
+          window.scrollY + window.innerHeight * 1.5
+        ) {
+          setLoading(true);
+          setLastPrintItem(lastPrintItem + 12);
+          setLoading(false);
+        }
+      };
+      
+      window.addEventListener("scroll", handleScroll);
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }, [lastPrintItem]);
+    
+    useEffect(() => {
+      console.log(`select values changed`)
+      const filteredArr = filterProducts(originsValue, tasteValue, priceValue, temperatureValue, sortValue, fetchWines)
+      setFilteredWines(filteredArr)
+      useSubmitFilters({setOriginsValue, setTasteValue, setPriceValue, setTemperatureValue, setSortValue})
+      // const filterBe = async () => {
+        // await setFilteredWines(await filterProductsBackend({originsValue, tasteValue, priceValue, temperatureValue}))
+        // }
+        // filterBe()
+        sortProducts(filteredArr, sortValue)
   },[originsValue, tasteValue, priceValue, temperatureValue, sortValue, fetchWines, loading])
 
   window.addEventListener('resize', ()=>{setWinInnerWidth(window.innerWidth)})

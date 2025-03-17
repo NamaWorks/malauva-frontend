@@ -19,5 +19,6 @@ export const submitLogin = async({email, password}:{email: string | undefined, p
       sessionStorage.setItem('token', dataResponse.token)
       return data.status
     } else {console.log('not worked')}
+    console.log(data)
     return  data.status
 }

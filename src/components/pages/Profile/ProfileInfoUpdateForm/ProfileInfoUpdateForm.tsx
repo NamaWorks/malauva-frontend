@@ -65,7 +65,6 @@ const ProfileInfoUpdateForm = () => {
           setNewEmail(e.target.value)
         }}}/>
       </div>
-
       <div className='form-input-container'>
         <label htmlFor="signup-form-password">change password</label>
         <input id="profile-form-password" className="signup-input input-password form-input" type={changePasswordVisible ? 'text' : 'password'} placeholder="new password" onChange={(e)=>{if(newProfileInfoChecker(e.target.value, e.target.id.split('-')[e.target.id.split('-').length-1])){setNewPassword(e.target.value)}}}/>

@@ -72,7 +72,7 @@ const LoginForm = () => {
             }, 4000);
 
               const loginStatus = await submitLogin({email, password})
-              console.log(loginStatus)
+              // console.log(loginStatus)
               if(loginStatus == 200) {
                 dispatchNavigation({type: 'SET_LOGGED_IN', payload: true})
                 dispatchNotification({type: 'SET_NOTIFICATION_COLOR', payload: 'green'})
@@ -82,6 +82,15 @@ const LoginForm = () => {
                   dispatchNotification({type: 'SET_NOTIFICATION_ON', payload: false})
                   redirectToUrl(currentPageH)
                 }, 2000);
+              } else if(loginStatus == 400) {
+                console.log(notificationState)
+                dispatchNavigation({type: 'SET_LOGGED_IN', payload: false})
+                dispatchNotification({type: 'SET_NOTIFICATION_COLOR', payload: 'pink'})
+                dispatchNotification({type: "SET_NOTIFICATION_TEXT", payload: 'email or password incorrect'})
+                dispatchNotification({type: 'SET_NOTIFICATION_ON', payload: true})
+                setTimeout(() => {
+                  dispatchNotification({type: 'SET_NOTIFICATION_ON', payload: false})
+                }, 4000);
               } else {
                 console.log(notificationState)
                 dispatchNavigation({type: 'SET_LOGGED_IN', payload: false})

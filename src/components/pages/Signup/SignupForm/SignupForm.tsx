@@ -109,11 +109,19 @@ const SignupForm = () => {
                     }, 4000);
                   }
                 }, 2000);
+              } else if(signupStatus === 409){
+                console.log(`something went wrong`);
+                dispatchNotification({type: 'SET_NOTIFICATION_COLOR', payload: 'pink'})
+                dispatchNotification({type: 'SET_NOTIFICATION_ON', payload: true})
+                dispatchNotification({type: 'SET_NOTIFICATION_TEXT', payload: "Email already in use"})
+                setTimeout(() => {
+                  dispatchNotification({type: 'SET_NOTIFICATION_ON', payload: false})
+                }, 4000);
               } else {
                 console.log(`something went wrong`);
                 dispatchNotification({type: 'SET_NOTIFICATION_COLOR', payload: 'pink'})
                 dispatchNotification({type: 'SET_NOTIFICATION_ON', payload: true})
-                dispatchNotification({type: 'SET_NOTIFICATION_TEXT', payload: "check all the fields"})
+                dispatchNotification({type: 'SET_NOTIFICATION_TEXT', payload: "Something went wrong"})
                 setTimeout(() => {
                   dispatchNotification({type: 'SET_NOTIFICATION_ON', payload: false})
                 }, 4000);
